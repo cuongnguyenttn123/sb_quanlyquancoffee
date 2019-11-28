@@ -46,7 +46,7 @@ public class BilldetailDAO implements BilldetailDAOImp {
 
     @Override
     public List<Billdetail> getInfoBilldetailByBillId(int billid) {
-        return billdetailRepository.findAllByBill(new Bill(billid));
+        return billdetailRepository.findAllBilldetailByBillid(billid, this.IS_NOT_DELETE);
     }
 
     @Override

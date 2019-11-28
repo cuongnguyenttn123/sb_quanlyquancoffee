@@ -57,16 +57,28 @@ public class CustomerDAO implements CustomerDAOImp {
 	}
 
 	@Override
-	public Boolean editCustomer(Customer customer) {
-		Boolean aBoolean;
-		try{
+	public int editCustomer(Customer customer) {
+		int lastId;
+		try {
 			customerRepository.save(customer);
-			aBoolean = true;
+			lastId = customer.getCustomerid();
 		}catch (Exception e){
 			e.printStackTrace();
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-			aBoolean = false;
+			lastId = -1;
 		}
-		return aBoolean;
+		return lastId;
+	}
+
+	@Override
+	public Customer checkPhoneOfCustommer(Integer phone) {
+		Customer customer = null;
+		try {
+			customer = customerRepository.findByPhone(phone);
+
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return customer;
 	}
 }

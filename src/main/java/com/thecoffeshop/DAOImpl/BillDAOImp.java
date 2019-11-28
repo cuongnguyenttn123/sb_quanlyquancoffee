@@ -50,4 +50,8 @@ public interface BillDAOImp extends CommonDAOImp {
 	public int thongkeSoHoaDonTrongThang(int thang);
 
 	public List<BillDetailDTO> converterBillDetail(Set<Billdetail> billdetail);
+
+	public Bill checkExistBillStatusAndCustomerId(Integer customerId);
+
+    List<Bill> getBillByCustomerId(int customerid);
 }

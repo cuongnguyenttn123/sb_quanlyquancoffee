@@ -31,4 +31,14 @@ public interface BillRepository extends JpaRepository<Bill, Integer>, JpaSpecifi
     )
     List<Bill> checkExistDinnerTable(Integer dinnerTableId);
 
+    @Query(
+            value = "select * from bill b where b.billstatusid = ?1 and b.customerid = ?2",
+            nativeQuery = true
+    )
+    Bill checkExistBillStatusAndCustomerId(String billStatusId, Integer customerId);
+    @Query(
+            value = "select * from bill b where b.customerid = ?1",
+            nativeQuery = true
+    )
+    List<Bill> getBillByCustomerId(int customerid);
 }

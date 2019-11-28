@@ -16,5 +16,7 @@ public interface CustomerDAOImp extends CommonDAOImp{
 
 	public Boolean deleteCustomer(int customerid);
 
-	public Boolean editCustomer(Customer customer);
+	public int editCustomer(Customer customer);
+
+	public Customer checkPhoneOfCustommer(Integer phone);
 }

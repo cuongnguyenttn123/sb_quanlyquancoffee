@@ -19,7 +19,7 @@ public class Bill implements java.io.Serializable {
 	@Column(name = "BILLID", unique = true, nullable = false)
 	private Integer billid;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BILLSTATUSID")
 	private Billstatus billstatus;
 
@@ -57,7 +57,7 @@ public class Bill implements java.io.Serializable {
 	@Column(name = "ISDELETE")
 	private Boolean isdelete;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bill")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bill")
 	private Set<Billdetail> billdetails = new HashSet<Billdetail>(0);
 
 	public Bill() {

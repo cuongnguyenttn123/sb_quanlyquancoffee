@@ -330,6 +330,16 @@ public class BillDAO implements BillDAOImp {
         return billDetailDTOS;
     }
 
+    @Override
+    public Bill checkExistBillStatusAndCustomerId(Integer customerId) {
+        return repository.checkExistBillStatusAndCustomerId("CD", customerId);
+    }
+
+    @Override
+    public List<Bill> getBillByCustomerId(int customerid) {
+        return repository.getBillByCustomerId(customerid);
+    }
+
     public int getPriceBySet(Set<Price> priceSet){
         Price price = null;
         int i = 0;

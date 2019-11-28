@@ -44,9 +44,14 @@ public class CustomerService implements CustomerDAOImp {
 	}
 
 	@Override
-	public Boolean editCustomer(Customer customer) {
+	public int editCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		return customerDAO.editCustomer(customer);
+	}
+
+	@Override
+	public Customer checkPhoneOfCustommer(Integer phone) {
+		return customerDAO.checkPhoneOfCustommer(phone);
 	}
 
 }

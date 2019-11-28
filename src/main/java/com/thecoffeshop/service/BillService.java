@@ -137,4 +137,14 @@ public class BillService implements BillDAOImp {
 		return billDAO.converterBillDetail(billdetail);
 	}
 
+	@Override
+	public Bill checkExistBillStatusAndCustomerId(Integer customerId) {
+		return billDAO.checkExistBillStatusAndCustomerId(customerId);
+	}
+
+	@Override
+	public List<Bill> getBillByCustomerId(int customerid) {
+		return billDAO.getBillByCustomerId(customerid);
+	}
+
 }
