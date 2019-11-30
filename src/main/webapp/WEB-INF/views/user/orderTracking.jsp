@@ -10,20 +10,36 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../resouces/css/1.css">
+    <link rel="stylesheet" href="<c:out value="/resouces/css/1.css"/>">
     <!-- Bootstrap CSS -->
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div>
     <div class="container">
         <jsp:include page="content/content-orderTracking.jsp"/>
     </div>
 
+    <br/>
+    <br/>
+    <br/>
 
-</div>
+    <div class="container">
+        <h3>Chi tiết hóa đơn:</h3>
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <jsp:include page="content/bill/tBodyDetail.jsp"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+            </div>
+        </div>
+
+
+    </div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -58,7 +58,7 @@
 <!-- js libary [END] -->
 
 <!-- Modal -->
-<script src="../resouces/ajax-jquery/book-table.js"></script>
+<script src="<c:out value="/resouces/ajax-jquery/book-table.js"/>"></script>
 <!-- End Modal -->
 
 </body>

@@ -1,6 +1,7 @@
 package com.thecoffeshop.controller;
 
 import com.thecoffeshop.entity.Bill;
+import com.thecoffeshop.entity.Billdetail;
 import com.thecoffeshop.entity.Customer;
 import com.thecoffeshop.entity.Employee;
 import com.thecoffeshop.service.BillService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/home")
@@ -29,7 +31,11 @@ public class HomeController {
     @GetMapping("")
     public String getHome(){
         Bill bill = billService.getBillFullRelaByBillId(78);
-        System.out.println(bill.getCustomer());
+        Set<Billdetail> billdetailList = bill.getBilldetails();
+        for (Billdetail d: billdetailList
+             ) {
+            System.out.println(d.getProduct());
+        }
         return "home";
     }
 }

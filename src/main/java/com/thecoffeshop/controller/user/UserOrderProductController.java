@@ -165,7 +165,7 @@ public class UserOrderProductController extends Common {
             customer.setIsdelete(super.IS_NOT_DELETE);
             lastCustomerID = customerService.editCustomer(customer);
         }
-        int billid;
+        int billid = 0;
         if (lastCustomerID != -1) { /* customer has inserted */
             Bill bill = billService.checkExistBillStatusAndCustomerId(lastCustomerID);
             if (bill == null){
@@ -231,13 +231,13 @@ public class UserOrderProductController extends Common {
             httpSession.setAttribute("custommer",objects);
 
         }
-        return "redirect:/user/ordertracking";
+        String url = "redirect:/user/ordertracking/"+Integer.toString(billid);
+        return url;
     }
 
-    @GetMapping("/ordertracking")
-    public String orderTracking(ModelMap modelMap, HttpSession httpSession){
-
-        Bill bill= billService.getInfoById(78);
+    @GetMapping(value = "/ordertracking/{id}")
+    public String orderTracking(ModelMap modelMap, @PathVariable String id){
+        Bill bill= billService.getInfoById(Integer.parseInt(id));
         modelMap.addAttribute("value", bill);
 
         return "/user/orderTracking";

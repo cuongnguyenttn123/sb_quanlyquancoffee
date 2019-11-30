@@ -12,7 +12,7 @@
 			<td class="text-danger"><c:out
 					value="${dto.getBill().getEnddate()}" /></td>
 			<td>
-				<a href="/user/ordertracking">Chi tiết đơn hàng</a>
+				<a href="/user/ordertracking/<c:out value="${dto.getBill().getBillid()}" />">Chi tiết đơn hàng</a>
 			</td>
 		</tr>
 	</c:forEach>
