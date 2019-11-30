@@ -18,7 +18,7 @@ public class Price implements java.io.Serializable {
     @Column(name = "PRICEID", unique = true, nullable = false)
     private int priceid;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUCTID")
     private Product product;
 

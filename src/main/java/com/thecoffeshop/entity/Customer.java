@@ -27,6 +27,9 @@ public class Customer implements java.io.Serializable {
 	@Column(name = "PHONE", precision = 10, scale = 0)
 	private Integer phone;
 
+	@Column(name = "PASSWORD")
+	private String password;
+
 	@Column(name = "ISDELETE")
 	private Boolean isdelete;
 
@@ -53,7 +56,13 @@ public class Customer implements java.io.Serializable {
 		this.bills = bills;
 		this.booktables = booktables;
 	}
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public int getCustomerid() {
 		return this.customerid;
@@ -113,4 +122,17 @@ public class Customer implements java.io.Serializable {
 		this.booktables = booktables;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerid=" + customerid +
+				", name='" + name + '\'' +
+				", address='" + address + '\'' +
+				", phone=" + phone +
+				", password='" + password + '\'' +
+				", isdelete=" + isdelete +
+				", bills=" + bills +
+				", booktables=" + booktables +
+				'}';
+	}
 }

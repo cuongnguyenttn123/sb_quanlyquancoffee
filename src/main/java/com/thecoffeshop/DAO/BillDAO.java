@@ -2,12 +2,11 @@ package com.thecoffeshop.DAO;
 
 import com.thecoffeshop.DAOImpl.BillDAOImp;
 import com.thecoffeshop.DTO.BillDetailDTO;
-import com.thecoffeshop.entity.Bill;
-import com.thecoffeshop.entity.Billdetail;
-import com.thecoffeshop.entity.BilldetailId;
-import com.thecoffeshop.entity.Price;
+import com.thecoffeshop.entity.*;
 import com.thecoffeshop.repository.BillRepository;
+import com.thecoffeshop.repository.CustomerRepository;
 import com.thecoffeshop.service.BilldetailService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -24,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
+@Transactional
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class BillDAO implements BillDAOImp {
     @Autowired
@@ -34,6 +34,9 @@ public class BillDAO implements BillDAOImp {
 
     @Autowired
     BilldetailService billdetailService;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Override
     public int addBill(Bill bill) {
@@ -356,4 +359,28 @@ public class BillDAO implements BillDAOImp {
         }
         return price.getPrice();
     }
+
+    @Transactional()
+    public Bill getBillFullRelaByBillId(int billid) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE b.billid =:billid AND b.isdelete =:isdelete");
+        try {
+            Bill bill = entityManager.createQuery(stringBuilder.toString(), Bill.class)
+                    .setParameter("billid", billid)
+                    .setParameter("isdelete", this.IS_NOT_DELETE)
+                    .getSingleResult();
+
+            for (Billdetail billdetail: bill.getBilldetails()
+                 ) {
+                Hibernate.initialize(billdetail.getProduct());
+            }
+            //bill.setCustomer(customerRepository.getCustomerByBills(bill));
+            return bill;
+        } catch (Exception e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return null;
+        }
+    }
+
+
 }

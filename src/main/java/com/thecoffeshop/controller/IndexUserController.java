@@ -38,7 +38,7 @@ public class IndexUserController extends Common {
 
 	@GetMapping(value = "")
 	public String getHome(ModelMap modelMap, HttpSession httpSession) {
-		List<ProductDTO> productDTOS = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
+		List<ProductDTO> productDTOS = getListProductDTOBySession(httpSession);
 		if (null != productDTOS){
 			modelMap.addAttribute("soluonggiohang", productDTOS.size());
 		}
@@ -50,8 +50,7 @@ public class IndexUserController extends Common {
 
 	@GetMapping(value = "/index")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
-		List<ProductDTO> productDTOS = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
-		Integer soluonggiohang = productDTOS.size();
+		List<ProductDTO> productDTOS = getListProductDTOBySession(httpSession);
 		if (null != productDTOS){
 			modelMap.addAttribute("soluonggiohang", productDTOS.size());
 		}
@@ -126,5 +125,9 @@ public class IndexUserController extends Common {
 		List<ProductDTO> productDTOs = productConverter.converterDAOtoDTO(products);
 		/* display price product and sale price and new product release */
 		modelMap.addAttribute("productDTOs", productDTOs);
+	}
+
+	private List<ProductDTO> getListProductDTOBySession(HttpSession httpSession){
+		return (List<ProductDTO>) httpSession.getAttribute("gio-hang");
 	}
 }

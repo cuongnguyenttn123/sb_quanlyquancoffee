@@ -1,5 +1,6 @@
 package com.thecoffeshop.repository;
 
+import com.thecoffeshop.entity.Bill;
 import com.thecoffeshop.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -16,4 +17,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>, Jp
             nativeQuery = true
     )
     Customer findByPhone(Integer phone);
+    Customer getCustomerByBills(Bill bill);
 }

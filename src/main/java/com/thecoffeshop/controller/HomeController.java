@@ -28,7 +28,8 @@ public class HomeController {
 
     @GetMapping("")
     public String getHome(){
-        Customer customer = customerService.checkPhoneOfCustommer(978413911);
+        Bill bill = billService.getBillFullRelaByBillId(78);
+        System.out.println(bill.getCustomer());
         return "home";
     }
 }

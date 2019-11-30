@@ -58,6 +58,7 @@ public class PersistenceJPAConfig {
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", env.getProperty("hibernate.cache.use_second_level_cache"));
         hibernateProperties.setProperty("hibernate.cache.use_query_cache", env.getProperty("hibernate.cache.use_query_cache"));
+        hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", env.getProperty("hibernate.enable_lazy_load_no_trans"));
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
         return hibernateProperties;
     }

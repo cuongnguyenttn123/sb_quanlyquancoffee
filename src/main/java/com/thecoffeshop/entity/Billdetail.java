@@ -16,7 +16,7 @@ public class Billdetail implements java.io.Serializable {
 			@AttributeOverride(name = "billid", column = @Column(name = "BILLID", nullable = false)) })
 	private BilldetailId id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BILLID", nullable = false, insertable = false, updatable = false)
 	private Bill bill;
 

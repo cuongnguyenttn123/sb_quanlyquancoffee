@@ -1,5 +1,7 @@
 package com.thecoffeshop.controller.user;
 
+import com.thecoffeshop.DAO.BillDAO;
+import com.thecoffeshop.DTO.BillDTO;
 import com.thecoffeshop.DTO.ProductDTO;
 import com.thecoffeshop.common.Common;
 import com.thecoffeshop.entity.*;
@@ -224,7 +226,7 @@ public class UserOrderProductController extends Common {
             }
 
             List<Object> objects = new ArrayList<>();
-            objects.add(customer.getName());
+            objects.add(customer);
             objects.add(billid);
             httpSession.setAttribute("custommer",objects);
 
@@ -234,20 +236,47 @@ public class UserOrderProductController extends Common {
 
     @GetMapping("/ordertracking")
     public String orderTracking(ModelMap modelMap, HttpSession httpSession){
-        List<Object> objectList = (List<Object>) httpSession.getAttribute("custommer");
-        int billid = (int) objectList.get(1);
-        Bill bill= billService.getInfoById(billid);
-        modelMap.addAttribute("value", bill.getBillstatus().getBillstatusid());
+
+        Bill bill= billService.getInfoById(78);
+        modelMap.addAttribute("value", bill);
+
         return "/user/orderTracking";
     }
 
     @GetMapping("/viewsbill")
     public String getViewOrderProduct(ModelMap modelMap){
-        int phone = 978413911;
+        int phone = 978413916;
         Customer customer = customerService.checkPhoneOfCustommer(phone);
         List<Bill> billList = billService.getBillByCustomerId(customer.getCustomerid());
-        return "user/viewbill";
+        List<BillDTO> dtos = new ArrayList<>();
+        for (Bill bill : billList) {
+            BillDTO billDTO = new BillDTO();
+            billDTO.setBill(bill);
+            billDTO.setTotalPrice(billService.getTotalPriceOfBill(bill.getBillid()));
+            billDTO.setBillstatus(bill.getBillstatus());
+            dtos.add(billDTO);
+        }
+        modelMap.addAttribute("dtos", dtos);
+        modelMap.addAttribute("customer", customer);
+        return "user/billOrder";
     }
+    @GetMapping("/huydonhang")
+    @ResponseBody
+    public String huyDonHang(Integer billId){
+        String cancelOrder = "";
+        try {
+            Bill bill = billService.getInfoById(billId);
+            bill.setBillstatus(new Billstatus("HDH"));
+            bill.setUpdateat(new Date());
+            billService.editBill(bill);
+            cancelOrder = "success";
+        }catch (Exception e){
+            cancelOrder = "failed";
+        }
+        return cancelOrder;
+    }
+
+
     private static int kiemTraGioHang(HttpSession httpSession, ProductDTO productDTO) {
         List<ProductDTO> gioHangList = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
         for (int x = 0; x<gioHangList.size(); x++){
@@ -257,4 +286,6 @@ public class UserOrderProductController extends Common {
         }
         return -1;
     }
+
+
 }

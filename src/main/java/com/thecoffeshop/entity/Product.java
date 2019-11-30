@@ -16,7 +16,7 @@ public class Product implements java.io.Serializable {
 	@Column(name = "PRODUCTID", unique = true, nullable = false, length = 7)
 	private String productid;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CATEGORYPRODUCTID")
 	private Categoryproduct categoryproduct;
 
@@ -44,6 +44,8 @@ public class Product implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private Set<Exportbill> exportbills = new HashSet<Exportbill>();
+
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private Set<Price> prices = new HashSet<Price>();
 

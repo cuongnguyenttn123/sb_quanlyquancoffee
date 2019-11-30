@@ -61,7 +61,7 @@ public class Image implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "imageofemployee", catalog = "theshopcoffee", joinColumns = {
 			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) }, inverseJoinColumns = {
 			@JoinColumn(name = "EMPLOYEEID", nullable = false, updatable = false) })
@@ -73,7 +73,7 @@ public class Image implements java.io.Serializable {
 		this.employees = employees;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "images")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "images")
 	public Set<Product> getProducts() {
 		return this.products;
 	}

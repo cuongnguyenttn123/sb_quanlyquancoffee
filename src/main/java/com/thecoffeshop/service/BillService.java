@@ -147,4 +147,8 @@ public class BillService implements BillDAOImp {
 		return billDAO.getBillByCustomerId(customerid);
 	}
 
+	public Bill getBillFullRelaByBillId(int billid){
+		return billDAO.getBillFullRelaByBillId(billid);
+	}
+
 }
