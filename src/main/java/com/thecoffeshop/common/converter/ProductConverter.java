@@ -20,6 +20,7 @@ public class ProductConverter {
         for (Product product: productList) {
             ProductDTO productDTO = new ProductDTO();
             productDTO.setProductid(product.getProductid());
+            productDTO.setName(product.getName());
             productDTO.setPrice(productConverter.getPriceBySet(product.getPrices()));
             Set<Image> setImages = product.getImages();
             List<Image> images = new ArrayList<Image>();
@@ -34,6 +35,7 @@ public class ProductConverter {
 
             productDTO.setCategoryproductNAME(product.getCategoryproduct().getName());
             productDTOS.add(productDTO);
+            System.out.println(productDTO.getName());
         }
         return productDTOS;
     }

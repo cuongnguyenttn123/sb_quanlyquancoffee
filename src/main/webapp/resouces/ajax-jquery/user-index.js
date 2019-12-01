@@ -85,49 +85,7 @@ function _viewProduct(productid) {
 };
 /* View product [END] */
 /* Add to cart */
-function addToCart(PId) {
 
-	if(typeof($("#number-product-"+PId).val())!='undefined'){
-		var number = $("#number-product-"+PId).val();
-		number = Number(number) + 1 ;
-		$("#number-product-"+PId).val(number);
-		
-		changeTolalPrice(PId);
-	}
-	else{
-		var price;
-		if($(".product-price-"+ PId +" del").text()!= ""){
-			price = $(".product-price-"+ PId +" del").text();
-		}
-		else{
-			price = $(".product-price-"+ PId).text();
-		}
-		var priceValue = price.trim().substring(0, price.trim().length - 1);
-		var data = '<div class="product-widget">'
-				+ 		'<div class="product-img">'
-				+ 			'<img src="'+$(".img-"+PId).attr("src")+'" alt="">'
-				+ 		'</div>'
-				+ 		'<div class="product-body">'
-				+ 			'<h3 class="product-name product-name-'+PId+'">'
-				+ 				'<a href="#">'+$(".product-name-"+PId).text()+'</a>'
-				+ 			'</h3>'
-				+ 			'<h4 class="product-price price-'+PId+'">'
-				+ 				'<input id="number-product-'+PId+'" type="number" value="1" old-value="1" price-value="'+priceValue+'" style="width: 30px "/><span class="qty">x</span>' + price +'đ'
-				+ 			'</h4>'
-				+ 		'</div>'
-				+ 		'<button class="delete">'
-				+ 			'<i class="fa fa-close"></i>'
-				+ 		'</button>'
-				+ 	'</div>';
-		$(".cart-list").prepend(data);
-		/* add idProduct to href thanh toan */
-		var listCart = $("#listCart").val() ;
-		$("#listCart").val(listCart + PId + "~");
-		
-		sumPriceProduct(0, 1, priceValue);
-		showNumberProductInCart();
-	}
-};
 /* Add to cart [END] */
 /* Count number product in cart */
 	function CountProductInCart(){
@@ -159,8 +117,6 @@ function changeTolalPrice(PId){
 
 /* Toal price product [END] */
 $(function () {
-	
-	$('#btnPay').hide();
 
 	$(".btn-View").click(function() {
 		_viewProduct($(this).attr("data-PId"));
@@ -169,20 +125,23 @@ $(function () {
 	$(".btn-add-to-cart").click(function(){
 		var PId = $(this).attr("data-PId");
 		var	price;
+		var Name = $(".product-name-"+ PId).text();
 		if($(".product-price-"+ PId +" del").text()!= ""){
 			price = $(".product-price-"+ PId +" del").text();
 		}
 		else{
 			price = $(".product-price-"+ PId).text();
 		}
-		price = price.trim().substring(0, price.trim().length - 1);;
-		console.log(price);
+		price = price.trim().substring(0, price.trim().length - 1);
+		Name = Name.trim();
+		console.log(Name);
 		$.ajax({
 			url:"/user/gio-hang",
 			type:"GET",
 			data:{
 				PId:PId,
-				price:price
+				price:price,
+				Name : Name
 			},
 			success: function (value) {
 				$(".qty").html(value);

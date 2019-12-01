@@ -66,6 +66,7 @@ public class ProductDAO implements ProductDAOImp {
 	@Override
 	public List<Product> getListProductLimit(int start, String cgPrdId, String strSearch, String productid) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		int startIndex = start*12;
 		try {
 			String hql = "FROM Product p WHERE p.isdelete =:isdelete";
 			if (cgPrdId != null ) {
@@ -90,8 +91,8 @@ public class ProductDAO implements ProductDAOImp {
 			if (productid != null) {
 				query.setParameter("productid", productid);
 			}
-			query.setFirstResult(start* NUM_PRODUCT_ONE_PAGE);
-			query.setMaxResults(NUM_PRODUCT_ONE_PAGE);
+			query.setFirstResult(startIndex);
+			query.setMaxResults(12);
 			List<Product> products = query.getResultList();
 			return products;
 		} catch (Exception e) {

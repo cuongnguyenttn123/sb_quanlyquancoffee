@@ -46,9 +46,10 @@ public class UserOrderProductController extends Common {
 
     @GetMapping("gio-hang")
     @ResponseBody
-    public String getGioHang(HttpSession httpSession, @RequestParam String PId,  @RequestParam String price){
+    public String getGioHang(HttpSession httpSession, @RequestParam String PId, @RequestParam String Name,  @RequestParam String price){
         String aBoolean = "false";
         ProductDTO productDTO = new ProductDTO();
+        productDTO.setName(Name);
         productDTO.setProductid(PId);
         productDTO.setNumber(1);
         productDTO.setPrice(Integer.parseInt(price));
@@ -90,7 +91,13 @@ public class UserOrderProductController extends Common {
     @GetMapping(value = "order-product", produces = "application/x-www-form-urlencoded;charset=UTF-8")
     public String index(ModelMap modelMap, HttpSession httpSession) {
         List<ProductDTO> productDTOs = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
+        Integer tongtien = 0;
+        for (ProductDTO productDTO: productDTOs
+             ) {
+            tongtien+= productDTO.getNumber()*productDTO.getPrice();
+        }
         modelMap.addAttribute("productDTOs", productDTOs);
+        modelMap.addAttribute("tongtien", tongtien);
         return "/user/orderProduct";
     }
 
@@ -146,10 +153,10 @@ public class UserOrderProductController extends Common {
 
     @PostMapping(value = "/pay-cart", produces = "application/x-www-form-urlencoded;charset=UTF-8")
     public String orderProduct(ModelMap modelMap, HttpSession httpSession, @RequestParam String name,
-                               @RequestParam String address, @RequestParam String phone, @RequestParam String startdatetime,
+                               @RequestParam String address, @RequestParam String phone,@RequestParam String pass, @RequestParam String startdatetime,
                                @RequestParam String notice, @RequestParam String voucherName) {
 
-        Customer customer = customerService.checkPhoneOfCustommer(Integer.parseInt(phone));
+        Customer customer = customerService.checkPhoneOfCustommer(Integer.parseInt(phone), pass);
         List<ProductDTO> productDTOS = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
         int lastCustomerID = -1;
         if (null == customer){
@@ -157,12 +164,14 @@ public class UserOrderProductController extends Common {
             customer.setName(name);
             customer.setAddress(address);
             customer.setPhone(Integer.valueOf(phone));
+            customer.setPassword(pass);
             customer.setIsdelete(super.IS_NOT_DELETE);
             lastCustomerID = customerService.addCustomer(customer);
         } else {
             customer.setName(name);
             customer.setAddress(address);
             customer.setIsdelete(super.IS_NOT_DELETE);
+            customer.setPassword(pass);
             lastCustomerID = customerService.editCustomer(customer);
         }
         int billid = 0;
@@ -224,58 +233,133 @@ public class UserOrderProductController extends Common {
                 }
 
             }
-
-            List<Object> objects = new ArrayList<>();
-            objects.add(customer);
-            objects.add(billid);
-            httpSession.setAttribute("custommer",objects);
-
+            httpSession.setAttribute("customer",customer);
+            List<ProductDTO> gioHangList = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
+            gioHangList.removeAll(gioHangList);
+            httpSession.setAttribute("gio-hang", gioHangList);
         }
         String url = "redirect:/user/ordertracking/"+Integer.toString(billid);
         return url;
     }
 
     @GetMapping(value = "/ordertracking/{id}")
-    public String orderTracking(ModelMap modelMap, @PathVariable String id){
-        Bill bill= billService.getInfoById(Integer.parseInt(id));
-        modelMap.addAttribute("value", bill);
+    public String orderTracking(ModelMap modelMap, @PathVariable String id, HttpSession httpSession){
+        Customer customer = (Customer) httpSession.getAttribute("customer");
+        if (customer != null){
+            try {
+                Bill bill= billService.getInfoById(Integer.parseInt(id));
+                modelMap.addAttribute("value", bill);
+                Integer tongtien = 0;
+                Set<Billdetail> billdetail = bill.getBilldetails();
+                List<ProductDTO> productDTOs = new ArrayList<>();
+                for (Billdetail billdetail1: billdetail) {
+                    Product product = billdetail1.getProduct();
+                    if (product != null) {
+                        try {
+                            ProductDTO dto = new ProductDTO();
+                            dto.setProductid(product.getProductid());
+                            dto.setName(product.getName());
+                            dto.setCategoryproductNAME(product.getCategoryproduct().getName());
+                            dto.setUpdateat(product.getUpdateat());
+                            List<Image> images = new ArrayList<Image>();
+                            if (product.getImages().size() > 0) {
+                                Set<Image> setImages = product.getImages();
+                                for (Image image : setImages) {
+                                    images.add(image);
+                                }
+                                dto.setImages(images);
+                            }
+                            dto.setNumber(billdetail1.getQuantity());
+                            dto.setPrice(priceService.getOldPrice(product.getProductid()));
+                            tongtien += billdetail1.getQuantity()*dto.getPrice();
+                            productDTOs.add(dto);
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                        }
+                    }
+                    modelMap.addAttribute("value", bill);
+                    modelMap.addAttribute("tongtien", tongtien);
+                    modelMap.addAttribute("productDTOs", productDTOs);
+                    modelMap.addAttribute("customer", customer);
+                }
+                return "/user/orderTracking";
+            }catch (Exception e){
+                return "redirect:/";
+            }
+        }else{
+            return "user/login";
+        }
 
-        return "/user/orderTracking";
+
     }
 
     @GetMapping("/viewsbill")
-    public String getViewOrderProduct(ModelMap modelMap){
-        int phone = 978413916;
-        Customer customer = customerService.checkPhoneOfCustommer(phone);
-        List<Bill> billList = billService.getBillByCustomerId(customer.getCustomerid());
-        List<BillDTO> dtos = new ArrayList<>();
-        for (Bill bill : billList) {
-            BillDTO billDTO = new BillDTO();
-            billDTO.setBill(bill);
-            billDTO.setTotalPrice(billService.getTotalPriceOfBill(bill.getBillid()));
-            billDTO.setBillstatus(bill.getBillstatus());
-            dtos.add(billDTO);
+    public String getViewOrderProduct(ModelMap modelMap, HttpSession httpSession){
+
+        Customer customer = (Customer) httpSession.getAttribute("customer");
+        if (customer != null){
+            List<Bill> billList = billService.getBillByCustomerId(customer.getCustomerid());
+            List<BillDTO> dtos = new ArrayList<>();
+            for (Bill bill : billList) {
+                BillDTO billDTO = new BillDTO();
+                billDTO.setBill(bill);
+                billDTO.setTotalPrice(billService.getTotalPriceOfBill(bill.getBillid()));
+                billDTO.setBillstatus(bill.getBillstatus());
+                dtos.add(billDTO);
+            }
+            modelMap.addAttribute("dtos", dtos);
+            modelMap.addAttribute("customer", customer);
+            return "user/billOrder";
+        }else{
+            return "user/login";
         }
-        modelMap.addAttribute("dtos", dtos);
-        modelMap.addAttribute("customer", customer);
-        return "user/billOrder";
+
     }
     @GetMapping("/huydonhang")
     @ResponseBody
-    public String huyDonHang(Integer billId){
-        String cancelOrder = "";
-        try {
-            Bill bill = billService.getInfoById(billId);
-            bill.setBillstatus(new Billstatus("HDH"));
-            bill.setUpdateat(new Date());
-            billService.editBill(bill);
-            cancelOrder = "success";
-        }catch (Exception e){
-            cancelOrder = "failed";
+    public String huyDonHang(Integer billId, HttpSession httpSession){
+        Customer customer = (Customer) httpSession.getAttribute("customer");
+        if (customer != null){
+            String cancelOrder = "";
+            try {
+                Bill bill = billService.getInfoById(billId);
+                bill.setBillstatus(new Billstatus("HDH"));
+                bill.setUpdateat(new Date());
+                billService.editBill(bill);
+                cancelOrder = "success";
+            }catch (Exception e){
+                cancelOrder = "failed";
+            }
+            return cancelOrder;
+        }else{
+            return "user/login";
         }
-        return cancelOrder;
     }
 
+    @GetMapping("/login")
+    public String getLogin(){
+        return "user/login";
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public String loginUser(ModelMap modelMap, HttpSession httpSession, @RequestParam String sdt, @RequestParam String pass){
+        String result = "";
+        try {
+
+            Customer customer = customerService.checkPhoneOfCustommer(Integer.parseInt(sdt), pass);
+            if (customer != null){
+                httpSession.setAttribute("customer", customer);
+                result = "succeess";
+            }else {
+                result = "failed";
+            }
+
+        }catch (Exception e){
+            result = "failed";
+        }
+        return result;
+    }
 
     private static int kiemTraGioHang(HttpSession httpSession, ProductDTO productDTO) {
         List<ProductDTO> gioHangList = (List<ProductDTO>) httpSession.getAttribute("gio-hang");

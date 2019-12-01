@@ -17,13 +17,17 @@
 	</tr>
 	<!-- Put <thead>, <tbody>, and <tr>'s here! -->
 	<tbody>
-		<c:forEach items="${value.getBilldetails()}" var="dto">
+
+		<c:forEach items="${productDTOs}" var="productDTOs">
 			<tr>
-				<td><c:out value="${dto.getProduct().getName()}" /></td>
-				<td class="text-danger"><c:out value="${dto.getQuantity()}" /></td>
-				<td class="text-danger"><c:out value="${dto.getQuantity()}" /> VND</td>
-				<td class="text-danger"><c:out value="${dto.getQuantity()}" /> VND</td>
+				<td><c:out value="${productDTOs.getName()}" /></td>
+				<td class="text-danger">  <c:out value="${productDTOs.getNumber()}" /></td>
+				<td class="text-danger"><c:out value="${productDTOs.getPrice()}" /> VND</td>
+				<td class="text-danger"><c:out value="${productDTOs.getPrice()*productDTOs.getNumber()}" /> VND</td>
+
 			</tr>
 		</c:forEach>
 	</tbody>
 </table>
+<br>
+<h5>Tổng tiền thanh toán: ${tongtien} VND</h5>

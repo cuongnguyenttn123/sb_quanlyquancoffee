@@ -8,11 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="row">
-    <h3>Thông tin tài khoản:</h3>
+
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <h3>Thông tin tài khoản:</h3>
+        <span>Họ và tên: ${customer.getName()}</span>
+        <br>
+        <span>Địa chỉ nhận hàng: ${customer.getAddress()}</span>
+        <br>
+        <span>SDT: (+84) ${customer.getPhone()}</span>
+    </div>
+
+
 </div>
 <div class="row">
-    <h3>Họ và tên: Nguyễn Văn Cường</h3>
-    <h4>Địa chỉ: hân cầu vượt ngô sỹ liên, số 64, tổ 143, hòa minh, liên chiểu, thành phố đà nẵng.
-        Đà Nẵng - Quận Liên Chiểu - Phường Hòa Khánh Bắc </h4>
-    <h4>SDT: (+84) 978413911</h4>
+    <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block><a href="/user/logout">Logout</a></button>
 </div>

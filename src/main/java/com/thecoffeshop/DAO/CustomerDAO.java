@@ -71,10 +71,10 @@ public class CustomerDAO implements CustomerDAOImp {
 	}
 
 	@Override
-	public Customer checkPhoneOfCustommer(Integer phone) {
+	public Customer checkPhoneOfCustommer(Integer phone, String pass) {
 		Customer customer = null;
 		try {
-			customer = customerRepository.findByPhone(phone);
+			customer = customerRepository.findByPhone(phone, pass);
 
 		}catch (Exception e){
 			e.printStackTrace();

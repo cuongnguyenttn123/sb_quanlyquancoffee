@@ -18,5 +18,5 @@ public interface CustomerDAOImp extends CommonDAOImp{
 
 	public int editCustomer(Customer customer);
 
-	public Customer checkPhoneOfCustommer(Integer phone);
+	public Customer checkPhoneOfCustommer(Integer phone, String pass);
 }

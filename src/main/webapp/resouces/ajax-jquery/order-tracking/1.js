@@ -41,6 +41,25 @@ jQuery(document).ready(function($) {
             }
         })
     })
+    $('#btn-login-user').click(function () {
 
+        var sdt = $('#sdt').val();
+        var pass = $('#pass').val();
+        $.ajax({
+            url:"/user/login",
+            type: "POST",
+            data:{
+                sdt: sdt,
+                pass: pass
+            },
+            success: function (value) {
+                if (value ==="succeess"){
+                    window.location.href ='viewsbill'
+                }else {
+                    alert("that bai");
+                }
+            }
+        })
+    })
         
 });

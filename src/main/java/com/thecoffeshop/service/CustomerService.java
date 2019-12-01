@@ -50,8 +50,8 @@ public class CustomerService implements CustomerDAOImp {
 	}
 
 	@Override
-	public Customer checkPhoneOfCustommer(Integer phone) {
-		return customerDAO.checkPhoneOfCustommer(phone);
+	public Customer checkPhoneOfCustommer(Integer phone, String pass) {
+		return customerDAO.checkPhoneOfCustommer(phone, pass);
 	}
 
 }
