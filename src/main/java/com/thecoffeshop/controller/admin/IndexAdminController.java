@@ -47,11 +47,6 @@ public class IndexAdminController extends Common {
 	@Autowired
 	ExportbillService exportbillService;
 
-
-	List<Product> productList = productService.findAll();
-
-	List<Tablestatus> listTablestatus = tablestatusService.findAll();
-
 	@GetMapping(value = { "/admin/index" })
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 
@@ -81,7 +76,6 @@ public class IndexAdminController extends Common {
 	@GetMapping(value = "/admin/index-modal")
 	public String Modal(ModelMap modelMap, @RequestParam String dinnertableid, @RequestParam String startPosition,
 			@RequestParam String inputSearch) {
-
 		int IntstartPosition = Integer.valueOf(startPosition.trim()) - 1;
 		if (IntstartPosition < 0) {
 			IntstartPosition = 0;
@@ -100,7 +94,7 @@ public class IndexAdminController extends Common {
 			totalPage++;
 		}
 		modelMap.addAttribute("totalPage", totalPage);
-
+		List<Tablestatus> listTablestatus = tablestatusService.findAll();
 		// list trạng thái bàn
 		List<TableStatusDTO> tableStatusDTOs = new ArrayList<TableStatusDTO>();
 
@@ -120,11 +114,11 @@ public class IndexAdminController extends Common {
 
 		// list product
 		Bill bill = billService.getInfoLastBill(Integer.valueOf(dinnertableid.trim()));
-		Set<Billdetail> billdetailList = null;
+		List<Billdetail> billdetailList = null;
 		int totalPriceBill = 0;
 		if (bill != null){
-			totalPriceBill = billService.getTotalPriceOfBill2(bill);
-			billdetailList =  bill.getBilldetails();
+			billdetailList =  billdetailService.getInfoBilldetailByBillId(bill.getBillid());
+			totalPriceBill = billService.getTotalPriceOfBill2(billdetailList);
 		}
 		List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
 		for (Product product : products) {
@@ -154,15 +148,13 @@ public class IndexAdminController extends Common {
 		// chi tiết hóa đơn
 
 		modelMap.addAttribute("dinnertable", dinnertable);
-
-
+		if (bill != null){
 			modelMap.addAttribute("billid", bill.getBillid());
 			modelMap.addAttribute("billSTARTDATETIME", bill.getStartdatetime());
 			modelMap.addAttribute("totalPriceBill", totalPriceBill);
 			List<BillDetailDTO> dtos = billService.converterBillDetail(billdetailList);
 			modelMap.addAttribute("dtos", dtos);
-
-
+		}
 		return "/admin/public/modal-index";
 	}
 
@@ -312,10 +304,8 @@ public class IndexAdminController extends Common {
 			}
 		}
 
-
-
 		// trừ sản phẩm trong kho
-		Set<Billdetail> billdetails = bill.getBilldetails();
+		List<Billdetail> billdetails = billdetailService.getInfoBilldetailByBillId(Integer.parseInt(billid));
 		List<String> results = new ArrayList<String>();
 		for (Billdetail billdetail : billdetails) {
 			String productid = billdetail.getProduct().getProductid();
@@ -337,7 +327,7 @@ public class IndexAdminController extends Common {
 					if ((exportbill.getQuantityInventory() - quantity) >= 0) {
 						exportbill.setQuantityInventory(exportbill.getQuantityInventory() - quantity);
 						exportbill.setQuantityThrow(exportbill.getQuantityThrow() + quantity);
-						exportbillService.editExportbill(exportbill);
+						Boolean aBoolean = exportbillService.editExportbill(exportbill);
 					}
 					// số nhập lớn hơn số lượng đang có
 					if ((exportbill.getQuantityInventory() - quantity) < 0) {
@@ -348,18 +338,19 @@ public class IndexAdminController extends Common {
 					}
 				}
 			}
+			bill.setUpdateat(new Date());
+			bill.setBillstatus(new Billstatus("DTT"));
+			bill.setEnddate(new Date());
+			bill.setUpdateat(new Date());
+			billService.editBill(bill);
+			Dinnertable dinnertable = bill.getDinnertable();
+			Tablestatus tablestatus = tablestatusService.getInfoById(5);
+			dinnertable.setTablestatus(tablestatus);
+			Boolean aBoolean = dinnertableService.editDinnertable(dinnertable);
+			modelMap.addAttribute("result", "Thanh toán thành công!");
+			return "/admin/public/Success"; // thành công
 		}
-		bill.setUpdateat(new Date());
-		bill.setBillstatus(new Billstatus("DTT"));
-		bill.setEnddate(new Date());
-		bill.setUpdateat(new Date());
-		billService.editBill(bill);
-		Dinnertable dinnertable = bill.getDinnertable();
-		Tablestatus tablestatus = tablestatusService.getInfoById(5);
-		dinnertable.setTablestatus(tablestatus);
-		Boolean aBoolean = dinnertableService.editDinnertable(dinnertable);
-		modelMap.addAttribute("result", "Thanh toán thành công!");
-		return "/admin/public/Success"; // thành công
+
 	}
 
 	@PostMapping(value = "/admin/index-updateBill") // khi click nút LƯU CHỈNH SỬA hóa đơn
@@ -381,7 +372,11 @@ public class IndexAdminController extends Common {
 				billdetailService.editBilldetail(billdetail);
 			}
 		}
-
+		List<Billdetail> billdetails1 = billdetailService.getInfoBilldetailByBillId(Integer.valueOf(billid.trim()));
+		if (billdetails1.size() == 0 ){
+			bill.setIsdelete(true);
+			billService.editBill(bill);
+		}
 		modelMap.addAttribute("result", "Chỉnh sửa hóa đơn thành công!");
 		return "/admin/public/Success";
 	}
@@ -416,7 +411,7 @@ public class IndexAdminController extends Common {
 		return result.toString();
 	}
 
-	public Billdetail getBillDetailByList(Set<Billdetail> billdetailList, BilldetailId billdetailId){
+	public Billdetail getBillDetailByList(List<Billdetail> billdetailList, BilldetailId billdetailId){
 		Billdetail billdetail = null;
 		for (Billdetail billdetail1: billdetailList) {
 			if (billdetailId.equals(billdetail1.getId())){

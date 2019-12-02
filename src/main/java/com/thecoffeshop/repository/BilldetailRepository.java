@@ -17,6 +17,7 @@ public interface BilldetailRepository extends JpaRepository<Billdetail, Billdeta
             nativeQuery = true
     )
     List<Billdetail> findAllBilldetailByBillid(Integer billid, Boolean isDelete);
+
     Billdetail findByIdAndIsdelete(BilldetailId billdetailId, Boolean aBoolean);
 
 }

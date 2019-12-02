@@ -86,8 +86,8 @@ public class BillService implements BillDAOImp {
 	}
 
 	@Override
-	public int getTotalPriceOfBill2(Bill bill) {
-		return billDAO.getTotalPriceOfBill2(bill);
+	public int getTotalPriceOfBill2(List<Billdetail> billdetailListl) {
+		return billDAO.getTotalPriceOfBill2(billdetailListl);
 	}
 
 	@Override
@@ -133,7 +133,7 @@ public class BillService implements BillDAOImp {
 	}
 
 	@Override
-	public List<BillDetailDTO> converterBillDetail(Set<Billdetail> billdetail) {
+	public List<BillDetailDTO> converterBillDetail(List<Billdetail> billdetail) {
 		return billDAO.converterBillDetail(billdetail);
 	}
 

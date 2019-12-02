@@ -18,9 +18,9 @@ $("#close-modal").click(function() {
 
 function _modalContent(dinnertableid, startPosition, inputSearch) {
 	$.get("/admin/index-modal", {
-		dinnertableid,
-		startPosition,
-		inputSearch
+		dinnertableid:dinnertableid,
+		startPosition : startPosition,
+		inputSearch: inputSearch
 	}, function(data, status) {
 		$('.modal-body').html(data);
 	});

@@ -7,7 +7,7 @@
 	type='hidden' />
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item"><a class="nav-link" id="table-status-tab"
+	<li class="nav-item"><a class="nav-link active" id="table-status-tab"
 		data-toggle="tab" href="#table-status" role="tab"
 		aria-controls="table-status" aria-selected="false">Trạng thái bàn</a></li>
 
@@ -44,7 +44,7 @@
 <!-- Body Tab Menu -->
 <div class="tab-content" id="nav-tabContent">
 	<!-- Trạng thái bàn -->
-	<div class="tab-pane fade " id="table-status" role="tabpanel"
+	<div class="tab-pane fade active show" id="table-status" role="tabpanel"
 		aria-labelledby="table-status-tab">
 		<form class="forms-sample">
 			<div class="row">
@@ -190,7 +190,7 @@
 							<c:if test="${i == 4}">
 								<c:set var="trClass" scope="session" value="table-primary" />
 							</c:if>
-							<tr id="<c:out value="${dto.getProductid()}"></c:out>"
+							<tr id="product-remove-<c:out value="${dto.getProductid()}"></c:out>"
 								data-productid="<c:out value="${dto.getProductid()}"></c:out>"
 								class='<c:out value="${trClass}"></c:out>'>
 								<td><c:out value="${j}"></c:out></td>
@@ -200,7 +200,7 @@
 								<td><c:out value="${dto.getTotalPrice()}"></c:out></td>
 								<td><label
 									data-productid='<c:out value="${dto.getProductid()}"></c:out>'
-									class="badge badge-danger remove"><i
+									class="badge badge-danger remove-product"><i
 										class="fa fa-times"></i></label></td>
 							</tr>
 
@@ -212,7 +212,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<div class="container-fluid clearfix">
+				<div class="container clearfix">
 					<span id="discount"
 						class="text-muted d-block text-center text-sm-left d-sm-inline-block"
 						style="text-align: right; color: #fd3258 !important; font-size: 15px;">Giảm giá
@@ -258,7 +258,5 @@
 	</c:if>
 </div>
 <!-- End Body Tab Menu -->
-
-
-<script src="../resouces/ajax-jquery/loadTable.js"></script>
-<script src="../resouces/ajax-jquery/admin/index-update.js"></script>
+<script src="<c:out value="/resouces/ajax-jquery/loadTable.js"/>"></script>
+<script src="<c:out value="/resouces/ajax-jquery/admin/index-update.js"/>"></script>
