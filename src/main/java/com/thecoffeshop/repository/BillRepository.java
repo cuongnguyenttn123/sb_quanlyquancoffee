@@ -41,4 +41,10 @@ public interface BillRepository extends JpaRepository<Bill, Integer>, JpaSpecifi
             nativeQuery = true
     )
     List<Bill> getBillByCustomerId(int customerid);
+    @Query(
+            value = "select * from bill b where b.dinnertableid = ?1 and b.billstatusid =?2 and b.isdelete = ?3 order by startdatetime DESC limit 1;",
+            nativeQuery = true
+    )
+    Bill getInfoLastBill(int dinnertableid, String billstatusid, Boolean isDelete);
+
 }

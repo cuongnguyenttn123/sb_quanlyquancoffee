@@ -184,7 +184,6 @@ public class BillDAO implements BillDAOImp {
             int totalPrice = 0;
             for (Billdetail billdetail : bill.getBilldetails()) {
                 String productId = billdetail.getProduct().getProductid();
-                //int price = billdetailService.getPriceOfBillDetail(new BilldetailId(productId, bill.getBillid()));
                 int price = getPriceBySet(billdetail.getProduct().getPrices());
                 totalPrice += price;
             }
@@ -195,18 +194,15 @@ public class BillDAO implements BillDAOImp {
         }
     }
     @Override
+    @Transactional
     public Bill getInfoLastBill(int dinnertableid) {
-
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Bill bill = null;
         try {
-            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE b.isdelete =:isdelete AND b.billstatus.billstatusid = 'CTT' AND b.dinnertable.dinnertableid =:dinnertableid AND b.startdatetime <= now() ORDER BY b.startdatetime DESC");
-
-            Bill bill = entityManager.createQuery(stringBuilder.toString(), Bill.class).setParameter("dinnertableid", dinnertableid)
-                    .setParameter("isdelete", this.IS_NOT_DELETE).setFirstResult(0).setMaxResults(1).getSingleResult();
+            bill = repository.getInfoLastBill(dinnertableid, "CTT", false);
             return bill;
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-            return null;
+            return bill;
         }
     }
 
