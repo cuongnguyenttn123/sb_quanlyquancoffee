@@ -4,14 +4,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
-import com.thecoffeshop.DAO.EmployeeDAO;
 import com.thecoffeshop.common.Common;
 import com.thecoffeshop.entity.*;
-import com.thecoffeshop.service.AtpositionService;
 import com.thecoffeshop.service.EmployeeService;
 import com.thecoffeshop.service.PositionService;
 import com.thecoffeshop.service.SalaryService;
@@ -20,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
 import com.thecoffeshop.DTO.*;
 
 
@@ -32,8 +28,7 @@ public class EmployeeController extends Common {
 	EmployeeService employeeService;
 	@Autowired
 	PositionService positionService;
-	@Autowired
-	AtpositionService atpositionService;
+
 	@Autowired
 	SalaryService salaryService;
 
@@ -115,14 +110,7 @@ public class EmployeeController extends Common {
 		employee.setIsdelete(IS_NOT_DELETE);
 		employeeService.addEmployee(employee);
 
-		Atposition atposition = new Atposition();
-		atposition.setEmployee(employee);
-		atposition.setUpdateat(new Date());
-//		atposition.setCreateby(createby);
-		atposition.setUpdateat(new Date());
-		atposition.setStartdate(super.sdfDateField.parse(startdate));
-		atposition.setIsdelete(super.IS_NOT_DELETE);
-		atpositionService.addAtposition(atposition);
+
 
 		Salary salary = new Salary();
 		salary.setSalaryonhour(Integer.valueOf(salaryonhour.trim()));
@@ -204,13 +192,6 @@ public class EmployeeController extends Common {
 		employee.setUpdateat(new Date());
 		employee.setIsdelete(IS_NOT_DELETE);
 		employeeService.editEmployee(employee);
-
-		Atposition atposition = new Atposition();
-		atposition.setId(new AtpositionId(employee.getEmployeeid(), position));
-		atposition.setUpdateat(new Date());
-		atposition.setStartdate(super.sdfDateField.parse(startdate));
-		atposition.setIsdelete(super.IS_NOT_DELETE);
-		Boolean aBoolean = atpositionService.addAtposition(atposition);
 
 		Salary salary = new Salary();
 		salary.setEmployee(employee);

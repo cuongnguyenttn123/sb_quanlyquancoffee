@@ -3,10 +3,7 @@ package com.thecoffeshop.controller.admin;
 import com.thecoffeshop.DTO.BillDTO;
 import com.thecoffeshop.DTO.ProductDTO;
 import com.thecoffeshop.entity.*;
-import com.thecoffeshop.service.BillService;
-import com.thecoffeshop.service.CustomerService;
-import com.thecoffeshop.service.EmployeeService;
-import com.thecoffeshop.service.PriceService;
+import com.thecoffeshop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,6 +27,9 @@ public class BillUserOrderController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    PositionService positionService;
 
     @GetMapping("/admin/getlistuserorder")
     public String getUserOrder(ModelMap modelMap){
@@ -95,7 +95,7 @@ public class BillUserOrderController {
                     // TODO: handle exception
                 }
             }
-            List<Employee> listEmployee = employeeService.findAll();//chưa lấy ds shipper
+            Set<Employee> listEmployee = positionService.getInfoById("5").getEmployees();//chưa lấy ds shipper
             modelMap.addAttribute("value", bill);
             modelMap.addAttribute("listEmployee", listEmployee);
             modelMap.addAttribute("tongtien", tongtien);

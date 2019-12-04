@@ -8,14 +8,12 @@ import javax.servlet.http.HttpSession;
 
 import com.thecoffeshop.common.Common;
 import com.thecoffeshop.entity.Position;
-import com.thecoffeshop.service.AtpositionService;
 import com.thecoffeshop.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
 import com.thecoffeshop.DTO.*;
 
 
@@ -25,8 +23,6 @@ public class PositionController extends Common {
 
 	@Autowired
 	PositionService positionService;
-	@Autowired
-	AtpositionService atpositionService;
 
 	@GetMapping(value = "/admin/position")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
@@ -49,9 +45,7 @@ public class PositionController extends Common {
 			positionDTO.setPosition(position);
 
 			positionDTO.setCanDelete(false);
-			if (atpositionService.checkExistPosition(position.getPositionid())) {
-				positionDTO.setCanDelete(true);
-			}
+
 			dtos.add(positionDTO);
 		}
 		modelMap.addAttribute("dtos", dtos);

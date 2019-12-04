@@ -119,6 +119,7 @@ public class ShipperController {
         StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
         redirect.append(bill.getEmployee().getEmployeeid());
         return redirect.toString();
+
     }
 
 }

@@ -26,8 +26,15 @@ public class Position implements java.io.Serializable {
 	@Column(name = "ISDELETE")
 	private Boolean isdelete;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "position")
-	private Set<Atposition> atpositions = new HashSet<Atposition>(0);
+
+
+	@ManyToMany
+	@JoinTable(
+			name = "atposition",
+			joinColumns = @JoinColumn(name = "positionid"),
+			inverseJoinColumns = @JoinColumn(name = "employeeid"))
+
+	private Set<Employee> employees = new HashSet<Employee>(0);
 
 	public Position() {
 	}
@@ -36,12 +43,12 @@ public class Position implements java.io.Serializable {
 		this.positionid = positionid;
 	}
 
-	public Position(String positionid, String name, Date updateat, Boolean isdelete, Set<Atposition> atpositions) {
+	public Position(String positionid, String name, Date updateat, Boolean isdelete, Set<Employee> atpositions) {
 		this.positionid = positionid;
 		this.name = name;
 		this.updateat = updateat;
 		this.isdelete = isdelete;
-		this.atpositions = atpositions;
+		this.employees = atpositions;
 	}
 
 
@@ -78,12 +85,12 @@ public class Position implements java.io.Serializable {
 		this.isdelete = isdelete;
 	}
 
-	public Set<Atposition> getAtpositions() {
-		return this.atpositions;
+
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setAtpositions(Set<Atposition> atpositions) {
-		this.atpositions = atpositions;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
-
 }
