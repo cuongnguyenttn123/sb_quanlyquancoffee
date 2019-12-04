@@ -130,4 +130,9 @@ public class EmployeeDAO implements EmployeeDAOImp {
         }
         return aBoolean;
     }
+
+    @Override
+    public Employee getEmployeeByUsernameandpass(String user, String pass) {
+        return employeeRepository.logIn(user, pass);
+    }
 }

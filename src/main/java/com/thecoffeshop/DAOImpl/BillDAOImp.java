@@ -30,7 +30,7 @@ public interface BillDAOImp extends CommonDAOImp {
 	public Boolean checkExistDinnerTable(int dinnertableid);
 
 	public int getTotalPriceOfBill(int billid);
-	public int getTotalPriceOfBill2(Bill bill);
+	public int getTotalPriceOfBill2(List<Billdetail> billdetailList);
 
 	public Bill getInfoLastBill(int dinnertableid);
 
@@ -49,9 +49,15 @@ public interface BillDAOImp extends CommonDAOImp {
 
 	public int thongkeSoHoaDonTrongThang(int thang);
 
-	public List<BillDetailDTO> converterBillDetail(Set<Billdetail> billdetail);
+	public List<BillDetailDTO> converterBillDetail(List<Billdetail> billdetail);
 
 	public Bill checkExistBillStatusAndCustomerId(Integer customerId);
 
     List<Bill> getBillByCustomerId(int customerid);
+
+	public List<Bill> getListUserOrder();
+
+	List<Bill> getListUserOrderAll();
+
+	List<Bill> getListBillShipper(String emId);
 }

@@ -2,9 +2,9 @@
  * 
  */
 
-$(".remove").click(function () {
+$(".remove-product").click(function () {
 	var id=$(this).attr('data-productid');
-	$('#'+id).remove();
+	$('#product-remove-'+id).remove();
 });
 
 $("#btnCheckVoucher").click(function() {
@@ -46,7 +46,7 @@ $("#btnSearch").click(function() {
 $("#btnCapNhatTrangThaiBan").click(function() {
 var dinnertableid = $("#dinnertableid").val();
 	$.post("/admin/index-updateTableStatus", {
-		dinnertableid,
+		dinnertableid:dinnertableid,
 		tablestatusid : $('input[name="tablestatusid"]:checked').val()
 	}, function(data, status) {
 		var obj = JSON.parse(data);
@@ -178,9 +178,9 @@ function _effectTrangThaiBan(id, name, dinnertableid){
 
 function _modalContent(dinnertableid, startPosition, inputSearch) {
 	$.get("/admin/index-modal", {
-		dinnertableid,
-		startPosition,
-		inputSearch
+		dinnertableid:dinnertableid,
+		startPosition: startPosition,
+		inputSearch: inputSearch
 	}, function(data, status) {
 		$('.modal-body').html(data);
 	});

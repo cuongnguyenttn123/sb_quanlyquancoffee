@@ -18,6 +18,6 @@
 	<!-- endinject -->
 	<!-- Custom js for this page-->
 	<script src="<c:out value="/resouces/js/popover.js"/>"></script>
-	<script src="<c:url value="/resouces/ajax-jquery/order-tracking/1.js"/>"></script>
+	<script src="<c:url value="/resouces/ajax-jquery/order-tracking/1.js"/>"/>"></script>
 
 	<!-- End custom js for this page-->

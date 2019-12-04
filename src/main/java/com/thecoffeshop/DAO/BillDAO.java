@@ -68,7 +68,7 @@ public class BillDAO implements BillDAOImp {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(noRollbackFor = Exception.class)
     public Boolean deleteBill(int billid) {
         Boolean aBoolean;
         try {
@@ -178,13 +178,13 @@ public class BillDAO implements BillDAOImp {
     }
     @Override
     @Transactional
-    public int getTotalPriceOfBill2(Bill bill){
+    public int getTotalPriceOfBill2(List<Billdetail> billdetailList){
         try {
-            Bill bill1 = bill;
+
             int totalPrice = 0;
-            for (Billdetail billdetail : bill.getBilldetails()) {
+            for (Billdetail billdetail : billdetailList) {
                 String productId = billdetail.getProduct().getProductid();
-                int price = getPriceBySet(billdetail.getProduct().getPrices());
+                int price = getPriceBySet(billdetail.getProduct().getPrices())*billdetail.getQuantity();
                 totalPrice += price;
             }
             return totalPrice;
@@ -310,7 +310,7 @@ public class BillDAO implements BillDAOImp {
     }
 
     @Override
-    public List<BillDetailDTO> converterBillDetail(Set<Billdetail> billdetailSet) {
+    public List<BillDetailDTO> converterBillDetail(List<Billdetail> billdetailSet) {
         List<BillDetailDTO> billDetailDTOS = new ArrayList<BillDetailDTO>();
         for (Billdetail billdetail : billdetailSet) {
             BillDetailDTO dto = new BillDetailDTO();
@@ -337,6 +337,35 @@ public class BillDAO implements BillDAOImp {
     @Override
     public List<Bill> getBillByCustomerId(int customerid) {
         return repository.getBillByCustomerId(customerid);
+    }
+
+    @Override
+    public List<Bill> getListUserOrder() {
+        List<Bill> billList ;
+        try {
+            billList = repository.getListUserOrder("CD", this.IS_NOT_DELETE);
+        }catch (Exception e){
+            e.printStackTrace();
+            billList = new ArrayList<>();
+        }
+        return billList;
+    }
+
+    @Override
+    public List<Bill> getListUserOrderAll() {
+        List<Bill> billList ;
+        try {
+            billList = repository.getListUserOrderAll("CD","XN", this.IS_NOT_DELETE);
+        }catch (Exception e){
+            e.printStackTrace();
+            billList = new ArrayList<>();
+        }
+        return billList;
+    }
+
+    @Override
+    public List<Bill> getListBillShipper(String emId) {
+        return repository.getListBillShipper(emId, "DS", this.IS_NOT_DELETE);
     }
 
     public int getPriceBySet(Set<Price> priceSet){

@@ -4,10 +4,15 @@ jQuery(document).ready(function($) {
         $('#progressbar_2').addClass('active');
         $('#progressbar_3').addClass('active');
     }else {
+
         if(value ==='XN'){
             $('#progressbar_2').addClass('active');
         }
         if(value ==='CTT'){
+            $('#progressbar_2').addClass('active');
+            $('#progressbar_3').addClass('active');
+        }
+        if(value ==='DS'){
             $('#progressbar_2').addClass('active');
             $('#progressbar_3').addClass('active');
         }

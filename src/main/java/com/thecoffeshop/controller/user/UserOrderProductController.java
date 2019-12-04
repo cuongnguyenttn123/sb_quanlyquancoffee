@@ -277,7 +277,6 @@ public class UserOrderProductController extends Common {
                             // TODO: handle exception
                         }
                     }
-                    modelMap.addAttribute("value", bill);
                     modelMap.addAttribute("tongtien", tongtien);
                     modelMap.addAttribute("productDTOs", productDTOs);
                     modelMap.addAttribute("customer", customer);

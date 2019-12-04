@@ -18,13 +18,24 @@ $("#close-modal").click(function() {
 
 function _modalContent(dinnertableid, startPosition, inputSearch) {
 	$.get("/admin/index-modal", {
-		dinnertableid,
-		startPosition,
-		inputSearch
+		dinnertableid:dinnertableid,
+		startPosition : startPosition,
+		inputSearch: inputSearch
 	}, function(data, status) {
 		$('.modal-body').html(data);
 	});
 }
+$("#userorderList").click(function () {
+	$.ajax({
+		url: "/admin/getlistuserorder",
+		type: "GET",
+		success: function (data) {
+			console.log(data);
+			$('#listuserorder').toggle();
+			$('#listuserorder').html(data);
+		}
+	})
+});
 
 
 
