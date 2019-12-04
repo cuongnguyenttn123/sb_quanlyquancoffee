@@ -54,4 +54,10 @@ public interface BillDAOImp extends CommonDAOImp {
 	public Bill checkExistBillStatusAndCustomerId(Integer customerId);
 
     List<Bill> getBillByCustomerId(int customerid);
+
+	public List<Bill> getListUserOrder();
+
+	List<Bill> getListUserOrderAll();
+
+	List<Bill> getListBillShipper(String emId);
 }

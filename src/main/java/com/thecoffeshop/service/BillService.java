@@ -150,5 +150,18 @@ public class BillService implements BillDAOImp {
 	public Bill getBillFullRelaByBillId(int billid){
 		return billDAO.getBillFullRelaByBillId(billid);
 	}
+	@Override
+    public List<Bill> getListUserOrder() {
+		return billDAO.getListUserOrder();
+    }
 
+	@Override
+	public List<Bill> getListUserOrderAll() {
+		return billDAO.getListUserOrderAll();
+	}
+
+	@Override
+	public List<Bill> getListBillShipper(String emId) {
+		return billDAO.getListBillShipper(emId);
+	}
 }

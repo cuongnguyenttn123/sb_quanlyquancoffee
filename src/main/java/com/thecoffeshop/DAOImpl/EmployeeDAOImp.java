@@ -26,4 +26,6 @@ public interface EmployeeDAOImp extends CommonDAOImp{
 
 	public Boolean editEmployee(Employee employee);
 
+	public Employee getEmployeeByUsernameandpass(String user, String pass);
+
 }

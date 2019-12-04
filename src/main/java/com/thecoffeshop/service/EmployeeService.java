@@ -62,4 +62,9 @@ public class EmployeeService implements EmployeeDAOImp {
     public Boolean editEmployee(Employee employee) {
         return employeeDAO.editEmployee(employee);
     }
+
+    @Override
+    public Employee getEmployeeByUsernameandpass(String user, String pass) {
+        return employeeDAO.getEmployeeByUsernameandpass(user, pass);
+    }
 }

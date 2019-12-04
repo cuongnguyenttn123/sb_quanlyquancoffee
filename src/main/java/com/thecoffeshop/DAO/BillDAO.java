@@ -339,6 +339,35 @@ public class BillDAO implements BillDAOImp {
         return repository.getBillByCustomerId(customerid);
     }
 
+    @Override
+    public List<Bill> getListUserOrder() {
+        List<Bill> billList ;
+        try {
+            billList = repository.getListUserOrder("CD", this.IS_NOT_DELETE);
+        }catch (Exception e){
+            e.printStackTrace();
+            billList = new ArrayList<>();
+        }
+        return billList;
+    }
+
+    @Override
+    public List<Bill> getListUserOrderAll() {
+        List<Bill> billList ;
+        try {
+            billList = repository.getListUserOrderAll("CD","XN", this.IS_NOT_DELETE);
+        }catch (Exception e){
+            e.printStackTrace();
+            billList = new ArrayList<>();
+        }
+        return billList;
+    }
+
+    @Override
+    public List<Bill> getListBillShipper(String emId) {
+        return repository.getListBillShipper(emId, "DS", this.IS_NOT_DELETE);
+    }
+
     public int getPriceBySet(Set<Price> priceSet){
         Price price = null;
         int i = 0;

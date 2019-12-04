@@ -1,6 +1,5 @@
 package com.thecoffeshop.controller.admin;
 
-import java.awt.dnd.DnDConstants;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,22 +7,18 @@ import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
+import com.thecoffeshop.DTO.*;
 import com.thecoffeshop.common.Common;
 import com.thecoffeshop.entity.*;
 import com.thecoffeshop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
-import com.thecoffeshop.DTO.BillDetailDTO;
-import com.thecoffeshop.DTO.ProductDTO;
-import com.thecoffeshop.DTO.TableStatusDTO;
-import com.thecoffeshop.DTO.indexAdminDTO;
 
 
 @Controller
@@ -69,7 +64,6 @@ public class IndexAdminController extends Common {
 			dtos.add(indexAdminDTO);
 		}
 		modelMap.addAttribute("dtos", dtos);
-
 		return "/admin/index";
 	}
 
@@ -375,6 +369,7 @@ public class IndexAdminController extends Common {
 		List<Billdetail> billdetails1 = billdetailService.getInfoBilldetailByBillId(Integer.valueOf(billid.trim()));
 		if (billdetails1.size() == 0 ){
 			bill.setIsdelete(true);
+			bill.setBillstatus(new Billstatus("KCM"));
 			billService.editBill(bill);
 		}
 		modelMap.addAttribute("result", "Chỉnh sửa hóa đơn thành công!");
@@ -393,11 +388,12 @@ public class IndexAdminController extends Common {
 		}
 		Date now = new Date();
 		// voucher hết hạn hoặc chưa áp dụng HOẶC đã sử dụng hết
-		if ((now.before(voucher.getStartdatetime()) && now.after(voucher.getEnddate())) || voucher.getCount() <= 0) {
+		if ((now.before(voucher.getStartdatetime()) && now.after(voucher.getEnddate())) || voucher.getCount() >= voucher.getNumber()) {
 			result.addProperty("mes", "Voucher hết hạn hoặc đã sử dụng hết!");
 			return result.toString();
 		}
-		
+		voucher.setCount(voucher.getCount()+1);
+		voucherService.editVoucher(voucher);
 		float totalPriceBill = billService.getTotalPriceOfBill(Integer.valueOf(billid));
 		//giảm giá theo tiền
 		float discount = voucher.getDiscount();

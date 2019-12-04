@@ -25,6 +25,17 @@ function _modalContent(dinnertableid, startPosition, inputSearch) {
 		$('.modal-body').html(data);
 	});
 }
+$("#userorderList").click(function () {
+	$.ajax({
+		url: "/admin/getlistuserorder",
+		type: "GET",
+		success: function (data) {
+			console.log(data);
+			$('#listuserorder').toggle();
+			$('#listuserorder').html(data);
+		}
+	})
+});
 
 
 
