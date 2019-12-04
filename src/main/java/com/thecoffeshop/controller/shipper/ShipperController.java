@@ -41,9 +41,7 @@ public class ShipperController {
             String checkLogin = employeeService.logIn(emUsername, emPassword);
             Employee employee = employeeService.getEmployeeByUsernameandpass(emUsername, emPassword);
             if (checkLogin != null) {
-                StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
-                redirect.append(employee.getEmployeeid());
-                return redirect.toString();
+                return "redirect:/shipper/billall/";
             } else {
                 result = "redirect:/shipper/login";
             }
@@ -116,9 +114,8 @@ public class ShipperController {
         Bill bill = billService.getInfoById(Integer.parseInt(billid));
         bill.setBillstatus(new Billstatus("DTT"));
         billService.editBill(bill);
-        StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
-        redirect.append(bill.getEmployee().getEmployeeid());
-        return redirect.toString();
+
+        return "redirect:/shipper/billall/3";
     }
 
 }
