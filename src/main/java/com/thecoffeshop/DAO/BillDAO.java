@@ -1,6 +1,6 @@
 package com.thecoffeshop.DAO;
 
-import com.thecoffeshop.DAOImpl.BillDAOImp;
+import com.thecoffeshop.DAOImpl.BillDAOImpl;
 import com.thecoffeshop.DTO.BillDetailDTO;
 import com.thecoffeshop.entity.*;
 import com.thecoffeshop.repository.BillRepository;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
@@ -25,7 +24,7 @@ import java.util.Set;
 @Repository
 @Transactional
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class BillDAO implements BillDAOImp {
+public class BillDAO implements BillDAOImpl {
     @Autowired
     BillRepository repository;
     

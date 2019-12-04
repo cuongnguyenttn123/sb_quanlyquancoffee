@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import com.thecoffeshop.DAOImpl.BillDAOImp;
+
+import com.thecoffeshop.DAOImpl.BillDAOImpl;
 import com.thecoffeshop.DTO.BillDetailDTO;
 import com.thecoffeshop.entity.Bill;
 import com.thecoffeshop.entity.Billdetail;
@@ -20,7 +21,7 @@ import com.thecoffeshop.DAO.*;
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional
-public class BillService implements BillDAOImp {
+public class BillService implements BillDAOImpl {
 
 	@Autowired
 	BillDAO billDAO;
