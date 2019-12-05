@@ -1,8 +1,8 @@
 package com.thecoffeshop.controller.admin;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import com.thecoffeshop.common.Common;
@@ -37,11 +37,12 @@ public class ThongKeThuChiController extends Common {
 		
 	/*ngay*/
 		// bill
-		int soluongBillTrongNgay = billService.thongkeSoHoaDonTrongNgay(new Date());
-		int tongtienBillTrongNgay = billService.thongkeTongTienTrongNgay(new Date());
+		Date date = new java.sql.Date(new java.util.Date().getTime());
+		int soluongBillTrongNgay = billService.thongkeSoHoaDonTrongNgay(date);
+		int tongtienBillTrongNgay = billService.thongkeTongTienTrongNgay(date);
 		// importbill
-		int soluongImportBillTrongNgay = importBillService.soluongImportBill(new Date());
-		int tongtienImportBillTrongNgay = importBillService.tongtienImportBill(new Date());
+		int soluongImportBillTrongNgay = importBillService.soluongImportBill(date);
+		int tongtienImportBillTrongNgay = importBillService.tongtienImportBill(date);
 		
 		String ngay = "{"
 				+ "\"soluongBillTrongNgay\":\"" + soluongBillTrongNgay + "\","

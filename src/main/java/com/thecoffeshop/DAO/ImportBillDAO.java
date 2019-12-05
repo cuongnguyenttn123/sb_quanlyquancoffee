@@ -10,6 +10,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +21,9 @@ import java.util.Set;
 public class ImportBillDAO implements ImportBillDAOImp {
 	@Autowired
 	ImportbillRepository importbillRepository;
+
+	@Autowired
+	EntityManagerFactory entityManagerFactory;
 
 	@Override
 	public int addImportBill(Importbill importbill) {
@@ -79,8 +84,12 @@ public class ImportBillDAO implements ImportBillDAOImp {
 
 	@Override
 	public int tongtienImportBill(Date date) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			List<Importbill> importbills = importbillRepository.findAllByIsdeleteAndUpdateat(this.IS_NOT_DELETE, date);
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE  DATE(i.updateat) = DATE(:date) AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("date", date).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			int total = 0;
 			for (Importbill importbill : importbills) {
 				Set<Importbilldetail> importbilldetails = importbill.getImportbilldetails();
@@ -98,35 +107,95 @@ public class ImportBillDAO implements ImportBillDAOImp {
 
 	@Override
 	public int soluongImportBill(Date date) {
-		int count;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			List<Importbill> importbills = importbillRepository.findAllByIsdeleteAndUpdateat(this.IS_NOT_DELETE, date);
-			count = importbills.size();
-		}catch (Exception e){
-			e.printStackTrace();
-			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-			count = 0;
-		}
-		return count;
-	}
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE  DATE(i.updateat) = DATE(:date) AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("date", date).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 
+			return importbills.size();
+		} catch (Exception e) {
+
+			return 0;
+		}
+	}
 	@Override
 	public int tongtienImportBillTrongTuan(int tuan) {
-		return 0;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		try {
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE WEEK(i.updateat) =: tuan AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("tuan", tuan).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
+			int total = 0;
+			for (Importbill importbill : importbills) {
+				Set<Importbilldetail> importbilldetails = importbill.getImportbilldetails();
+				for (Importbilldetail importbilldetail : importbilldetails) {
+					total += importbilldetail.getMaterialdetail().getQuantity()
+							* importbilldetail.getMaterialdetail().getPrice();
+				}
+			}
+			return total;
+		} catch (Exception e) {
+
+			return 0;
+		}
 	}
 
 	@Override
 	public int soluongImportBillTrongTuan(int tuan) {
-		return 0;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		try {
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE WEEK(i.updateat) =:tuan AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("tuan", tuan).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
+
+			return importbills.size();
+		} catch (Exception e) {
+
+			return 0;
+		}
 	}
 
 	@Override
 	public int tongtienImportBillTrongThang(int thang) {
-		return 0;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		try {
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE MONTH(i.updateat) =:thang AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("thang", thang).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
+			int total = 0;
+			for (Importbill importbill : importbills) {
+				Set<Importbilldetail> importbilldetails = importbill.getImportbilldetails();
+				for (Importbilldetail importbilldetail : importbilldetails) {
+					total += importbilldetail.getMaterialdetail().getQuantity()
+							* importbilldetail.getMaterialdetail().getPrice();
+				}
+			}
+			return total;
+		} catch (Exception e) {
+
+			return 0;
+		}
 	}
 
 	@Override
 	public int soluongImportBillTrongThang(int thang) {
-		return 0;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		try {
+			List<Importbill> importbills = entityManager
+					.createQuery("FROM Importbill i WHERE MONTH(i.updateat) =:thang AND i.isdelete =:isdelete",
+							Importbill.class)
+					.setParameter("thang", thang).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
+
+			return importbills.size();
+		} catch (Exception e) {
+
+			return 0;
+		}
 	}
+
 }

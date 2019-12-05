@@ -19,5 +19,9 @@ public interface ImportbillRepository extends JpaRepository<Importbill, Integer>
     )
     List<Importbill> findAllLimit(Boolean aBoolean, int start, int index);
 
+    @Query(
+            value = "select * from importbill i where i.isdelete = ?1 and i.updateat =?2",
+            nativeQuery = true
+    )
     List<Importbill> findAllByIsdeleteAndUpdateat(Boolean aBoolean, Date date);
 }
