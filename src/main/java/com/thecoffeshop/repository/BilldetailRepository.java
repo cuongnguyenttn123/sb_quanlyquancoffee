@@ -20,4 +20,9 @@ public interface BilldetailRepository extends JpaRepository<Billdetail, Billdeta
 
     Billdetail findByIdAndIsdelete(BilldetailId billdetailId, Boolean aBoolean);
 
+
+    @Query(value = "select PRODUCTID, BILLID, count(PRODUCTID) as QUANTITY, UPDATEAT, ISDELETE from billdetail b group by productid",
+            nativeQuery = true
+    )
+    List<Billdetail> getProductStatistic();
 }
