@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
     @Autowired
     EmployeeService employeeService;
@@ -30,12 +30,6 @@ public class HomeController {
 
     @GetMapping("")
     public String getHome(){
-        Bill bill = billService.getBillFullRelaByBillId(78);
-        Set<Billdetail> billdetailList = bill.getBilldetails();
-        for (Billdetail d: billdetailList
-             ) {
-            System.out.println(d.getProduct());
-        }
         return "home";
     }
 }
