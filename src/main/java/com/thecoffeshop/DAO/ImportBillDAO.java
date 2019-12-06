@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.persistence.EntityManager;
@@ -83,6 +84,7 @@ public class ImportBillDAO implements ImportBillDAOImp {
 	}
 
 	@Override
+    @Transactional
 	public int tongtienImportBill(Date date) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
@@ -102,10 +104,13 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		} finally {
+		    entityManager.close();
+        }
 	}
 
 	@Override
+    @Transactional
 	public int soluongImportBill(Date date) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
@@ -118,14 +123,17 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		} finally {
+		    entityManager.close();
+        }
 	}
 	@Override
+    @Transactional
 	public int tongtienImportBillTrongTuan(int tuan) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			List<Importbill> importbills = entityManager
-					.createQuery("FROM Importbill i WHERE WEEK(i.updateat) =: tuan AND i.isdelete =:isdelete",
+					.createQuery("FROM Importbill i WHERE WEEK(i.updateat) =:tuan AND i.isdelete =:isdelete",
 							Importbill.class)
 					.setParameter("tuan", tuan).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 			int total = 0;
@@ -140,10 +148,13 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		} finally {
+		    entityManager.close();
+        }
 	}
 
 	@Override
+    @Transactional
 	public int soluongImportBillTrongTuan(int tuan) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
@@ -156,10 +167,13 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		} finally {
+		    entityManager.close();
+        }
 	}
 
 	@Override
+    @Transactional
 	public int tongtienImportBillTrongThang(int thang) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
@@ -179,10 +193,13 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		} finally {
+            entityManager.close();
+        }
 	}
 
 	@Override
+    @Transactional
 	public int soluongImportBillTrongThang(int thang) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
@@ -195,7 +212,9 @@ public class ImportBillDAO implements ImportBillDAOImp {
 		} catch (Exception e) {
 
 			return 0;
-		}
+		}finally {
+            entityManager.close();
+        }
 	}
 
 }

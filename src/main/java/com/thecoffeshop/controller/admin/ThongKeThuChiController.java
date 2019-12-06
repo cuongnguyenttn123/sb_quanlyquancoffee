@@ -90,7 +90,7 @@ public class ThongKeThuChiController extends Common {
 
 		int weekOfYear = calendar.get(calendar.WEEK_OF_YEAR);
 		int weekOfMonth = calendar.get(calendar.WEEK_OF_MONTH);
-		int week  = weekOfYear - weekOfMonth + 1;
+		int week  = weekOfYear - weekOfMonth;
 		String thang = "["; 
 		for(int i = 0; i< 4; i++) {
 			//bill

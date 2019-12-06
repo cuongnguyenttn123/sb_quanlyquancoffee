@@ -24,7 +24,7 @@
 	<div class="col-lg-6 grid-margin stretch-card">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">Thống kê thu chi theo tuần</h4>
+				<h4 class="card-title">Thống kê thu chi theo tháng</h4>
 				<canvas id="month" style="height: 250px"></canvas>
 			</div>
 		</div>

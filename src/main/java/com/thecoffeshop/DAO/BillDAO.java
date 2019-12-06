@@ -153,7 +153,7 @@ public class BillDAO implements BillDAOImpl {
     }
 
     @Override
-    @Transactional
+    @Transactional(noRollbackFor = Exception.class)
     public int getTotalPriceOfBill(int billid) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
@@ -176,7 +176,7 @@ public class BillDAO implements BillDAOImpl {
         }
     }
     @Override
-    @Transactional
+    @Transactional(noRollbackFor = Exception.class)
     public int getTotalPriceOfBill2(List<Billdetail> billdetailList){
         try {
 
@@ -206,6 +206,7 @@ public class BillDAO implements BillDAOImpl {
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeTongTienTrongNgay(Date date) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -221,10 +222,13 @@ public class BillDAO implements BillDAOImpl {
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return 0;
+        } finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeSoHoaDonTrongNgay(Date date) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -236,15 +240,18 @@ public class BillDAO implements BillDAOImpl {
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return 0;
+        }finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeTongTienTrongTuan(int tuan) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  WEEK(b.enddate) =: tuan AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
+            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  WEEK(b.enddate) =:tuan AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
             List<Bill> bills = entityManager.createQuery(stringBuilder.toString(), Bill.class).setParameter("tuan", tuan)
                     .setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 
@@ -256,10 +263,13 @@ public class BillDAO implements BillDAOImpl {
         } catch (Exception e) {
 
             return 0;
+        }finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeSoHoaDonTrongTuan(int tuan) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -272,15 +282,18 @@ public class BillDAO implements BillDAOImpl {
         } catch (Exception e) {
 
             return 0;
+        }finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeTongTienTrongThang(int thang) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  MONTH(b.enddate) =: thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
+            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  MONTH(b.enddate) =:thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
             List<Bill> bills = entityManager.createQuery(stringBuilder.toString(), Bill.class).setParameter("thang", thang).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
 
             int total = 0;
@@ -291,24 +304,30 @@ public class BillDAO implements BillDAOImpl {
         } catch (Exception e) {
 
             return 0;
+        }finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional(noRollbackFor = Exception.class)
     public int thongkeSoHoaDonTrongThang(int thang) {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  MONTH(b.enddate) =: thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
+            StringBuilder stringBuilder = new StringBuilder("FROM Bill b WHERE  MONTH(b.enddate) =:thang AND b.billstatus.billstatusid = 'DTT' AND b.isdelete =:isdelete");
             List<Bill> bills = entityManager.createQuery(stringBuilder.toString(), Bill.class).setParameter("thang", thang).setParameter("isdelete", this.IS_NOT_DELETE).getResultList();
             return bills.size();
         } catch (Exception e) {
 
             return 0;
+        }finally {
+            entityManager.close();
         }
     }
 
     @Override
+    @Transactional
     public List<BillDetailDTO> converterBillDetail(List<Billdetail> billdetailSet) {
         List<BillDetailDTO> billDetailDTOS = new ArrayList<BillDetailDTO>();
         for (Billdetail billdetail : billdetailSet) {
@@ -329,6 +348,7 @@ public class BillDAO implements BillDAOImpl {
     }
 
     @Override
+    @Transactional
     public Bill checkExistBillStatusAndCustomerId(Integer customerId) {
         return repository.checkExistBillStatusAndCustomerId("CD", customerId);
     }
