@@ -8,28 +8,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Stellar Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="../resouces/node_modules/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="../resouces/node_modules/simple-line-icons/css/simple-line-icons.css">
-  <link rel="stylesheet" href="../resouces/node_modules/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="../resouces/node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+  <link rel="stylesheet" href="../resources/node_modules/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../resources/node_modules/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../resources/node_modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../resources/node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="../resouces/node_modules/chartist/dist/chartist.min.css" />
-  <link rel="stylesheet" href="../resouces/node_modules/jvectormap/jquery-jvectormap.css" />
+  <link rel="stylesheet" href="../resources/node_modules/chartist/dist/chartist.min.css" />
+  <link rel="stylesheet" href="../resources/node_modules/jvectormap/jquery-jvectormap.css" />
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../resouces/css/style.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../resouces/../images/favicon.png" />
+  <link rel="shortcut icon" href="../resources/../images/favicon.png" />
 </head>
 
 <body class="horizontal-menu">
   <div class="container-scroller">
-    <!-- partial:../resouces/partials/_navbar.html -->
+    <!-- partial:../resources/partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="../resouces/index.html"><img src="../resouces/images/logo.svg" alt="logo"></a>
-        <a class="navbar-brand brand-logo-mini" href="../resouces/index.html"><img src="../resouces/images/logo_mini.svg" alt="logo"></a>
+        <a class="navbar-brand brand-logo" href="../resources/index.html"><img src="../resources/images/logo.svg" alt="logo"></a>
+        <a class="navbar-brand brand-logo-mini" href="../resources/index.html"><img src="../resources/images/logo_mini.svg" alt="logo"></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <button class="navbar-toggler navbar-toggler d-none d-lg-block align-self-center mr-2" type="button" data-toggle="minimize">
@@ -53,7 +53,7 @@
             <div class="dropdown-menu navbar-dropdown mail-notification dropdownAnimation" aria-labelledby="MailDropdown">
               <a class="dropdown-item" href="#">
                 <div class="sender-img">
-                  <img src="../resouces/images/faces/face6.jpg" alt="">
+                  <img src="../resources/images/faces/face6.jpg" alt="">
                   <span class="badge badge-success">&nbsp;</span>
                 </div>
                 <div class="sender">
@@ -63,7 +63,7 @@
               </a>
               <a class="dropdown-item" href="#">
                 <div class="sender-img">
-                  <img src="../resouces/images/faces/face2.jpg" alt="">
+                  <img src="../resources/images/faces/face2.jpg" alt="">
                   <span class="badge badge-success">&nbsp;</span>
                 </div>
                 <div class="sender">
@@ -73,7 +73,7 @@
               </a>
               <a class="dropdown-item" href="#">
                 <div class="sender-img">
-                  <img src="../resouces/images/faces/face3.jpg" alt="">
+                  <img src="../resources/images/faces/face3.jpg" alt="">
                   <span class="badge badge-primary">&nbsp;</span>
                 </div>
                 <div class="sender">
@@ -83,7 +83,7 @@
               </a>
               <a class="dropdown-item" href="#">
                 <div class="sender-img">
-                  <img src="../resouces/images/faces/face4.jpg" alt="">
+                  <img src="../resources/images/faces/face4.jpg" alt="">
                   <span class="badge badge-warning">&nbsp;</span>
                 </div>
                 <div class="sender">
@@ -148,7 +148,7 @@
           </li>
           <li class="nav-item d-none d-sm-block profile-img">
             <a class="nav-link profile-image" href="#">
-              <img src="../resouces/images/faces/face4.jpg" alt="profile-img">
+              <img src="../resources/images/faces/face4.jpg" alt="profile-img">
               <span class="online-status online bg-success"></span>
             </a>
           </li>
@@ -518,7 +518,7 @@
                 <div class="card-body">
                   <h2 class="card-title">Latest Activity</h2>
                   <div class="col">
-                    <div class="pic pr-3"><img src="../resouces/images/faces/face1.jpg" alt=""></div>
+                    <div class="pic pr-3"><img src="../resources/images/faces/face1.jpg" alt=""></div>
                     <div class="content">
                       <p class="activity">Create New Page</p>
                       <p class="a-text">Vestibulum lectus nulla, maximus</p>
@@ -528,7 +528,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class="pic pr-3"><img src="../resouces/images/faces/face2.jpg" alt=""></div>
+                    <div class="pic pr-3"><img src="../resources/images/faces/face2.jpg" alt=""></div>
                     <div class="content">
                       <p class="activity">Back Up Theme</p>
                       <p class="a-text">Vestibulum lectus nulla, maximus </p>
@@ -539,7 +539,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class="pic pr-3"><img src="../resouces/images/faces/face3.jpg" alt=""></div>
+                    <div class="pic pr-3"><img src="../resources/images/faces/face3.jpg" alt=""></div>
                     <div class="content">
                       <p class="activity">Changes In The Structure</p>
                       <p class="a-text">Vestibulum lectus nulla, maximus </p>
@@ -550,7 +550,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class="pic pr-3"><img src="../resouces/images/faces/face4.jpg" alt=""></div>
+                    <div class="pic pr-3"><img src="../resources/images/faces/face4.jpg" alt=""></div>
                     <div class="content">
                       <p class="activity">Fix the Sidebar</p>
                       <p class="a-text">Vestibulum lectus nulla, maximus</p>
@@ -670,7 +670,7 @@
           <!-- ROW ENDS -->
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:../resouces/partials/_footer.html -->
+        <!-- partial:../resources/partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
@@ -685,33 +685,33 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../resouces/node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../resouces/node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="../resouces/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../resouces/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="../resources/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../resources/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../resources/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../resources/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
-  <script src="../resouces/node_modules/flot/jquery.flot.js"></script>
-  <script src="../resouces/node_modules/flot/jquery.flot.resize.js"></script>
-  <script src="../resouces/node_modules/flot.curvedlines/curvedLines.js"></script>
-  <script src="../resouces/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-  <script src="../resouces/node_modules/bootstrap-table/dist/bootstrap-table.min.js"></script>
-  <script src="../resouces/node_modules/jvectormap/jquery-jvectormap.min.js"></script>
-  <script src="../resouces/node_modules/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
-  <script src="../resouces/node_modules/chartist/dist/chartist.min.js"></script>
-  <script src="../resouces/node_modules/progressbar.js/dist/progressbar.min.js"></script>
-  <script src="../resouces/node_modules/chartist-plugin-legend/chartist-plugin-legend.js"></script>
-  <script src="../resouces/node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="../resouces/node_modules/d3/d3.min.js"></script>
-  <script src="../resouces/node_modules/c3/c3.min.js"></script>
+  <script src="../resources/node_modules/flot/jquery.flot.js"></script>
+  <script src="../resources/node_modules/flot/jquery.flot.resize.js"></script>
+  <script src="../resources/node_modules/flot.curvedlines/curvedLines.js"></script>
+  <script src="../resources/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="../resources/node_modules/bootstrap-table/dist/bootstrap-table.min.js"></script>
+  <script src="../resources/node_modules/jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="../resources/node_modules/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="../resources/node_modules/chartist/dist/chartist.min.js"></script>
+  <script src="../resources/node_modules/progressbar.js/dist/progressbar.min.js"></script>
+  <script src="../resources/node_modules/chartist-plugin-legend/chartist-plugin-legend.js"></script>
+  <script src="../resources/node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="../resources/node_modules/d3/d3.min.js"></script>
+  <script src="../resources/node_modules/c3/c3.min.js"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="../resouces/js/off-canvas.js"></script>
-  <script src="../resouces/js/hoverable-collapse.js"></script>
-  <script src="../resouces/js/misc.js"></script>
+  <script src="../resources/js/off-canvas.js"></script>
+  <script src="../resources/js/hoverable-collapse.js"></script>
+  <script src="../resources/js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../resouces/js/dashboard.js"></script>
+  <script src="../resources/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
 

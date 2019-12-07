@@ -19,4 +19,4 @@
 		<td><c:out value="${dto.getSupplier().getAddress()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/warehouse/supplier/supplier-add.js"></script>
+<script src="../resources/ajax-jquery/warehouse/supplier/supplier-add.js"></script>

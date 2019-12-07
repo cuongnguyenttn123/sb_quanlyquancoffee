@@ -39,4 +39,4 @@
 		Cập nhật</button>
 </c:if>
 <button id="btnClear" class="btn btn-light">Làm mới</button>
-<script src="../resouces/ajax-jquery/schedule/schedule-edit.js"></script>
+<script src="../resources/ajax-jquery/schedule/schedule-edit.js"></script>

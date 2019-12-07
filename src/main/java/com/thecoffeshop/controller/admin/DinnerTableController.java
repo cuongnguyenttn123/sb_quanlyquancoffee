@@ -27,7 +27,7 @@ import com.thecoffeshop.DTO.DinnerTableDTO;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class DinnerTableController extends Common {
 
 	@Autowired

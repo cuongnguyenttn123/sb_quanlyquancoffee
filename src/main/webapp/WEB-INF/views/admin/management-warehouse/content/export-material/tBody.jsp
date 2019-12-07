@@ -22,4 +22,4 @@
 				value="${dto.getExportbill().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/warehouse/export-material/export-bill-add.js"></script>
+<script src="../resources/ajax-jquery/warehouse/export-material/export-bill-add.js"></script>

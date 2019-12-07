@@ -22,7 +22,7 @@ import com.google.gson.JsonObject;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class IndexAdminController extends Common {
 
 	@Autowired
@@ -44,15 +44,6 @@ public class IndexAdminController extends Common {
 
 	@GetMapping(value = { "/admin/index" })
 	public String index(ModelMap modelMap, HttpSession httpSession) {
-
-		// check logined
-		if (httpSession.getAttribute("emId") == null) {
-			return "redirect:/admin/login";
-		}
-		String emId = httpSession.getAttribute("emId").toString();
-		Employee employee = employeeService.getInfoById(emId);
-		modelMap.addAttribute(employee);
-
 		// danh sách bàn
 
 		List<indexAdminDTO> dtos = new ArrayList<indexAdminDTO>();

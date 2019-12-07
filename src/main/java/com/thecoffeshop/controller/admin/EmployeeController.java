@@ -21,14 +21,13 @@ import com.thecoffeshop.DTO.*;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class EmployeeController extends Common {
 
 	@Autowired
 	EmployeeService employeeService;
 	@Autowired
 	PositionService positionService;
-
 	@Autowired
 	SalaryService salaryService;
 

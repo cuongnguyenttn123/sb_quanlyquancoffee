@@ -20,4 +20,4 @@
 				value="${dto.getCategoryproduct().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/category-product/category-product-add.js"></script>
+<script src="../resources/ajax-jquery/category-product/category-product-add.js"></script>

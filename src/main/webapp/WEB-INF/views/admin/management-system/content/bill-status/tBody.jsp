@@ -20,4 +20,4 @@
 				value="${dto.getBillstatus().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/bill-status/bill-status-add.js"></script>
+<script src="../resources/ajax-jquery/bill-status/bill-status-add.js"></script>

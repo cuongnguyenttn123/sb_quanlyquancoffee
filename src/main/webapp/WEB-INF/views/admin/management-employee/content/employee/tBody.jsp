@@ -21,5 +21,5 @@
 
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/employee/loadTable.js"></script>
-<script src="../resouces/ajax-jquery/employee/employee-add.js"></script>
+<script src="../resources/ajax-jquery/employee/loadTable.js"></script>
+<script src="../resources/ajax-jquery/employee/employee-add.js"></script>

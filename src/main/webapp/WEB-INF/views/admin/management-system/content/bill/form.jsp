@@ -17,4 +17,4 @@
 
 	</div>
 </div>
-<script src="../resouces/ajax-jquery/bill/bill-detail-edit-post.js"></script>
+<script src="../resources/ajax-jquery/bill/bill-detail-edit-post.js"></script>

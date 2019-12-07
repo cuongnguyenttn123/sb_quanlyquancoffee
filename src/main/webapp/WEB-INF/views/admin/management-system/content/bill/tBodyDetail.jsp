@@ -31,4 +31,4 @@
 		</tr>
 	</c:forEach>
 </tbody>
-<script src="../resouces/ajax-jquery/bill/bill-detail-edit-get.js"></script>
+<script src="../resources/ajax-jquery/bill/bill-detail-edit-get.js"></script>

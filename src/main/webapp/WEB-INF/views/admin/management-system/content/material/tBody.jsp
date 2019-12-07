@@ -22,4 +22,4 @@
 				value="${dto.getMaterial().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/material/material-add.js"></script>
+<script src="../resources/ajax-jquery/material/material-add.js"></script>

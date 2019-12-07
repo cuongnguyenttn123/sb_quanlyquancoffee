@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- my-js -->
-<script src="../resouces/ajax-jquery/warehouse/material/material.js"></script>
+<script src="../resources/ajax-jquery/warehouse/material/material.js"></script>
 <!-- my-js[END] -->
 <div class="row">
 	<div class="col-12">

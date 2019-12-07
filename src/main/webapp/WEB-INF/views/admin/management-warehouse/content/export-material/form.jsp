@@ -97,4 +97,4 @@
 </div>
 
 <script
-	src="../resouces/ajax-jquery/warehouse/export-material/export-bill-edit.js"></script>
+	src="../resources/ajax-jquery/warehouse/export-material/export-bill-edit.js"></script>

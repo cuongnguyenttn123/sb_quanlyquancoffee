@@ -25,8 +25,15 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/resouces/**")
-                .addResourceLocations("/resouces/");
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
+
+    @Bean(name = "filterMultipartResolver")
+    public CommonsMultipartResolver multiPartResolver(){
+        CommonsMultipartResolver resolver = new
+                CommonsMultipartResolver();
+        return resolver;
     }
 
 }

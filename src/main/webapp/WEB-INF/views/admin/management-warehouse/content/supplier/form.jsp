@@ -40,4 +40,4 @@
 </c:if>
 <button id="btnClear" class="btn btn-light">Làm mới</button>
 
-<script src="../resouces/ajax-jquery/warehouse/supplier/supplier-edit.js"></script>
+<script src="../resources/ajax-jquery/warehouse/supplier/supplier-edit.js"></script>

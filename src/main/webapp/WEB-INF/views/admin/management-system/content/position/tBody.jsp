@@ -17,4 +17,4 @@
 		<td class="text-danger"><c:out value="${dto.getPosition().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/position/position-add.js"></script>
+<script src="../resources/ajax-jquery/position/position-add.js"></script>

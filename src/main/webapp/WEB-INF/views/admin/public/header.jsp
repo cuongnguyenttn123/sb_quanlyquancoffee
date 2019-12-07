@@ -14,29 +14,29 @@
 
 	<!-- plugins:css -->
 	<link rel="stylesheet"
-		  href="<c:out value="/resouces/node_modules/mdi/css/materialdesignicons.min.css"/>"/>
+		  href="<c:out value="/resources/node_modules/mdi/css/materialdesignicons.min.css"/>"/>
 	<link rel="stylesheet"
-		  href="<c:out value="/resouces/node_modules/simple-line-icons/css/simple-line-icons.css"/>"/>
+		  href="<c:out value="/resources/node_modules/simple-line-icons/css/simple-line-icons.css"/>"/>
 	<link rel="stylesheet"
-		  href="<c:out value="/resouces/node_modules/flag-icon-css/css/flag-icon.min.css"/>"/>
-	<link rel="stylesheet" href="<c:out value="/resouces/node_modules/perfect-scrollbar/css/perfect-scrollbar.css"/>"/>
+		  href="<c:out value="/resources/node_modules/flag-icon-css/css/flag-icon.min.css"/>"/>
+	<link rel="stylesheet" href="<c:out value="/resources/node_modules/perfect-scrollbar/css/perfect-scrollbar.css"/>"/>
 	<!-- endinject -->
 	<!-- plugin css for this page -->
 	<link rel="stylesheet"
-		  href="<c:out value="/resouces/node_modules/font-awesome/css/font-awesome.min.css" />"/>
-	<link rel="stylesheet" href="<c:out value="/resouces/node_modules/jvectormap/jquery-jvectormap.css" />"/>
+		  href="<c:out value="/resources/node_modules/font-awesome/css/font-awesome.min.css" />"/>
+	<link rel="stylesheet" href="<c:out value="/resources/node_modules/jvectormap/jquery-jvectormap.css" />"/>
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
-	<link rel="stylesheet" href="<c:out value="/resouces/css/style.css"/>"/>
+	<link rel="stylesheet" href="<c:out value="/resources/css/style.css"/>"/>
 	<!-- endinject -->
-	<link rel="shortcut icon" href="<c:out value="/resouces/images/favicon.png" />"/>
+	<link rel="shortcut icon" href="<c:out value="/resources/images/favicon.png" />"/>
 
 	<!-- my-style-css -->
-	<link rel="stylesheet" href="<c:out value="/resouces/css/my-style-v2.css"/>"/>
-	<link rel="stylesheet" href="<c:out value="/resouces/css/1.css"/>"/>
+	<link rel="stylesheet" href="<c:out value="/resources/css/my-style-v2.css"/>"/>
+	<link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>"/>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
-<script src="<c:out value="/resouces/node_modules/jquery/dist/jquery.min.js"/>"></script>
+<script src="<c:out value="/resources/node_modules/jquery/dist/jquery.min.js"/>"></script>
 </head>
 <!-- plugins:js -->
 
@@ -48,9 +48,9 @@
 	<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 		<div class="text-center navbar-brand-wrapper">
 			<a class="navbar-brand brand-logo logo" href="index.html"><img
-					src="<c:out value="/resouces/images/logo-full.png"/>" alt="logo"></a> <a
+					src="<c:out value="/resources/images/logo-full.png"/>" alt="logo"></a> <a
 				class="navbar-brand brand-logo-mini logo" href="index.html"><img
-				src="<c:out value="/resouces/images/logo.png"/>" alt="logo"></a>
+				src="<c:out value="/resources/images/logo.png"/>" alt="logo"></a>
 		</div>
 		<div class="navbar-menu-wrapper d-flex align-items-center">
 			<span class="icon-heart icons"></span>
@@ -128,7 +128,7 @@
 				</a></li>
 				<li class="nav-item d-none d-sm-block profile-img"><a
 						class="nav-link profile-image" href="#"> <img
-						src="<c:out value="/resouces/images/faces/face4.jpg"/>" alt="profile-img">
+						src="<c:out value="/resources/images/faces/face4.jpg"/>" alt="profile-img">
 					<span class="online-status online bg-success"></span>
 				</a></li>
 			</ul>
@@ -143,7 +143,7 @@
 	<!-- partial -->
 	<div class="container-fluid page-body-wrapper">
 		<div class="row row-offcanvas row-offcanvas-right">
-			<!-- partial:../resouces/partials/_sidebar.html -->
+			<!-- partial:../resources/partials/_sidebar.html -->
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
 				<ul class="nav">
 					<li class="nav-item"><a class="nav-link collapsed"

@@ -26,7 +26,7 @@ import com.thecoffeshop.DTO.BillDTO;
 import com.thecoffeshop.DTO.BillDetailDTO;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class BillController extends Common {
 
 	@Autowired

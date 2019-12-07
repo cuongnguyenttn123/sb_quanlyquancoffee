@@ -20,7 +20,7 @@
 
     <!-- content-wrapper -->
     <div class="container-fluid page-body-wrapper"
-         style="background: url(../resouces/images/background.jpg); background-size: cover;">
+         style="background: url(../resources/images/background.jpg); background-size: cover;">
         <!-- content -->
 
         <div class="container">
@@ -58,7 +58,7 @@
 <!-- js libary [END] -->
 
 <!-- Modal -->
-<script src="<c:out value="/resouces/ajax-jquery/book-table.js"/>"></script>
+<script src="<c:out value="/resources/ajax-jquery/book-table.js"/>"></script>
 <!-- End Modal -->
 
 </body>

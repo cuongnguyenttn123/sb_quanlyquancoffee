@@ -20,7 +20,7 @@ import com.thecoffeshop.DTO.*;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class BillStatusController extends Common {
 
 	@Autowired

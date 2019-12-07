@@ -45,6 +45,6 @@
 
 <!-- my-js[END] -->
 <!-- FOOTER -->
-<script src="<c:url value="/resouces/ajax-jquery/order-tracking/1.js"/>"></script>
+<script src="<c:url value="/resources/ajax-jquery/order-tracking/1.js"/>"></script>
 <%@ include file="../public/footer.jsp"%>
 <!-- FOOTER [END]-->
