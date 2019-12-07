@@ -26,7 +26,7 @@ import com.thecoffeshop.DTO.BillDTO;
 import com.thecoffeshop.DTO.BillDetailDTO;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("")
 public class BillController extends Common {
 
 	@Autowired
@@ -36,7 +36,7 @@ public class BillController extends Common {
 	@Autowired
 	PriceService priceService;
 
-	@GetMapping(value = "bill")
+	@GetMapping(value = "/admin/bill")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 
 		List<Bill> billList = billService.findAll();
@@ -49,7 +49,7 @@ public class BillController extends Common {
 		return "/admin/management-system/bill";
 	}
 
-	@GetMapping(value = "bill/table")
+	@GetMapping(value = "/admin/bill/table")
 	public String tbody(ModelMap modelMap, HttpSession httpSession, @RequestParam String startPosition) {
 		List<Bill> bills = billService.findLimit(Integer.valueOf(startPosition.trim()) - 1);
 		List<BillDTO> dtos = new ArrayList<BillDTO>();
@@ -66,7 +66,7 @@ public class BillController extends Common {
 		return "/admin/management-system/content/bill/tBody";
 	}
 
-	@PostMapping(value = "bill/remove")
+	@PostMapping(value = "/admin/bill/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String billid) {
 
 		Bill bill = billService.getInfoById(Integer.valueOf(billid.trim()));
@@ -89,7 +89,7 @@ public class BillController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "bill/edit")
+	@GetMapping(value = "/admin/bill/edit")
 	public String view(ModelMap modelMap, HttpSession httpSession, @RequestParam String billid) {
 
 		Bill bill = billService.getInfoById(Integer.valueOf(billid.trim()));
@@ -126,7 +126,7 @@ public class BillController extends Common {
 		return "/admin/management-system/content/bill/tBodyDetail";
 	}
 
-	@PostMapping(value = "billDetail/remove")
+	@PostMapping(value = "/admin/billDetail/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String billid,
 			@RequestParam String productid) {
 
@@ -146,7 +146,7 @@ public class BillController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "billDetail/edit")
+	@GetMapping(value = "/admin/billDetail/edit")
 	public String viewBillDetail(ModelMap modelMap, HttpSession httpSession, @RequestParam String billid,
 			@RequestParam String productid) {
 
@@ -162,7 +162,7 @@ public class BillController extends Common {
 		return "/admin/management-system/content/bill/form";
 	}
 
-	@PostMapping(value = "billDetail/edit")
+	@PostMapping(value = "/admin/billDetail/edit")
 	public String editBillDetail(ModelMap modelMap, HttpSession httpSession, @RequestParam String billid,
 			@RequestParam String productid, @RequestParam String quantity) {
 

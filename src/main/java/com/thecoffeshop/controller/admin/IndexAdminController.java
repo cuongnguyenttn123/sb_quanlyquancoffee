@@ -22,7 +22,7 @@ import com.google.gson.JsonObject;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class IndexAdminController extends Common {
 
 	@Autowired

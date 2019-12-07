@@ -20,7 +20,7 @@ import com.thecoffeshop.DTO.*;
 
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("")
 public class BillStatusController extends Common {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class BillStatusController extends Common {
 	@Autowired
 	BillService billService;
 
-	@GetMapping(value = "bill-status")
+	@GetMapping(value = "/admin/bill-status")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 		List<Billstatus> billstatusList = billstatusService.findAll();
 		int totalPage = billstatusList.size() / super.MAX_RESULTS;
@@ -40,7 +40,7 @@ public class BillStatusController extends Common {
 		return "/admin/management-system/bill-status";
 	}
 
-	@GetMapping(value = "bill-status/table")
+	@GetMapping(value = "/admin/bill-status/table")
 	public String tbody(ModelMap modelMap, HttpSession httpSession, @RequestParam String startPosition) {
 
 		List<Billstatus> ListBillstatus = billstatusService.findLimit(Integer.valueOf(startPosition.trim()) - 1);
@@ -62,7 +62,7 @@ public class BillStatusController extends Common {
 		return "/admin/management-system/content/bill-status/tBody";
 	}
 
-	@PostMapping(value = "bill-status/insert")
+	@PostMapping(value = "/admin/bill-status/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String billstatusid,
 			@RequestParam String name) {
 
@@ -94,7 +94,7 @@ public class BillStatusController extends Common {
 		return "/admin/public/Success"; // thành công
 	}
 
-	@PostMapping(value = "bill-status/remove")
+	@PostMapping(value = "/admin/bill-status/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String billstatusid) {
 
 		Billstatus billstatus = billstatusService.getInfoById(billstatusid.trim());
@@ -109,7 +109,7 @@ public class BillStatusController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "bill-status/edit")
+	@GetMapping(value = "/admin/bill-status/edit")
 	public String view(ModelMap modelMap, HttpSession httpSession, @RequestParam String billstatusid) {
 
 		Billstatus billstatus = billstatusService.getInfoById(billstatusid.trim());
@@ -122,7 +122,7 @@ public class BillStatusController extends Common {
 		return "/admin/management-system/content/bill-status/form";
 	}
 
-	@PostMapping(value = "bill-status/edit")
+	@PostMapping(value = "/admin/bill-status/edit")
 	public String edit(ModelMap modelMap, HttpSession httpSession, @RequestParam String billstatusid,
 			@RequestParam String name) {
 
