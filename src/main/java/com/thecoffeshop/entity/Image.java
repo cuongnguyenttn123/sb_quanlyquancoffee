@@ -21,10 +21,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "image", catalog = "theshopcoffee")
 public class Image implements java.io.Serializable {
-
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "IMAGEID", unique = true, nullable = false)
 	private int imageid;
+
+	@Column(name = "NAME")
 	private String name;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "imageofemployee", catalog = "theshopcoffee", joinColumns = {
+			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "EMPLOYEEID", nullable = false, updatable = false) })
 	private Set<Employee> employees = new HashSet<Employee>(0);
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "imageofproduct", catalog = "theshopcoffee", joinColumns = {
+			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "PRODUCTID", nullable = false, updatable = false) })
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public Image() {
@@ -41,9 +55,7 @@ public class Image implements java.io.Serializable {
 		this.products = products;
 	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "IMAGEID", unique = true, nullable = false)
+
 	public int getImageid() {
 		return this.imageid;
 	}
@@ -52,7 +64,7 @@ public class Image implements java.io.Serializable {
 		this.imageid = imageid;
 	}
 
-	@Column(name = "NAME")
+
 	public String getName() {
 		return this.name;
 	}
@@ -61,10 +73,7 @@ public class Image implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "imageofemployee", catalog = "theshopcoffee", joinColumns = {
-			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) }, inverseJoinColumns = {
-			@JoinColumn(name = "EMPLOYEEID", nullable = false, updatable = false) })
+
 	public Set<Employee> getEmployees() {
 		return this.employees;
 	}
@@ -73,7 +82,6 @@ public class Image implements java.io.Serializable {
 		this.employees = employees;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "images")
 	public Set<Product> getProducts() {
 		return this.products;
 	}

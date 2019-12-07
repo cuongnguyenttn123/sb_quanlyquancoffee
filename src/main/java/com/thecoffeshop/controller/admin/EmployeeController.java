@@ -21,7 +21,7 @@ import com.thecoffeshop.DTO.*;
 
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("")
 public class EmployeeController extends Common {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class EmployeeController extends Common {
 	@Autowired
 	SalaryService salaryService;
 
-	@GetMapping(value = "employee")
+	@GetMapping(value = "/admin/employee")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 
 		int totalPage = employeeService.findAll().size() / super.MAX_RESULTS;
@@ -46,7 +46,7 @@ public class EmployeeController extends Common {
 		return "/admin/management-employee/employee";
 	}
 
-	@GetMapping(value = "employee/table")
+	@GetMapping(value = "/admin/employee/table")
 	public String tbody(ModelMap modelMap, HttpSession httpSession, @RequestParam String startPosition) {
 
 		List<Employee> employees = employeeService.findLimit(Integer.valueOf(startPosition.trim()) - 1);
@@ -64,7 +64,7 @@ public class EmployeeController extends Common {
 		return "/admin/management-employee/content/employee/tBody";
 	}
 
-	@PostMapping(value = "employee/insert")
+	@PostMapping(value = "/admin/employee/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid,
 			@RequestParam String name, @RequestParam String sex, @RequestParam String phone,
 			@RequestParam String address, @RequestParam String usename, @RequestParam String password,
@@ -123,7 +123,7 @@ public class EmployeeController extends Common {
 		return "/admin/public/Success"; // thành công
 	}
 
-	@PostMapping(value = "employee/remove")
+	@PostMapping(value = "/admin/employee/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid) {
 
 		Employee employee = employeeService.getInfoById(employeeid.trim());
@@ -138,7 +138,7 @@ public class EmployeeController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "employee/edit")
+	@GetMapping(value = "/admin/employee/edit")
 	public String view(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid) {
 
 		List<Position> positions = positionService.findAll();
@@ -158,7 +158,7 @@ public class EmployeeController extends Common {
 		return "/admin/management-employee/content/employee/form";
 	}
 
-	@PostMapping(value = "employee/edit")
+	@PostMapping(value = "/admin/employee/edit")
 	public String edit(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid,
 			@RequestParam String name, @RequestParam String sex, @RequestParam String phone,
 			@RequestParam String address, @RequestParam String position, @RequestParam String salaryonhour,

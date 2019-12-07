@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/home/")
 public class HomeController {
     @Autowired
     EmployeeService employeeService;
@@ -28,8 +28,9 @@ public class HomeController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("")
+    @GetMapping("test")
     public String getHome(){
+        List<Employee> employee = employeeService.findAll();
         return "home";
     }
 }

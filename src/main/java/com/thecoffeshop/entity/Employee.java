@@ -13,24 +13,64 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employee", catalog = "theshopcoffee")
 public class Employee implements java.io.Serializable {
-
+	@Id
+	@Column(name = "EMPLOYEEID", unique = true, nullable = false, length = 7)
 	private String employeeid;
+	@Column(name = "NAME")
 	private String name;
+
+	@Column(name = "SEX")
 	private Boolean sex;
+
+	@Column(name = "PHONE", unique = true, length = 11)
 	private String phone;
+
+	@Column(name = "ADDRESS")
 	private String address;
+	@Column(name = "USENAME")
 	private String usename;
+
+	@Column(name = "PASSWORD")
 	private String password;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UPDATEAT", length = 19)
 	private Date updateat;
+
+	@Column(name = "ISDELETE")
 	private Boolean isdelete;
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Bill> bills = new HashSet<Bill>(0);
+
+	@ManyToMany
+	@JoinTable(
+			name = "atposition",
+			joinColumns = @JoinColumn(name = "employeeid"),
+			inverseJoinColumns = @JoinColumn(name = "positionid"))
 	private Set<Position> atpositions = new HashSet<Position>(0);
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Exportbill> exportbills = new HashSet<Exportbill>(0);
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Register> registers = new HashSet<Register>(0);
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Importbill> importbills = new HashSet<Importbill>(0);
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "imageofproduct", catalog = "theshopcoffee", joinColumns = {
+			@JoinColumn(name = "EMPLOYEEID", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) })
 	private Set<Image> images = new HashSet<Image>(0);
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Booktable> booktables = new HashSet<Booktable>(0);
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	private Set<Salary> salaries = new HashSet<Salary>(0);
+
 
 	public Employee() {
 	}
@@ -62,9 +102,7 @@ public class Employee implements java.io.Serializable {
 		this.salaries = salaries;
 	}
 
-	@Id
 
-	@Column(name = "EMPLOYEEID", unique = true, nullable = false, length = 7)
 	public String getEmployeeid() {
 		return this.employeeid;
 	}
@@ -73,7 +111,6 @@ public class Employee implements java.io.Serializable {
 		this.employeeid = employeeid;
 	}
 
-	@Column(name = "NAME")
 	public String getName() {
 		return this.name;
 	}
@@ -82,7 +119,7 @@ public class Employee implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "SEX")
+
 	public Boolean getSex() {
 		return this.sex;
 	}
@@ -91,7 +128,7 @@ public class Employee implements java.io.Serializable {
 		this.sex = sex;
 	}
 
-	@Column(name = "PHONE", unique = true, length = 11)
+
 	public String getPhone() {
 		return this.phone;
 	}
@@ -100,7 +137,7 @@ public class Employee implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	@Column(name = "ADDRESS")
+
 	public String getAddress() {
 		return this.address;
 	}
@@ -109,7 +146,7 @@ public class Employee implements java.io.Serializable {
 		this.address = address;
 	}
 
-	@Column(name = "USENAME")
+
 	public String getUsename() {
 		return this.usename;
 	}
@@ -118,7 +155,7 @@ public class Employee implements java.io.Serializable {
 		this.usename = usename;
 	}
 
-	@Column(name = "PASSWORD")
+
 	public String getPassword() {
 		return this.password;
 	}
@@ -127,8 +164,7 @@ public class Employee implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "UPDATEAT", length = 19)
+
 	public Date getUpdateat() {
 		return this.updateat;
 	}
@@ -137,7 +173,7 @@ public class Employee implements java.io.Serializable {
 		this.updateat = updateat;
 	}
 
-	@Column(name = "ISDELETE")
+
 	public Boolean getIsdelete() {
 		return this.isdelete;
 	}
@@ -146,7 +182,7 @@ public class Employee implements java.io.Serializable {
 		this.isdelete = isdelete;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+
 	public Set<Bill> getBills() {
 		return this.bills;
 	}
@@ -155,11 +191,7 @@ public class Employee implements java.io.Serializable {
 		this.bills = bills;
 	}
 
-	@ManyToMany
-	@JoinTable(
-			name = "atposition",
-			joinColumns = @JoinColumn(name = "employeeid"),
-			inverseJoinColumns = @JoinColumn(name = "positionid"))
+
 	public Set<Position> getAtpositions() {
 		return this.atpositions;
 	}
@@ -168,7 +200,7 @@ public class Employee implements java.io.Serializable {
 		this.atpositions = atpositions;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+
 	public Set<Exportbill> getExportbills() {
 		return this.exportbills;
 	}
@@ -177,7 +209,7 @@ public class Employee implements java.io.Serializable {
 		this.exportbills = exportbills;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+
 	public Set<Register> getRegisters() {
 		return this.registers;
 	}
@@ -186,7 +218,6 @@ public class Employee implements java.io.Serializable {
 		this.registers = registers;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	public Set<Importbill> getImportbills() {
 		return this.importbills;
 	}
@@ -195,7 +226,7 @@ public class Employee implements java.io.Serializable {
 		this.importbills = importbills;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "employees")
+
 	public Set<Image> getImages() {
 		return this.images;
 	}
@@ -204,7 +235,6 @@ public class Employee implements java.io.Serializable {
 		this.images = images;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	public Set<Booktable> getBooktables() {
 		return this.booktables;
 	}
@@ -213,7 +243,6 @@ public class Employee implements java.io.Serializable {
 		this.booktables = booktables;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
 	public Set<Salary> getSalaries() {
 		return this.salaries;
 	}

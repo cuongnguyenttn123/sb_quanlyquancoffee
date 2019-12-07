@@ -31,7 +31,7 @@ public class BillUserOrderController {
     @Autowired
     PositionService positionService;
 
-    @GetMapping("getlistuserorder")
+    @GetMapping("/admin/getlistuserorder")
     public String getUserOrder(ModelMap modelMap){
         List<Bill> billList = billService.getListUserOrder();
         List<BillDTO> dtos = new ArrayList<>();
@@ -46,7 +46,7 @@ public class BillUserOrderController {
         return "admin/public/userorder";
     }
 
-    @GetMapping("getlistuserorderall")
+    @GetMapping("/admin/getlistuserorderall")
     public String getUserOrderAll(ModelMap modelMap){
         List<Bill> billList = billService.getListUserOrderAll();
         List<BillDTO> dtos = new ArrayList<>();
@@ -60,7 +60,7 @@ public class BillUserOrderController {
         modelMap.addAttribute("dtos", dtos);
         return "admin/management-system/bill-user-order";
     }
-    @GetMapping("getdetailbillid/{billid}")
+    @GetMapping("/admin/getdetailbillid/{billid}")
     public String getBillDetailById(ModelMap modelMap, @PathVariable String billid){
         Bill bill= billService.getInfoById(Integer.parseInt(billid));
         Customer customer = new Customer();
@@ -105,7 +105,7 @@ public class BillUserOrderController {
         return "admin/management-system/detail-bill-user-order";
     }
 
-    @PostMapping("duyetdonhang")
+    @PostMapping("/admin/duyetdonhang")
     public String duyetDonHang(@RequestParam String billid, @RequestParam String employeeid){
         Bill bill = billService.getInfoById(Integer.parseInt(billid));
         bill.setBillstatus(new Billstatus("DS"));
