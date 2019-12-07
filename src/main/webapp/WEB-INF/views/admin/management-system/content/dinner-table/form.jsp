@@ -5,7 +5,7 @@
 
 <div class="form-group row">
 		<c:if test = "${dinnertable.getDinnertableid()!=null}">
-	<label for="billstatusid" class="col-sm-3 col-form-label">Mã
+	<label for="dinnertableid" class="col-sm-3 col-form-label">Mã
 		bàn</label> <input id="dinnertableid" name="dinnertableid" type="text"
 		required minlength="1" maxlength="7"
               disabled
@@ -35,4 +35,4 @@
 </c:if>
 <button id="btnClear" class="btn btn-light">Làm mới</button>
 
-<script src="../resouces/ajax-jquery/dinner-table/dinner-table-edit.js"></script>
+<script src="../resources/ajax-jquery/dinner-table/dinner-table-edit.js"></script>

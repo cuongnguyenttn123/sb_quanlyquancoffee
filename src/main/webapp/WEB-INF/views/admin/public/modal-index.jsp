@@ -89,7 +89,7 @@
 						<div class="" style="margin: 5px;">
 							<div class="d-flex flex-row" style="text-align: center;">
 								<img
-									src='../resouces/images/my-images/<c:out value="${productDTO.getImages().get(0).getName() }"></c:out>'
+									src='../resources/images/my-images/<c:out value="${productDTO.getImages().get(0).getName() }"></c:out>'
 									class="img-lg rounded">
 							</div>
 							<nav class="quanlity-product img-lg" style="text-align: center;">
@@ -258,5 +258,5 @@
 	</c:if>
 </div>
 <!-- End Body Tab Menu -->
-<script src="<c:out value="/resouces/ajax-jquery/loadTable.js"/>"></script>
-<script src="<c:out value="/resouces/ajax-jquery/admin/index-update.js"/>"></script>
+<script src="<c:out value="/resources/ajax-jquery/loadTable.js"/>"></script>
+<script src="<c:out value="/resources/ajax-jquery/admin/index-update.js"/>"></script>

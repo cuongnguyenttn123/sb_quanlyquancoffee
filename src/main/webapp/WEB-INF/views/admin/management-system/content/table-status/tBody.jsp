@@ -13,4 +13,4 @@
         <td class="text-danger"><c:out value="${dto.getUpdateat()}" /></td>
     </tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/table-status/table-status-add.js"></script>
+<script src="../resources/ajax-jquery/table-status/table-status-add.js"></script>

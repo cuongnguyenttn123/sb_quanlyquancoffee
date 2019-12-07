@@ -20,4 +20,4 @@
 
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/warehouse/import-material/import-bill-add.js"></script>
+<script src="../resources/ajax-jquery/warehouse/import-material/import-bill-add.js"></script>

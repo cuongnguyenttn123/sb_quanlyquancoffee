@@ -23,4 +23,4 @@
 					value="${dto.getBill().getUpdateat()}" /></td>
 		</tr>
 	</c:forEach>
-<script src="../resouces/ajax-jquery/bill/bill-add.js"></script>
+<script src="../resources/ajax-jquery/bill/bill-add.js"></script>

@@ -16,7 +16,7 @@
 		<div class="carousel-inner">
 			<c:forEach items="${images}" var="image">
 				<img class="d-block w-100 col-lg-12"
-					 src="../resouces/images/my-images/<c:out value="${image.getName()}" />">
+					 src="../resources/images/my-images/<c:out value="${image.getName()}" />">
 			</c:forEach>
 		</div>
 		<a class="carousel-control-prev" href="#product_details" role="button"

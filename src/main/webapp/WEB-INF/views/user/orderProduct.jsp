@@ -19,7 +19,7 @@
 
 	<!-- content-wrapper -->
 	<div class="container-fluid page-body-wrapper"
-		style="background: url(../resouces/images/background.jpg); background-size: cover;">
+		style="background: url(../resources/images/background.jpg); background-size: cover;">
 		<!-- content -->
 		<div id="content-index" class="content-wrapper dislpay-product" style="width: 100%; margin-left: 0;">
 		
@@ -42,7 +42,7 @@
 <!-- js libary [END] -->
 
 <!-- Modal -->
-<script src="../resouces/ajax-jquery/pay-cart.js"></script>
+<script src="../resources/ajax-jquery/pay-cart.js"></script>
 <!-- End Modal -->
 
 </body>

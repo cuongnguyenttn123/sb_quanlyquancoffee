@@ -94,5 +94,5 @@
 		Cập nhật</button>
 </c:if>
 <button id="btnClear" class="btn btn-light">Làm mới</button>
-<script src="../resouces/ajax-jquery/employee/loadTable.js"></script>
-<script src="../resouces/ajax-jquery/employee/employee-edit.js"></script>
+<script src="../resources/ajax-jquery/employee/loadTable.js"></script>
+<script src="../resources/ajax-jquery/employee/employee-edit.js"></script>

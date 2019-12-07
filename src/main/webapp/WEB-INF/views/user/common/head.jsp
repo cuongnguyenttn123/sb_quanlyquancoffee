@@ -11,27 +11,27 @@
 <title>The Coffe Shop</title>
 <!-- plugins:css -->
 <link rel="stylesheet"
-	href="<c:out value="/resouces/node_modules/mdi/css/materialdesignicons.min.css"/>">
+	href="<c:out value="/resources/node_modules/mdi/css/materialdesignicons.min.css"/>">
 	
 <link rel="stylesheet"
-	href="<c:out value="/resouces/node_modules/simple-line-icons/css/simple-line-icons.css"/>">
+	href="<c:out value="/resources/node_modules/simple-line-icons/css/simple-line-icons.css"/>">
 <link rel="stylesheet" 
-	href="<c:out value="/resouces/node_modules/flag-icon-css/css/flag-icon.min.css"/>">
+	href="<c:out value="/resources/node_modules/flag-icon-css/css/flag-icon.min.css"/>">
 <!-- endinject -->
 <!-- plugin css for this page -->
 <link rel="stylesheet"
-	href="<c:out value="/resouces/node_modules/font-awesome/css/font-awesome.min.css" />">
+	href="<c:out value="/resources/node_modules/font-awesome/css/font-awesome.min.css" />">
 <!-- End plugin css for this page -->
 <!-- inject:css -->
-<link rel="stylesheet" href="<c:out value="/resouces/css/style.css"/>">
+<link rel="stylesheet" href="<c:out value="/resources/css/style.css"/>">
 <!-- endinject -->
-<link rel="shortcut icon" href="<c:out value="/resouces/images/favicon.png" />">
+<link rel="shortcut icon" href="<c:out value="/resources/images/favicon.png" />">
 <!-- my-style-css -->
-<link rel="stylesheet" href="<c:out value="/resouces/css/my-style-v2.css"/>">
-<link rel="stylesheet" href="<c:out value="/resouces/css/1.css"/>">
-<link rel="stylesheet" href="<c:out value="/resouces/css/1.css"/>">
+<link rel="stylesheet" href="<c:out value="/resources/css/my-style-v2.css"/>">
+<link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>">
+<link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>">
 
 <!-- plugins:js -->
-<script src="<c:out value="resouces/node_modules/jquery/dist/jquery.min.js"/>"></script>
+<script src="<c:out value="resources/node_modules/jquery/dist/jquery.min.js"/>"></script>
 <!-- end plugins:js -->
 </head>

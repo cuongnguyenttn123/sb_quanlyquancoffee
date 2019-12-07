@@ -13,19 +13,19 @@
     <title>The Coffe Shop</title>
     <!-- plugins:css -->
     <link rel="stylesheet"
-          href="../resouces/node_modules/mdi/css/materialdesignicons.min.css">
+          href="../resources/node_modules/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet"
-          href="../resouces/node_modules/simple-line-icons/css/simple-line-icons.css">
+          href="../resources/node_modules/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet"
-          href="../resouces/node_modules/flag-icon-css/css/flag-icon.min.css">
+          href="../resources/node_modules/flag-icon-css/css/flag-icon.min.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../resouces/css/style.css">
-    <link rel="stylesheet" href="../resouces/css/my-style-v2.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/my-style-v2.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="../resouces/images/favicon.png" />
+    <link rel="shortcut icon" href="../resources/images/favicon.png" />
 </head>
 
 <body>
@@ -35,14 +35,14 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="../resouces/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../resouces/node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../resources/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../resources/node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script
-        src="../resouces/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        src="../resources/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- endinject -->
 <!-- inject:js -->
-<script src="../resouces/js/off-canvas.js"></script>
-<script src="../resouces/js/misc.js"></script>
+<script src="../resources/js/off-canvas.js"></script>
+<script src="../resources/js/misc.js"></script>
 <!-- endinject -->
 </body>
 

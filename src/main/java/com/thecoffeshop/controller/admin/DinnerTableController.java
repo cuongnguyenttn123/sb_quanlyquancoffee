@@ -27,7 +27,7 @@ import com.thecoffeshop.DTO.DinnerTableDTO;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/admin/")
 public class DinnerTableController extends Common {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class DinnerTableController extends Common {
 	@Autowired
     TablestatusService tablestatusService;
 
-	@GetMapping(value = "/admin/dinner-table")
+	@GetMapping(value = "dinner-table")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
         int countListDinnerTable = dinnertableService.findAll().size();
 		double totalPage = Math.ceil((double) countListDinnerTable/super.MAX_RESULTS);
@@ -49,7 +49,7 @@ public class DinnerTableController extends Common {
 
 	}
 
-	@GetMapping(value = "/admin/dinner-table/table")
+	@GetMapping(value = "dinner-table/table")
 	public String tbody(ModelMap modelMap, HttpSession httpSession, @RequestParam String startPosition) {
 
 		List<Dinnertable> dinnertables = dinnertableService.findLimit(Integer.valueOf(startPosition.trim()) - 1);
@@ -75,7 +75,7 @@ public class DinnerTableController extends Common {
 		return "/admin/management-system/content/dinner-table/tBody";
 	}
 
-	@PostMapping(value = "/admin/dinner-table/insert")
+	@PostMapping(value = "dinner-table/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String name,
 			@RequestParam String countchair) {
 
@@ -105,7 +105,7 @@ public class DinnerTableController extends Common {
 		return "/admin/public/Success"; // thành công
 	}
 
-	@PostMapping(value = "/admin/dinner-table/remove")
+	@PostMapping(value = "dinner-table/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String dinnertableid) {
 
 		Dinnertable dinnertable = dinnertableService.getInfoById(Integer.valueOf(dinnertableid.trim()));
@@ -121,7 +121,7 @@ public class DinnerTableController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "/admin/dinner-table/edit")
+	@GetMapping(value = "dinner-table/edit")
 	public String view(ModelMap modelMap, HttpSession httpSession, @RequestParam String dinnertableid) {
 
 		Dinnertable dinnertable = dinnertableService.getInfoById(Integer.valueOf(dinnertableid.trim()));
@@ -134,7 +134,7 @@ public class DinnerTableController extends Common {
 		return "/admin/management-system/content/dinner-table/form";
 	}
 
-	@PostMapping(value = "/admin/dinner-table/edit")
+	@PostMapping(value = "dinner-table/edit")
 	public String edit(ModelMap modelMap, HttpSession httpSession, @RequestParam String dinnertableid,
 			@RequestParam String name, @RequestParam String countchair) {
 

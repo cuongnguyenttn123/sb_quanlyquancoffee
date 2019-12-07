@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import com.thecoffeshop.DTO.*;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 @SessionAttributes({"gio-hang", "customer"})
 public class IndexUserController extends Common {
 

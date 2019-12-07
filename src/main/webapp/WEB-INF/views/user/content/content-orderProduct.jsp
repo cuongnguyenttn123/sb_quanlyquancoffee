@@ -93,6 +93,7 @@
 						<input id="voucherName" name="voucherName" type="text"
 							class="form-control form-control-sm" placeholder="Mã giảm giá:">
 					</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<button id="btnPayCart" type="submit" class="btn btn-success mr-2">Hoàn
 						tất</button>
 					<a href="/index" class="btn btn-light">Hủy</a>

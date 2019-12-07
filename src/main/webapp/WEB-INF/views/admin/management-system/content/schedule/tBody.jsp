@@ -15,4 +15,4 @@
         <td class="text-danger"><c:out value="${dto.getUpdateat()}" /></td>
     </tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/schedule/schedule-add.js"></script>
+<script src="../resources/ajax-jquery/schedule/schedule-add.js"></script>

@@ -11,8 +11,8 @@
 </div>
 <!-- content-wrapper ends -->
 <!-- my-js -->
-<script src="../resouces/ajax-jquery/loadTable.js"></script>
-<script src="../resouces/ajax-jquery/voucher/voucher.js"></script>
+<script src="../resources/ajax-jquery/loadTable.js"></script>
+<script src="../resources/ajax-jquery/voucher/voucher.js"></script>
 <!-- my-js[END] -->
 <!-- FOOTER -->
 <%@ include file="../public/footer.jsp"%>

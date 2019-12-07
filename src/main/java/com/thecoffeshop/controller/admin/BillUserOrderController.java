@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/admin/")
 public class BillUserOrderController {
     @Autowired
     BillService billService;
@@ -31,7 +31,7 @@ public class BillUserOrderController {
     @Autowired
     PositionService positionService;
 
-    @GetMapping("/admin/getlistuserorder")
+    @GetMapping("getlistuserorder")
     public String getUserOrder(ModelMap modelMap){
         List<Bill> billList = billService.getListUserOrder();
         List<BillDTO> dtos = new ArrayList<>();
@@ -46,7 +46,7 @@ public class BillUserOrderController {
         return "admin/public/userorder";
     }
 
-    @GetMapping("/admin/getlistuserorderall")
+    @GetMapping("getlistuserorderall")
     public String getUserOrderAll(ModelMap modelMap){
         List<Bill> billList = billService.getListUserOrderAll();
         List<BillDTO> dtos = new ArrayList<>();
@@ -60,7 +60,7 @@ public class BillUserOrderController {
         modelMap.addAttribute("dtos", dtos);
         return "admin/management-system/bill-user-order";
     }
-    @GetMapping("/admin/getdetailbillid/{billid}")
+    @GetMapping("getdetailbillid/{billid}")
     public String getBillDetailById(ModelMap modelMap, @PathVariable String billid){
         Bill bill= billService.getInfoById(Integer.parseInt(billid));
         Customer customer = new Customer();
@@ -105,7 +105,7 @@ public class BillUserOrderController {
         return "admin/management-system/detail-bill-user-order";
     }
 
-    @PostMapping("/admin/duyetdonhang")
+    @PostMapping("duyetdonhang")
     public String duyetDonHang(@RequestParam String billid, @RequestParam String employeeid){
         Bill bill = billService.getInfoById(Integer.parseInt(billid));
         bill.setBillstatus(new Billstatus("DS"));

@@ -21,4 +21,4 @@
 
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/voucher/voucher-add.js"></script>
+<script src="../resources/ajax-jquery/voucher/voucher-add.js"></script>

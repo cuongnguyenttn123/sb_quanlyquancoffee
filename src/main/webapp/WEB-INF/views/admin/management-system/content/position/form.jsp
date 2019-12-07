@@ -25,4 +25,4 @@ pageEncoding="UTF-8"%>
             </button>
         </c:if>
       <button id="btnClear" class="btn btn-light">Làm mới</button>
-<script src="../resouces/ajax-jquery/position/position-edit.js"></script>
+<script src="../resources/ajax-jquery/position/position-edit.js"></script>

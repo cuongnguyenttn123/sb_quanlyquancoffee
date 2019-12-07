@@ -138,7 +138,7 @@
 							</div>
 							<div id="newProduct" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<figure class="effect-text-in">
-									<img src="../resouces/images/samples/300x300/13.jpg"
+									<img src="../resources/images/samples/300x300/13.jpg"
 										alt="image">
 									<figcaption>
 										<h4 id="pname"></h4>
@@ -157,7 +157,7 @@
 </div>
 
 <!-- Include JS -->
-<script src="../resouces/style-js/add-product.js"></script>
+<script src="../resources/style-js/add-product.js"></script>
 <!-- Include JS [END] -->
 
 <!-- FOOTER -->

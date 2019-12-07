@@ -17,23 +17,23 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
-<script src="../resouces/node_modules/popper.js/dist/umd/popper.min.js"></script>
-<script src="../resouces/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../resources/node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script src="../resources/node_modules/jquery/dist/jquery.min.js"></script>
 <script
-		src="../resouces/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../resouces/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+		src="../resources/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../resources/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
 
-<script src="../resouces/node_modules/datatables.net/js/jquery.dataTables.js"></script>
-<script src="../resouces/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="../resources/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+<script src="../resources/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
 
 <!-- End plugin js for this page-->
 <!-- inject:js -->
-<script src="../resouces/js/off-canvas.js"></script>
-<script src="../resouces/js/hoverable-collapse.js"></script>
-<script src="../resouces/js/misc.js"></script>
-<script src="../resouces/node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="../resources/js/off-canvas.js"></script>
+<script src="../resources/js/hoverable-collapse.js"></script>
+<script src="../resources/js/misc.js"></script>
+<script src="../resources/node_modules/chart.js/dist/Chart.min.js"></script>
 
 <!-- endinject -->
 <!-- Custom js for this page-->

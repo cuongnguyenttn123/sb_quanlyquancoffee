@@ -21,4 +21,4 @@
 				value="${dto.getDinnertable().getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/dinner-table/dinner-table-add.js"></script>
+<script src="../resources/ajax-jquery/dinner-table/dinner-table-add.js"></script>

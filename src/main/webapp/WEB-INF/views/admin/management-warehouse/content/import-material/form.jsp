@@ -132,4 +132,4 @@
 </div>
 
 <script
-	src="../resouces/ajax-jquery/warehouse/import-material/import-bill-edit.js"></script>
+	src="../resources/ajax-jquery/warehouse/import-material/import-bill-edit.js"></script>

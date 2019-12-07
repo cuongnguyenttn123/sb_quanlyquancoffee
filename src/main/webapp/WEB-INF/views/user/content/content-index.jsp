@@ -46,7 +46,7 @@
 									">
 										<img
 											class="d-block w-100 col-lg-12 img-<c:if test="${i == 1}"><c:out value="${productDTO.getProductid()}" /></c:if>"
-											src='../resouces/images/my-images/<c:out value="${image.getName()}" />'
+											src='../resources/images/my-images/<c:out value="${image.getName()}" />'
 											alt='<c:out value="${alt}" />'>
 									</div>
 									<c:set var="i" scope="session" value="${i + 1 }" />
@@ -165,4 +165,4 @@
 		class="btn btn-inverse-light btn-rounded btn-fw btn-see-more">Xem
 		thêm</a>
 </div>
-	<script src="../resouces/ajax-jquery/user-index-search.js"></script>
+	<script src="../resources/ajax-jquery/user-index-search.js"></script>

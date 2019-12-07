@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- my-js -->
-<script src="../resouces/ajax-jquery/warehouse/product/product.js"></script>
+<script src="../resources/ajax-jquery/warehouse/product/product.js"></script>
 <!-- my-js[END] -->
 <div class="row">
 	<div class="col-12">
@@ -54,7 +54,7 @@
 					<figure class="effect-text-in">
 						<img style="height: 150px; padding: 0;"
 							class="d-block w-100 col-lg-12 img-11"
-							src='../resouces/images/my-images/<c:out value="${dto.getImages().get(0).getName()}" />'
+							src='../resources/images/my-images/<c:out value="${dto.getImages().get(0).getName()}" />'
 							alt="First slide">
 						<figcaption style="text-align: center;">
 							<h4>

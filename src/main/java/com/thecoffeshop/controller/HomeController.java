@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
     @Autowired
     EmployeeService employeeService;

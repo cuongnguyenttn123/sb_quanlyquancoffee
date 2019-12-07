@@ -113,5 +113,5 @@
 <!-- FOOTER -->
 <%@ include file="./public/footer.jsp"%>
 
-<script src="../resouces/ajax-jquery/admin/index.js"></script>
+<script src="../resources/ajax-jquery/admin/index.js"></script>
 <!-- ./. FOOTER -->

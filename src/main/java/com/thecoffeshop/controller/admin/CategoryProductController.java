@@ -20,7 +20,7 @@ import com.thecoffeshop.DTO.*;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("//admin/")
 public class CategoryProductController extends Common {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class CategoryProductController extends Common {
 	@Autowired
 	ProductService productService;
 
-	@GetMapping(value = "/admin/category-product")
+	@GetMapping(value = "category-product")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 
 		int totalPage = categoryProductService.findAll().size() / super.MAX_RESULTS;
@@ -40,7 +40,7 @@ public class CategoryProductController extends Common {
 		return "/admin/management-system/category-product";
 	}
 
-	@GetMapping(value = "/admin/category-product/table")
+	@GetMapping(value = "category-product/table")
 	public String tbody(ModelMap modelMap, HttpSession httpSession, @RequestParam String startPosition) {
 
 		List<Categoryproduct> categoryproducts = categoryProductService.findLimit(Integer.valueOf(startPosition) - 1);
@@ -61,7 +61,7 @@ public class CategoryProductController extends Common {
 		return "/admin/management-system/content/category-product/tBody";
 	}
 
-	@PostMapping(value = "/admin/category-product/insert")
+	@PostMapping(value = "category-product/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String categoryproductid,
 			@RequestParam String name) {
 
@@ -92,7 +92,7 @@ public class CategoryProductController extends Common {
 		return "/admin/public/Success"; // thành công
 	}
 
-	@PostMapping(value = "/admin/category-product/remove")
+	@PostMapping(value = "category-product/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String categoryproductid) {
 
 		Categoryproduct categoryproduct = categoryProductService.getInfoById(categoryproductid.trim());
@@ -107,7 +107,7 @@ public class CategoryProductController extends Common {
 		return "/admin/public/Success";// đã tồn tại
 	}
 
-	@GetMapping(value = "/admin/category-product/edit")
+	@GetMapping(value = "category-product/edit")
 	public String view(ModelMap modelMap, HttpSession httpSession, @RequestParam String categoryproductid) {
 
 		Categoryproduct categoryproduct = categoryProductService.getInfoById(categoryproductid.trim());
@@ -120,7 +120,7 @@ public class CategoryProductController extends Common {
 		return "/admin/management-system/content/category-product/form";
 	}
 
-	@PostMapping(value = "/admin/category-product/edit")
+	@PostMapping(value = "category-product/edit")
 	public String edit(ModelMap modelMap, HttpSession httpSession, @RequestParam String categoryproductid,
 			@RequestParam String name) {
 

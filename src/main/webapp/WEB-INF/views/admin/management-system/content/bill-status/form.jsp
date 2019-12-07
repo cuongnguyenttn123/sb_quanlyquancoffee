@@ -29,4 +29,4 @@
 	</c:if>
 	<button id="btnClear" class="btn btn-light">Làm mới</button>
 
-<script src="../resouces/ajax-jquery/bill-status/bill-status-edit.js"></script> 
+<script src="../resources/ajax-jquery/bill-status/bill-status-edit.js"></script> 

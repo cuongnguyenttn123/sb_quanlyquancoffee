@@ -21,4 +21,4 @@
 		Cập nhật</button>
 </c:if>
 <button id="btnClear" class="btn btn-light">Làm mới</button>
-<script src="../resouces/ajax-jquery/table-status/table-status-edit.js"></script>
+<script src="../resources/ajax-jquery/table-status/table-status-edit.js"></script>

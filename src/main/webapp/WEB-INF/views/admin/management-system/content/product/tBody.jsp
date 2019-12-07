@@ -20,4 +20,4 @@
 				value="${dto.getUpdateat()}" /></td>
 	</tr>
 </c:forEach>
-<script src="../resouces/ajax-jquery/product/product-add.js"></script>
+<script src="../resources/ajax-jquery/product/product-add.js"></script>

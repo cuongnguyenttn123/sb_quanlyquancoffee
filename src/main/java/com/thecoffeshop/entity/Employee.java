@@ -1,9 +1,10 @@
 package com.thecoffeshop.entity;
 // Generated Nov 20, 2018 8:44:18 AM by Hibernate Tools 5.1.7.Final
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.*;
 import javax.persistence.*;
 
 /**
@@ -219,6 +220,15 @@ public class Employee implements java.io.Serializable {
 
 	public void setSalaries(Set<Salary> salaries) {
 		this.salaries = salaries;
+	}
+
+	@Transient
+	public List<GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		for (Position position: this.atpositions) {
+			authorities.add(new SimpleGrantedAuthority(position.getName()));
+		}
+		return authorities;
 	}
 
 }
