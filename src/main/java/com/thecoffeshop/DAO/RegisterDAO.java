@@ -110,4 +110,9 @@ public class RegisterDAO implements RegisterDAOImp {
 		}
 		return registerList;
 	}
+
+	@Override
+	public List<Register> getScheduleEmployee(Date date, String scheduleid,String emId) {
+		return registerRepository.getScheduleEmployee(date,scheduleid,emId, 2, this.IS_NOT_DELETE);
+	}
 }

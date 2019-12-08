@@ -61,4 +61,9 @@ public class RegisterService implements RegisterDAOImp {
 		// TODO Auto-generated method stub
 		return registerDAO.listByDateScheduleid(date, scheduleid);
 	}
+
+	@Override
+	public List<Register> getScheduleEmployee(Date date, String scheduleid,String emId) {
+		return registerDAO.getScheduleEmployee(date, scheduleid, emId);
+	}
 }

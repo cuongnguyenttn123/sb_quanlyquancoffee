@@ -44,6 +44,11 @@ public class IndexAdminController extends Common {
 
 	@GetMapping(value = { "/admin/index" })
 	public String index(ModelMap modelMap, HttpSession httpSession) {
+		String emId = "1";
+		httpSession.setAttribute("emId", emId);
+		httpSession.getAttribute("emId").toString();
+		Employee employee = employeeService.getInfoById(emId);
+		modelMap.addAttribute(employee);
 		// danh sách bàn
 
 		List<indexAdminDTO> dtos = new ArrayList<indexAdminDTO>();

@@ -135,4 +135,9 @@ public class EmployeeDAO implements EmployeeDAOImp {
     public Employee getEmployeeByUsernameandpass(String user, String pass) {
         return employeeRepository.logIn(user, pass);
     }
+
+    @Override
+    public Employee getEmployeeByUser(String userName) {
+        return employeeRepository.findByUsename(userName);
+    }
 }

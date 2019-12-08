@@ -67,4 +67,9 @@ public class EmployeeService implements EmployeeDAOImp {
     public Employee getEmployeeByUsernameandpass(String user, String pass) {
         return employeeDAO.getEmployeeByUsernameandpass(user, pass);
     }
+
+    @Override
+    public Employee getEmployeeByUser(String userName) {
+        return employeeDAO.getEmployeeByUser(userName);
+    }
 }

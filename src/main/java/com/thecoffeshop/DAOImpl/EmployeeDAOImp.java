@@ -28,4 +28,6 @@ public interface EmployeeDAOImp extends CommonDAOImp{
 
 	public Employee getEmployeeByUsernameandpass(String user, String pass);
 
+	public Employee getEmployeeByUser(String userName);
+
 }

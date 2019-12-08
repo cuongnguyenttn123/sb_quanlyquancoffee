@@ -28,4 +28,10 @@ public interface RegisterRepository extends JpaRepository<Register, Integer>, Jp
             nativeQuery = true
     )
     List<Register> listByDateScheduleid(Date date, String scheduleid, Boolean aBoolean);
+
+    @Query(
+            value = "select * from register r WHERE r.date = ?1 AND r.scheduleid = ?2 AND r.employeeid = ?3 AND r.result = ?4 AND r.isdelete = ?5",
+            nativeQuery = true
+    )
+    List<Register> getScheduleEmployee(Date date, String scheduleid, String emId, Integer result, Boolean aBoolean);
 }
