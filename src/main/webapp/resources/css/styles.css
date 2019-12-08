@@ -1,0 +1,95 @@
+*{
+    font-family: Roboto;
+}
+
+#body-id{
+    background: #00909c;
+}
+#body-flex-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+#container-login{
+    display: flex;
+    width: 820px;
+    height: 510px;
+    background: white;
+}
+
+.container-login-left-header{
+    width: 380px;
+    height: 330px;
+    margin-top: 32px
+
+}
+#container-login-left-leader{
+    margin-left: 25px;
+    width: 380px;
+    height: 110px;
+}
+#welcome{
+    font-size: 48px;
+    color: white;
+    text-align: center;
+}
+#welcome:hover{
+    font-size: 48px;
+    color: aqua;
+    text-align: center;
+}
+#left-header{
+    text-align: center;
+}
+#tuade{
+    font-size: 12px;
+}
+.login-bottom{
+    color: white;
+
+}
+#container-login-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 24px 20px;
+}
+#active{
+    font-size: 20px;
+    color: #CCAACA;
+}
+#dangnhap{
+    color: #a56f5d;
+}
+#form-dang-nhap{
+    margin: 100px;
+}
+.nhap{
+
+}
+/* css trang chu*/
+#header{
+    background: url("../images/cafe-me.jpg");
+    width: 100%;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+.tag_icon{
+    width: 65px;
+    height: 70px;
+}
+.canchuan{
+    height: 200px;
+}
+.thegach{
+    margin: 40px;
+}
+.event_header{
+    height: 160px;
+    width: 320px;
+    margin-top: 200px;
+
+}
