@@ -30,7 +30,7 @@ public class LoginController {
 
 	@RequestMapping("/admin")
 	public String admin() {
-		return "admin/index";
+		return "redirect:/admin/index";
 	}
 
 	@RequestMapping("/user")

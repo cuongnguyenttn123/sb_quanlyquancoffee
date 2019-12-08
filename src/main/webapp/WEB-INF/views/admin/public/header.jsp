@@ -276,29 +276,22 @@
 						<div class="collapse" id="ui-basic3">
 							<ul class="nav flex-column sub-menu">
 								<li class="nav-item"><a class="nav-link"
-														data-toggle="collapse" href="#auth" aria-expanded="false"
-														aria-controls="auth"> <span class="menu-title">Lịch
-												làm</span>
+														href="/employee/work-schedule"> <span
+										class="menu-title">Lịch Làm Việc</span>
+								</a></li>
+
+								<li class="nav-item"><a class="nav-link"
+														href="/employee/info"> <span
+										class="menu-title">Thông tin cá nhân</span>
+								</a></li>
+
+								<li class="nav-item"><a class="nav-link"
+														href="/employee/password"> <span
+										class="menu-title">Đổi mật khẩu</span>
 								</a></li>
 								<li class="nav-item"><a class="nav-link"
-														data-toggle="collapse" href="#auth" aria-expanded="false"
-														aria-controls="auth"> <span class="menu-title">Thống
-												kê lương tháng</span>
-								</a></li>
-								<li class="nav-item"><a class="nav-link"
-														data-toggle="collapse" href="#auth" aria-expanded="false"
-														aria-controls="auth"> <span class="menu-title">Thông
-												tin cá nhân</span>
-								</a></li>
-								<li class="nav-item"><a class="nav-link"
-														data-toggle="collapse" href="#auth" aria-expanded="false"
-														aria-controls="auth"> <span class="menu-title">Đổi
-												mật khẩu</span>
-								</a></li>
-								<li class="nav-item"><a class="nav-link"
-														data-toggle="collapse" href="#auth" aria-expanded="false"
-														aria-controls="auth"> <span class="menu-title">Đăng
-												xuất</span>
+														href="/logout"> <span
+										class="menu-title">Đăng Xuất</span>
 								</a></li>
 							</ul>
 						</div></li>
