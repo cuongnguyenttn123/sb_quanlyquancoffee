@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -41,7 +40,7 @@ public class ShipperController {
             dtos.add(billDTO);
         }
         modelMap.addAttribute("dtos", dtos);
-        return "admin/management-system/shipper/content/content";
+        return "shipper/content";
     }
     @GetMapping("bill/{id}")
     public String getBillDetailById(ModelMap modelMap, @PathVariable String id){
@@ -83,7 +82,7 @@ public class ShipperController {
             modelMap.addAttribute("productDTOs", productDTOs);
             modelMap.addAttribute("customer", customer);
         }
-        return "admin/management-system/shipper/shipper-tracking";
+        return "shipper/shipper-tracking";
     }
 
     @GetMapping("done/{id}")
@@ -91,7 +90,7 @@ public class ShipperController {
         Bill bill = billService.getInfoById(Integer.parseInt(id));
         bill.setBillstatus(new Billstatus("DTT"));
         billService.editBill(bill);
-        StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
+        StringBuilder redirect = new StringBuilder("redirect:/shipper/bill/");
         redirect.append(bill.getEmployee().getEmployeeid());
         return redirect.toString();
 
