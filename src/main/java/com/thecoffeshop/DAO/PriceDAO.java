@@ -53,7 +53,7 @@ public class PriceDAO implements PriceDAOImp {
 
 	@Override
 	public Price getSinglePriceOfBillDetail(String product, Boolean aBoolean, Date startdatetime) {
-		return priceRepository.getSinglePriceOfBillDetail(product, aBoolean, startdatetime, 1);
+		return priceRepository.getSinglePriceOfBillDetail(product, aBoolean, 1);
 	}
 
 	@Override

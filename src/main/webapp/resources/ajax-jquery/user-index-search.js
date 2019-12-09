@@ -11,7 +11,7 @@ $(function() {
 		var priceAZ = $("#priceAZ").val();
 		var priceZA = $("#priceZA").val();
 
-		 $.post("/index/search",{
+		 $.post("/user/search",{
 			page,
 			cgPrdId,
 			strSearch,
