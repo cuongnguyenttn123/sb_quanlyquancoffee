@@ -1,7 +1,5 @@
 package com.thecoffeshop.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +16,12 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
-@Order(1)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+@Order(2)
+public class WebSecurityShipperConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService customUserDetailsService;
 
@@ -43,19 +42,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/admin/**").authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()//
-                .loginProcessingUrl("/admin/j_spring_security_login")//
-                .loginPage("/login1")//
-                .defaultSuccessUrl("/admin/index")//
-                .failureUrl("/login1?message=error")//
-                .usernameParameter("username")//
-                .passwordParameter("password")
+        http.authorizeRequests().antMatchers("/shipper/**").hasRole("SHIPPER").and()
+                .formLogin()//
+                .loginProcessingUrl("/j_spring_security_login")//
+                .loginPage("/login2")//
+                .defaultSuccessUrl("/shipper/bill")//
+                .failureUrl("/login2?message=error")//
+                .usernameParameter("username").passwordParameter("password")
                 .and().csrf().disable()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login1?logout");
+                .logoutSuccessUrl("/login2?logout");
     }
 
     PersistentTokenRepository persistentTokenRepository(){
@@ -63,6 +62,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         tokenRepositoryImpl.setDataSource(dataSource);
         return tokenRepositoryImpl;
     }
-
 
 }

@@ -1,4 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
 <%--
   Created by IntelliJ IDEA.
   User: cuong
@@ -15,22 +18,23 @@
                     <div class="auth-form-dark text-left p-5">
                         <h2>Đăng nhập</h2>
                         <h4 class="font-weight-light">Xin chào! Hãy nhập thông tin</h4>
-                        <form method="POST" action="/shipper/login" class="pt-5">
+                        <form method="POST" action="/j_spring_security_login" class="pt-5">
                             <div class="form-group">
-                                <label for="emUsername">Tài khoản</label>
+                                <label for="username">Tài khoản</label>
                                 <input type="text" required
-                                         class="form-control" id="emUsername" name="emUsername"
+                                         class="form-control" id="username" name="username"
                                          aria-describedby="emailHelp" placeholder="Tài khoản" value="admin">
                                 <i class="mdi mdi-account"></i>
                             </div>
                             <div class="form-group">
-                                <label for="emPassword">Mật khẩu</label> <input
-                                    type="password" class="form-control" id="emPassword" name="emPassword"
+                                <label for="password">Mật khẩu</label> <input
+                                    type="password" class="form-control" id="password" name="password"
                                     placeholder="Mật khẩu" value="admin"> <i class="mdi mdi-eye"></i>
                             </div>
                             <div class="form-group">
                                 <p class="label-error"><c:out value = "${error}"/></p>
                             </div>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <div class="mt-5">
                                 <button class="btn btn-block btn-warning btn-lg font-weight-medium"
                                         href="../../index.html">Đăng nhập</button>
