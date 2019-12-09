@@ -28,6 +28,13 @@ public class LoginController {
 		return "admin/login";
 	}
 
+	@RequestMapping(value = {"/login2"})
+	public String login2(@RequestParam(value = "error", required = false) final String error, final Model model) {
+		if (error != null) {
+			model.addAttribute("message", "Login Failed!");
+		}
+		return "admin/management-system/shipper/shipper";
+	}
 	@RequestMapping("/admin")
 	public String admin() {
 		return "redirect:/admin/index";

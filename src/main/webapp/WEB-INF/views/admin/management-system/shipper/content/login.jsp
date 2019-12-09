@@ -1,4 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%--
   Created by IntelliJ IDEA.
   User: cuong
@@ -15,7 +17,7 @@
                     <div class="auth-form-dark text-left p-5">
                         <h2>Đăng nhập</h2>
                         <h4 class="font-weight-light">Xin chào! Hãy nhập thông tin</h4>
-                        <form method="POST" action="/shipper/login" class="pt-5">
+                        <form method="POST" action="/login" class="pt-5">
                             <div class="form-group">
                                 <label for="emUsername">Tài khoản</label>
                                 <input type="text" required
