@@ -6,6 +6,7 @@ import com.thecoffeshop.entity.*;
 import com.thecoffeshop.repository.BillRepository;
 import com.thecoffeshop.repository.CustomerRepository;
 import com.thecoffeshop.service.BilldetailService;
+import com.thecoffeshop.service.PriceService;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -36,6 +37,9 @@ public class BillDAO implements BillDAOImpl {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    PriceService priceService;
 
     @Override
     public int addBill(Bill bill) {
@@ -165,7 +169,7 @@ public class BillDAO implements BillDAOImpl {
             int totalPrice = 0;
             for (Billdetail billdetail : billdetails) {
                 String productId = billdetail.getProduct().getProductid();
-                int price = billdetailService.getPriceOfBillDetail(new BilldetailId(productId, billid));
+                int price = priceService.getOldPrice(productId);
                 totalPrice += price;
             }
             return totalPrice;

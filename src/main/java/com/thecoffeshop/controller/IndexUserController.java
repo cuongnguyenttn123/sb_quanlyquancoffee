@@ -48,7 +48,7 @@ public class IndexUserController extends Common {
 
 	}
 
-	@GetMapping(value = "/index")
+	@GetMapping(value = "/user")
 	public String index(ModelMap modelMap, HttpSession httpSession) {
 		List<ProductDTO> productDTOS = getListProductDTOBySession(httpSession);
 		if (null != productDTOS){
@@ -61,7 +61,7 @@ public class IndexUserController extends Common {
 	}
 
 
-	@PostMapping(value = "/index/search")
+	@PostMapping(value = "/user/search")
 	public String search(ModelMap modelMap, HttpSession httpSession, @RequestParam String page,
 			@RequestParam String cgPrdId, @RequestParam String strSearch, @RequestParam String isHotDeal,
 			@RequestParam String priceAZ, @RequestParam String priceZA) {
@@ -75,7 +75,7 @@ public class IndexUserController extends Common {
 	}
 
 	/* get info of product */
-	@PostMapping(value = "/infoProduct")
+	@PostMapping(value = "/user/infoProduct")
 	public String infoProduct(@RequestParam String productid, ModelMap modelMap) {
 
 

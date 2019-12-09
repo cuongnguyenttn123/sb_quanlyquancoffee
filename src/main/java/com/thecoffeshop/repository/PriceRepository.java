@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.List;
 
 public interface PriceRepository extends JpaRepository<Price, Integer>, JpaSpecificationExecutor<Price> {
-    @Query(value = "select * from price p where p.productid = ?1 and p.isdelete = ?2 and p.startdatetime <= ?3 order by p.startdatetime DESC limit ?4",
+    @Query(value = "select * from price p where p.productid = ?1 and p.isdelete = ?2  order by p.startdatetime DESC limit ?3",
             nativeQuery = true
     )
-    Price getSinglePriceOfBillDetail(String productid, Boolean aBoolean, Date startdatetime, int limit);
+    Price getSinglePriceOfBillDetail(String productid, Boolean aBoolean,  int limit);
 
     @Query(
             value = "select * from price p where p.productid = ?1 and p.isdelete = ?2",
