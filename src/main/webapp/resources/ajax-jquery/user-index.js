@@ -77,7 +77,7 @@ $(function() {
 /* End Box-chat */
 /* View product */
 function _viewProduct(productid) {
-	 $.post("/infoProduct",{
+	 $.post("/user/infoProduct",{
 		 			productid:productid
 			    }, function(data, status){
 						$("#detail-product").html(data);
