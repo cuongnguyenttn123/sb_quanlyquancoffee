@@ -6,13 +6,13 @@
 
 <!-- partial:../resources/partials/_navbar.html -->
 <nav
-	style="background: url(../resources/images/background2.jpg); background-size: cover;"
+	style="background: url(<c:out value="/resources/images/background2.jpg"/>); background-size: cover;"
 	class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row nav-bar-display-product">
 	<div class="text-center navbar-brand-wrapper ">
 		<a class="navbar-brand brand-logo logo" href="/index"><img
-			src="../resources/images/logo-full.png" alt="logo"></a> <a
+			src="<c:out value="/resources/images/logo-full.png"/>" alt="logo"></a> <a
 			class="navbar-brand brand-logo-mini logo" href="index.html"><img
-			src="../resources/images/logo.png" alt="logo"></a>
+			src="<c:out value="/resources/images/logo.png"/>" alt="logo"></a>
 	</div>
 	<div
 		class="navbar-menu-wrapper d-flex align-items-center nav-bar-display-product-ul">
