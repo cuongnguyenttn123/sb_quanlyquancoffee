@@ -29,9 +29,8 @@
 <!-- my-style-css -->
 <link rel="stylesheet" href="<c:out value="/resources/css/my-style-v2.css"/>">
 <link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>">
-<link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>">
 
 <!-- plugins:js -->
-<script src="<c:out value="resources/node_modules/jquery/dist/jquery.min.js"/>"></script>
+<script src="<c:out value="/resources/node_modules/jquery/dist/jquery.min.js"/>"></script>
 <!-- end plugins:js -->
 </head>

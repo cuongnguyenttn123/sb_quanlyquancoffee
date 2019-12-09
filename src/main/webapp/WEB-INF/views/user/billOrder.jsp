@@ -10,7 +10,7 @@
 <%@ include file="./common/head.jsp"%>
 <!-- head [END] -->
 
-<body class="">
+<body style="background-color: white">
 <div class="container-scroller">
 
     <!-- nav -->0
@@ -20,16 +20,17 @@
 
     <!-- content-wrapper -->
     <div class="container-fluid page-body-wrapper"
-         style="background: url(../resources/images/background.jpg); background-size: cover;">
+         style="height:650px;background: url(<c:out value="/resources/images/background.jpg"/>); background-size: cover;">
         <!-- content -->
 
         <div class="container">
             <div class="row">
-                <H2>Quản Lý Tài Khoản</H2>
+                <H2></H2>
             </div>
             <div class="row">
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
                     <jsp:include page="content/infor_customer/information.jsp"/>
                 </div>
 
@@ -43,12 +44,6 @@
 
         </div>
         <!-- content [END] -->
-
-
-        <!-- footer-->
-        <%@ include file="./common/footer.jsp"%>
-        <!-- footer [END] -->
-        <!-- row-offcanvas ends -->
     </div>
     <!-- page-body-wrapper ends -->
 </div>

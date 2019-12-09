@@ -3,51 +3,70 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <title></title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>">
-    <!-- Bootstrap CSS -->
 
+<!-- head -->
+<%@ include file="./common/head.jsp"%>
+<!-- head [END] -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <jsp:include page="content/content-orderTracking.jsp"/>
-    </div>
+<body style="background-color: white">
+<div class="container">
 
-    <br/>
-    <br/>
-    <br/>
+    <!-- nav -->0
 
-    <div class="container">
-        <h3>Chi tiết hóa đơn:</h3>
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <jsp:include page="content/bill/tBodyDetail.jsp"/>
+    <%@ include file="./common/nav.jsp"%>
+    <!-- nav [END] -->
+
+    <!-- content-wrapper -->
+    <div class="container-fluid">
+        <!-- content -->
+        <div id="content-index" class="content-wrapper dislpay-product" style="width: 100%; margin-left: 0;">
+            <div class="row" style="height: 35px"></div>
+
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <jsp:include page="content/content-orderTracking.jsp"/>
+                </div>
+            </div>
+            <div class="row" style="height: 20px"></div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <h3>Chi tiết hóa đơn:</h3>
+                    <jsp:include page="content/bill/tBodyDetail.jsp"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <jsp:include page="content/infor_customer/information.jsp"></jsp:include>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <jsp:include page="content/infor_customer/information.jsp"></jsp:include>
-            </div>
-        </div>
 
+        <!-- content [END] -->
+        <!-- content-wrapper ends -->
+        <!-- messenger -->
 
+        <!-- end messenger -->
+        <!-- footer-->
+        <%@ include file="./common/footer.jsp"%>
+        <!-- footer [END] -->
+        <!-- row-offcanvas ends -->
     </div>
+    <!-- page-body-wrapper ends -->
+</div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<jsp:include page="common/jsLibary.jsp"/>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.2.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.3.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- js libary-->
+<%@ include file="./common/jsLibary.jsp"%>
+<!-- js libary [END] -->
+
+<!-- my-js -->
+
+<!-- my-js[END] -->
+
 </body>
+
 </html>

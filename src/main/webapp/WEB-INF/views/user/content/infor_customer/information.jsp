@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<div class="row" style="height: 10px"></div>
 <div class="row">
 
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -21,5 +21,8 @@
 
 </div>
 <div class="row">
-    <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block><a href="/user/logout">Logout</a></button>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block><a href="/user/logout">Logout</a></button>
+
+    </div>
 </div>
