@@ -121,8 +121,7 @@ $(function () {
 	$(".btn-View").click(function() {
 		_viewProduct($(this).attr("data-PId"));
 	});
-
-	$(".btn-add-to-cart").click(function(){
+	$(document).on('click', '.btn-add-to-cart', function(){
 		var PId = $(this).attr("data-PId");
 		var	price;
 		var Name = $(".product-name-"+ PId).text();
