@@ -20,12 +20,29 @@ public class LoginController {
 	@Autowired
 	MyUserDetailsService myUserDetailsService;
 
-	@RequestMapping(value = {"/login"})
-	public String login(@RequestParam(value = "error", required = false) final String error, final Model model) {
-		if (error != null) {
-			model.addAttribute("message", "Login Failed!");
+	@RequestMapping("/login1")
+	public String login1(@RequestParam(required = false) String message, final Model model) {
+		if (message != null && !message.isEmpty()) {
+			if (message.equals("logout")) {
+				model.addAttribute("message", "Logout!");
+			}
+			if (message.equals("error")) {
+				model.addAttribute("message", "Login Failed!");
+			}
 		}
 		return "admin/login";
+	}
+	@RequestMapping("/login2")
+	public String login2(@RequestParam(required = false) String message, final Model model) {
+		if (message != null && !message.isEmpty()) {
+			if (message.equals("logout")) {
+				model.addAttribute("message", "Logout!");
+			}
+			if (message.equals("error")) {
+				model.addAttribute("message", "Login Failed!");
+			}
+		}
+		return "admin/management-system/shipper/shipper";
 	}
 
 	@RequestMapping("/admin")
@@ -33,14 +50,18 @@ public class LoginController {
 		return "redirect:/admin/index";
 	}
 
-	@RequestMapping("/user")
-	public String user() {
-		return "home";
+	@RequestMapping("/shipper")
+	public String shipper() {
+		return "redirect:/shipper/bill";
 	}
-
 	@RequestMapping("/logout")
 	public String logout(final Model model) {
 		model.addAttribute("message", "Logged out!");
 		return "home";
 	}
+	@RequestMapping("/403")
+	public String accessDenied403() {
+		return "403";
+	}
+
 }

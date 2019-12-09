@@ -39,7 +39,7 @@
                         <div class="auth-form-dark text-left p-5">
                             <h2 style="padding: 20px;">${message}</h2>
 
-                            <form class="login active" name='loginForm' action="/login" method='POST'>
+                            <form class="login active" name='loginForm' action="/admin/j_spring_security_login" method='POST'>
                                 <h3>Login</h3>
                                 <p style='color:red;font-weight:bold;font-style:italic'>${error}</p>
                                 <%session.getAttribute("user");%>

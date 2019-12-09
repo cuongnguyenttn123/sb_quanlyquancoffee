@@ -28,35 +28,10 @@ public class ShipperController {
     @Autowired
     PriceService priceService;
 
-    @GetMapping("login")
-    public String getLogin() {
-        return "admin/management-system/shipper/shipper";
-    }
 
-    @PostMapping("login")
-    public String loginUser(ModelMap modelMap, HttpSession httpSession, @RequestParam String emUsername, @RequestParam String emPassword) {
-        String result = "";
-        try {
-
-            String checkLogin = employeeService.logIn(emUsername, emPassword);
-            Employee employee = employeeService.getEmployeeByUsernameandpass(emUsername, emPassword);
-            if (checkLogin != null) {
-                StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
-                redirect.append(employee.getEmployeeid());
-                return redirect.toString();
-            } else {
-                result = "redirect:/shipper/login";
-            }
-
-        } catch (Exception e) {
-            result = "redirect:/shipper/login";
-        }
-        return result;
-    }
-
-    @GetMapping("/billall/{employeeid}")
-    public String getBillAll(ModelMap modelMap, @PathVariable String employeeid){
-        List<Bill> billList = billService.getListBillShipper(employeeid);
+    @GetMapping("bill")
+    public String getBillAll(ModelMap modelMap){
+        List<Bill> billList = billService.getListBillShipper("3");
         List<BillDTO> dtos = new ArrayList<>();
         for (Bill bill : billList) {
             BillDTO billDTO = new BillDTO();
@@ -68,9 +43,9 @@ public class ShipperController {
         modelMap.addAttribute("dtos", dtos);
         return "admin/management-system/shipper/content/content";
     }
-    @GetMapping("detailbill/{billid}")
-    public String getBillDetailById(ModelMap modelMap, @PathVariable String billid){
-        Bill bill= billService.getInfoById(Integer.parseInt(billid));
+    @GetMapping("bill/{id}")
+    public String getBillDetailById(ModelMap modelMap, @PathVariable String id){
+        Bill bill= billService.getInfoById(Integer.parseInt(id));
         Customer customer = new Customer();
         if (bill != null){
             customer = bill.getCustomer();
@@ -111,9 +86,9 @@ public class ShipperController {
         return "admin/management-system/shipper/shipper-tracking";
     }
 
-    @GetMapping("done/{billid}")
-    public String duyetDonHang(@PathVariable String billid){
-        Bill bill = billService.getInfoById(Integer.parseInt(billid));
+    @GetMapping("done/{id}")
+    public String duyetDonHang(@PathVariable String id){
+        Bill bill = billService.getInfoById(Integer.parseInt(id));
         bill.setBillstatus(new Billstatus("DTT"));
         billService.editBill(bill);
         StringBuilder redirect = new StringBuilder("redirect:/shipper/billall/");
