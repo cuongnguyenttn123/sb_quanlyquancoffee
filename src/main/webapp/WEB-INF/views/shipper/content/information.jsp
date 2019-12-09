@@ -18,8 +18,5 @@
         <span>SDT: (+84) ${customer.getPhone()}</span>
     </div>
 
+</div>
 
-</div>
-<div class="row">
-    <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block><a href="/user/logout">Logout</a></button>
-</div>

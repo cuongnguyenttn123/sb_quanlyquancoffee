@@ -42,7 +42,7 @@ public class LoginController {
 				model.addAttribute("message", "Login Failed!");
 			}
 		}
-		return "admin/management-system/shipper/shipper";
+		return "/shipper/shipper";
 	}
 
 	@RequestMapping("/admin")

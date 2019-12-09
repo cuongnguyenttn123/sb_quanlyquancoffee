@@ -8,8 +8,7 @@
         <td><c:out value="${dto.getTotalPrice()}" /></td>
         <td><c:out value="${dto.getBillstatus().getName()}" /></td>
         <td><c:out value="${dto.getBill().getEmployee().getName()}" /></td>
-        <td class="text-danger"><a href="../detailbill/<c:out value="${dto.getBill().getBillid()}" />">Chi tiết
+        <td class="text-danger"><a href="/shipper/bill/<c:out value="${dto.getBill().getBillid()}" />">Chi tiết
         </a></td>
     </tr>
 </c:forEach>
-<script src="../resources/ajax-jquery/bill/bill-add.js"></script>
