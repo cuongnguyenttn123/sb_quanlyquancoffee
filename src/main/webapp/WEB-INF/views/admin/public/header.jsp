@@ -35,6 +35,9 @@
 	<link rel="stylesheet" href="<c:out value="/resources/css/my-style-v2.css"/>"/>
 	<link rel="stylesheet" href="<c:out value="/resources/css/1.css"/>"/>
 	<!-- Bootstrap CSS -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
 <script src="<c:out value="/resources/node_modules/jquery/dist/jquery.min.js"/>"></script>
 </head>
