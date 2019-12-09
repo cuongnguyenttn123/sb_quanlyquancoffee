@@ -80,7 +80,7 @@
 									<div class="qty">0</div>
 								</c:if>
 
-								<c:if test="${soluonggiohang > 0}">
+								<c:if test="${soluonggiohang >= 0}">
 									<div class="qty" id="gio_hang">${soluonggiohang}</div>
 								</c:if>
 
