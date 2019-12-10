@@ -13,8 +13,8 @@ public class ProductDTO {
 	private String name;
 	private Date updateat;
 	private Boolean canDelete;
-	private List<Image> images;
 	private int number;
+	private String image;
 	private int price;
 	private Price newPrice;
 	private int rateOldAndNewPrice;
@@ -110,14 +110,6 @@ public class ProductDTO {
 		this.price = price;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
 	public int getNumber() {
 		return number;
 	}
@@ -126,4 +118,15 @@ public class ProductDTO {
 		this.number = number;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public boolean isCheckIsNew() {
+		return checkIsNew;
+	}
 }

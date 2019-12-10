@@ -66,6 +66,7 @@ public class EmployeeController extends Common {
 
 	@PostMapping(value = "/admin/employee/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid,
+						 @RequestParam String avt,
 			@RequestParam String name, @RequestParam String sex, @RequestParam String phone,
 			@RequestParam String address, @RequestParam String usename, @RequestParam String password,
 			@RequestParam String position, @RequestParam String salaryonhour, @RequestParam String startdate)

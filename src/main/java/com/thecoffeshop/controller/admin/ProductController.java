@@ -79,7 +79,7 @@ public class ProductController extends Common {
 
 	@PostMapping(value = "/admin/product/insert")
 	public String insert(ModelMap modelMap, HttpSession httpSession, @RequestParam String productid,
-			@RequestParam String name, @RequestParam String description, @RequestParam String categoryproductid,
+			@RequestParam String name,@RequestParam String image, @RequestParam String description, @RequestParam String categoryproductid,
 			@RequestParam String price) {
 
 		if (productService.getInfoById(productid.trim()) != null) {
@@ -105,6 +105,7 @@ public class ProductController extends Common {
 		Product product = new Product();
 		product.setProductid(productid.trim());
 		product.setName(name);
+		product.setImage(image);
 		product.setDescription(description);
 		Categoryproduct categoryproduct = categoryProductService.getInfoById(categoryproductid);
 		product.setCategoryproduct(categoryproduct);

@@ -1,6 +1,8 @@
 package com.thecoffeshop.entity;
 // Generated Nov 20, 2018 8:44:18 AM by Hibernate Tools 5.1.7.Final
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +24,8 @@ public class Product implements java.io.Serializable {
 
 	@Column(name = "NAME")
 	private String name;
+	@Column(name = "IMAGE")
+	private String image;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
@@ -35,12 +39,6 @@ public class Product implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private Set<Billdetail> billdetails = new HashSet<Billdetail>(0);
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "imageofproduct", catalog = "theshopcoffee", joinColumns = {
-			@JoinColumn(name = "PRODUCTID", nullable = false, updatable = false) }, inverseJoinColumns = {
-			@JoinColumn(name = "IMAGEID", nullable = false, updatable = false) })
-	private Set<Image> images = new HashSet<Image>(0);
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	private Set<Exportbill> exportbills = new HashSet<Exportbill>();
@@ -57,7 +55,13 @@ public class Product implements java.io.Serializable {
 	}
 
 
+	public String getImage() {
+		return image;
+	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public String getProductid() {
 		return this.productid;
@@ -116,14 +120,6 @@ public class Product implements java.io.Serializable {
 
 	public void setBilldetails(Set<Billdetail> billdetails) {
 		this.billdetails = billdetails;
-	}
-
-	public Set<Image> getImages() {
-		return this.images;
-	}
-
-	public void setImages(Set<Image> images) {
-		this.images = images;
 	}
 
 	public Set<Exportbill> getExportbills() {

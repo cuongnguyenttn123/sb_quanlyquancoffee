@@ -45,14 +45,7 @@ public class ManagementProductController {
 			dto.setName(product.getName());
 			dto.setCategoryproductNAME(product.getCategoryproduct().getName());
 			dto.setUpdateat(product.getUpdateat());
-
-			Set<Image> setImages = product.getImages();
-			List<Image> images = new ArrayList<Image>();
-			for (Image image : setImages) {
-				images.add(image);
-				dto.setImages(images);
-				break;
-			}
+			dto.setImage(product.getImage());
 
 			dto.setQuantityInventory(exportbillService.totalQuantityProduct(product.getProductid()));
 
@@ -89,13 +82,7 @@ public class ManagementProductController {
 			dto.setCategoryproductNAME(product.getCategoryproduct().getName());
 			dto.setUpdateat(product.getUpdateat());
 
-			Set<Image> setImages = product.getImages();
-			List<Image> images = new ArrayList<Image>();
-			for (Image image : setImages) {
-				images.add(image);
-				dto.setImages(images);
-				break;
-			}
+			dto.setImage(product.getImage());
 
 			dto.setQuantityInventory(exportbillService.totalQuantityProduct(product.getProductid()));
 

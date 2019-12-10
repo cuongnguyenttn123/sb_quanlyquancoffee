@@ -79,14 +79,7 @@ public class BillUserOrderController {
                     dto.setName(product.getName());
                     dto.setCategoryproductNAME(product.getCategoryproduct().getName());
                     dto.setUpdateat(product.getUpdateat());
-                    List<Image> images = new ArrayList<Image>();
-                    if (product.getImages().size() > 0) {
-                        Set<Image> setImages = product.getImages();
-                        for (Image image : setImages) {
-                            images.add(image);
-                        }
-                        dto.setImages(images);
-                    }
+                    dto.setImage(product.getImage());
                     dto.setNumber(billdetail1.getQuantity());
                     dto.setPrice(priceService.getOldPrice(product.getProductid()));
                     tongtien += billdetail1.getQuantity()*dto.getPrice();
