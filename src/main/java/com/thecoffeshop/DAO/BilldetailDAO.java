@@ -114,11 +114,10 @@ public class BilldetailDAO implements BilldetailDAOImp {
 
     @Override
     public int getSinglePriceOfBillDetail(String ProductId, Date startdatetime) {
-        Price price;
-        int pr;
+                int pr;
         try {
-            price = priceService.getSinglePriceOfBillDetail(ProductId, this.IS_NOT_DELETE, startdatetime);
-            pr = price.getPrice();
+            pr = priceService.getOldPrice(ProductId);
+
         }catch (Exception e){
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

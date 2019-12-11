@@ -259,7 +259,7 @@
 										class="menu-title">Thu chi</span>
 								</a></li>
 								<li class="nav-item"><a class="nav-link"
-														href="pages/icons/font-awesome.html"> <span
+														href="/admin/productstatistics"> <span
 										class="menu-title">Sản phẩm bán ra</span>
 								</a></li>
 								<li class="nav-item"><a class="nav-link"
