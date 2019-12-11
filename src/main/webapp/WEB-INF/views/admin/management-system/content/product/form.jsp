@@ -12,13 +12,18 @@
 		class="form-control" placeholder="Mã sản phẩm" />
 </div>
 <div class="form-group">
-	<label for="billstatusid" class="col-sm-12 col-form-label">Tên
+	<label for="name" class="col-sm-12 col-form-label">Tên
 		sản phẩm</label> <input id="name" type="text"
 		value='<c:out value="${product.getName()}" />' class="form-control"
 		placeholder="Tên sản phẩm" />
 </div>
 <div class="form-group">
-	<label for="billstatusid" class="col-sm-12 col-form-label">Mô tả
+    <label for="image" class="col-sm-12 col-form-label">Tên sản phẩm</label>
+        <input id = "nameImage" type="hidden">
+        <input id="image" type="file" value='<c:out value="${product.getName()}" />' class="form-control" placeholder="Hình Ảnh sản phẩm" />
+</div>
+<div class="form-group">
+	<label for="description" class="col-sm-12 col-form-label">Mô tả
 		sản phẩm</label>
 	<textarea id="description" class="form-control" rows="3"
 		placeholder="Mô tả sản phẩm">
@@ -33,7 +38,7 @@
           />
 </div>
 <div class="form-group">
-	<label for="billstatusid" class="col-sm-12 col-form-label">Loại
+	<label for="categoryproductid" class="col-sm-12 col-form-label">Loại
 		sản phẩm</label> <select class="form-control" id="categoryproductid">
 		<option value="-1">Phân loại</option>
 		<c:forEach items="${categoryproducts}" var="categoryproduct">

@@ -123,13 +123,7 @@ public class IndexAdminController extends Common {
 				}
 			}
 
-			Set<Image> setImages = product.getImages();
-			List<Image> images = new ArrayList<Image>();
-			for (Image image : setImages) {
-				images.add(image);
-				break;
-			}
-			dto.setImages(images);
+			dto.setImage(product.getImage());
 
 			productDTOs.add(dto);
 		}

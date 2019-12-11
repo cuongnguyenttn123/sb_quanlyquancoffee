@@ -25,7 +25,6 @@ public class Image implements java.io.Serializable {
 	private int imageid;
 	private String name;
 	private Set<Employee> employees = new HashSet<Employee>(0);
-	private Set<Product> products = new HashSet<Product>(0);
 
 	public Image() {
 	}
@@ -38,7 +37,6 @@ public class Image implements java.io.Serializable {
 		this.imageid = imageid;
 		this.name = name;
 		this.employees = employees;
-		this.products = products;
 	}
 
 	@Id
@@ -73,13 +71,5 @@ public class Image implements java.io.Serializable {
 		this.employees = employees;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "images")
-	public Set<Product> getProducts() {
-		return this.products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
 
 }

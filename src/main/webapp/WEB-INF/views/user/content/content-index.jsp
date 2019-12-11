@@ -10,84 +10,9 @@
 		<c:forEach items="${productDTOs}" var="productDTO">
 			<div class="col-lg-2 col-md-6 " style="">
 				<div class="product">
-					<div class="product_img">
-						<div
-							id="<c:out value="${productDTO.getProductid()}" />"
-							class="carousel slide product_img" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<i class="fa fa-circle active"
-									data-target="#<c:out value="${productDTO.getProductid()}" />"
-									data-slide-to="0"></i>
-								<i class="fa fa-circle"
-									data-target="#<c:out value="${productDTO.getProductid()}" />"
-									data-slide-to="1"></i>
-								<i class="fa fa-circle"
-									data-target="#<c:out value="${productDTO.getProductid()}" />"
-									data-slide-to="2"></i>
-							</ol>
-							<div class="carousel-inner ">
-								<c:set var="i" scope="session" value="${1}" />
-
-								<c:forEach items="${productDTO.getImages()}" var="image">
-									<c:if test="${i == 1}">
-										<c:set var="alt" scope="session" value="First slide" />
-									</c:if>
-									<c:if test="${i == 2}">
-										<c:set var="alt" scope="session" value="Second slide" />
-									</c:if>
-									<c:if test="${i == 3}">
-										<c:set var="alt" scope="session" value="Third slide" />
-									</c:if>
-									<div
-										class="carousel-item 
-										<c:if test="${i == 1}">	
-											active
-										</c:if>
-									">
-										<img
-											class="d-block w-100 col-lg-12 img-<c:if test="${i == 1}"><c:out value="${productDTO.getProductid()}" /></c:if>"
-											src='../resources/images/my-images/<c:out value="${image.getName()}" />'
-											alt='<c:out value="${alt}" />'>
-									</div>
-									<c:set var="i" scope="session" value="${i + 1 }" />
-								</c:forEach>
-
-
-							</div>
-							<a class="carousel-control-prev"
-								href="#<c:out value="${productDTO.getProductid()}" />"
-								role="button" data-slide="prev"> <span
-								class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-								class="sr-only">Previous</span>
-							</a> <a class="carousel-control-next"
-								href="#<c:out value="${productDTO.getProductid()}" />"
-								role="button" data-slide="next"> <span
-								class="carousel-control-next-icon" aria-hidden="true"></span> <span
-								class="sr-only">Next</span>
-							</a>
-						</div>
-						<div class="product-label">
-							<c:if test="${productDTO.getCheckIsNew() == false}">
-								<!-- product have new price -->
-								<c:if test="${productDTO.getRateOldAndNewPrice() > 0}">
-									<span class="sale"> <c:out
-											value="-${productDTO.getRateOldAndNewPrice()}%" /> <c:if
-											test="${productDTO.getCheckIsNew() == false}">
-											<c:out
-												value="Từ ${productDTO.getNewPrice().getStartdatetime()}" />
-										</c:if> <c:if test="${productDTO.getCheckIsNew() == true}">
-											<c:out
-												value="Ra mắt ${productDTO.getNewPrice().getStartdatetime()}" />
-										</c:if>
-
-									</span>
-								</c:if>
-							</c:if>
-							<c:if test="${productDTO.getCheckIsNew() == true}">
-								<span class="new">NEW</span>
-							</c:if>
-						</div>
-					</div>
+					<img class="d-block w-100 col-lg-12 img-<c:out value="${productDTO.getProductid()}"/> "
+							src='../resources/images/my-images/<c:out value="${productDTO.getImage()}" />'
+							alt='<c:out value="${alt}" />'>
 					<div class="product-body">
 						<p class="product-category">
 							<c:out

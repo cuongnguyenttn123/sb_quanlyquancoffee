@@ -22,17 +22,7 @@ public class ProductConverter {
             productDTO.setProductid(product.getProductid());
             productDTO.setName(product.getName());
             productDTO.setPrice(productConverter.getPriceBySet(product.getPrices()));
-            Set<Image> setImages = product.getImages();
-            List<Image> images = new ArrayList<Image>();
-            int size = setImages.size() - 1;
-            for (Image image : setImages) {
-                if (size <= 3) {
-                    images.add(image);
-                }
-                size--;
-            }
-            productDTO.setImages(images);
-
+            productDTO.setImage(product.getImage());
             productDTO.setCategoryproductNAME(product.getCategoryproduct().getName());
             productDTOS.add(productDTO);
             System.out.println(productDTO.getName());

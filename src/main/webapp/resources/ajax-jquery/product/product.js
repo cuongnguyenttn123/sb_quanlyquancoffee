@@ -6,6 +6,7 @@ $(function() {
 		$.post("/admin/product/insert", {
 			productid : $("#productid").val(),
 			name : $("#name").val(),
+			image : $("#nameImage").val(),
 			description : $("#description").val(),
 			categoryproductid : $("#categoryproductid").val(),
 			price : $("#price").val()
