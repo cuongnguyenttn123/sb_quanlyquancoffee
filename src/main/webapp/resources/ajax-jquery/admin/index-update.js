@@ -1,13 +1,13 @@
 /**
  * 
  */
-
-$(".remove-product").click(function () {
+$(document).on('click', '.remove-product', function() {
 	var id=$(this).attr('data-productid');
 	$('#product-remove-'+id).remove();
 });
 
-$("#btnCheckVoucher").click(function() {
+
+$(document).on('click', '#btnCheckVoucher', function() {
 	$.post("/admin/index-checkVoucher", {
 		voucherName : $('#voucherName').val(),
 		billid : $('#billid').val()
@@ -19,7 +19,7 @@ $("#btnCheckVoucher").click(function() {
 	});
 });
 
-$("#btnDoiBan").click(function() {
+$(document).on('click', '#btnDoiBan', function() {
 	var dinnertableidOLD = $("#dinnertableid").val();
 	var dinnertableid = $("#selectDINNERTABLEID").val();
 	$.post("/admin/index-changeTable", {
@@ -31,8 +31,8 @@ $("#btnDoiBan").click(function() {
 		_effectTrangThaiBan(obj[1].id, obj[1].name, dinnertableidOLD );
 	});
 });
+$(document).on('click', '#btnSearch', function() {
 
-$("#btnSearch").click(function() {
 	var inputSearch = $('#inputSearch').val();
 	$.get("/admin/index-modal", {
 		dinnertableid : $("#dinnertableid").val(),
@@ -43,7 +43,8 @@ $("#btnSearch").click(function() {
 	});
 });
 
-$("#btnCapNhatTrangThaiBan").click(function() {
+$(document).on('click', '#btnCapNhatTrangThaiBan', function() {
+
 var dinnertableid = $("#dinnertableid").val();
 	$.post("/admin/index-updateTableStatus", {
 		dinnertableid:dinnertableid,
@@ -86,7 +87,7 @@ $("#btnThemVaoHoaDon").click(function() {
 						listProduct : list
 					};
 					$.post("/admin/index-updateBillDetail", {
-						dinnertableid : $("#dinnertableid").val(),
+						dinnertableid : $('.productlist').attr("data-dinnertableid"),
 						listProduct : JSON.stringify(listProduct)
 					}, function(data, status) {
 						$('#exampleModalLabel').html(data);
@@ -96,8 +97,8 @@ $("#btnThemVaoHoaDon").click(function() {
 					});
 				});
 
-$("#btnLuuChinhSua").click(function () {
-	
+$(document).on('click', '#btnLuuChinhSua', function() {
+
 	var countTr = $("#bill tbody tr").length;
 	var list = [];
 	for (var i = 0; i < countTr; i++) {
@@ -110,7 +111,7 @@ $("#btnLuuChinhSua").click(function () {
 	};
 	
 	$.post("/admin/index-updateBill", {
-		billid : $('#billid').val(),
+		billid : $(this).attr("data-bill"),
 		listProduct : JSON.stringify(listProduct)
 	}, function(data, status) {
 		$('#exampleModalLabel').html(data);
@@ -120,10 +121,9 @@ $("#btnLuuChinhSua").click(function () {
 	});
 });
 
-$("#btnThanhToan").click(function() {
-	$("#btnLuuChinhSua").click();
+$(document).on('click', '#btnThanhToan', function() {
 	$.post("/admin/index-updateBillStatus", {
-		billid : $('#billid').val(),
+		billid : $(this).attr("data-bill"),
 		voucherName : $('#voucherName').val()
 	}, function(data, status) {
 		$('#exampleModalLabel').html(data);
@@ -190,27 +190,28 @@ _loadPagination(1);// at loadTable.js
 hide_all_Pagination();
 _hide_show_Pagination(1, "right");// at loadTable.js
 
-$(".pa").click(function() {
+$(document).on('click', '.pa', function() {
+
 	$(".active").removeClass("active");
 	$(this).addClass("active");
 
 	_modalContent($("#dinnertableid").val(), $(this).attr("data-startPosition"), '');
 });
 
-$(".right").click(
-		function() {
-			$(".active").removeClass("active");
-			$(
-					"[data-startPosition='"
-							+ $(this).attr("data-startPosition") + "']")
-					.addClass("active");
-			
-			_modalContent($("#dinnertableid").val(), $(this).attr("data-startPosition"), '');
-			_hide_show_Pagination($(this).attr("data-startPosition"), "right");// at
-			// loadTable.js
-		});
-$(".left").click(function() {
+$(document).on('click', '.right', function() {
 
+		$(".active").removeClass("active");
+		$(
+				"[data-startPosition='"
+						+ $(this).attr("data-startPosition") + "']")
+				.addClass("active");
+
+		_modalContent($("#dinnertableid").val(), $(this).attr("data-startPosition"), '');
+		_hide_show_Pagination($(this).attr("data-startPosition"), "right");// at
+		// loadTable.js
+		});
+
+$(document).on('click', '.left', function() {
 	_modalContent($("#dinnertableid").val(), $(this).attr("data-startPosition"), '');
 	_hide_show_Pagination($(this).attr("data-startPosition"), "left");// at
 	// loadTable.js

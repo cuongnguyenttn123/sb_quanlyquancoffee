@@ -19,7 +19,7 @@ public class Dinnertable implements java.io.Serializable {
 	@Column(name = "DINNERTABLEID", unique = true, nullable = false)
 	private int dinnertableid;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TABLESTATUSID")
 	private Tablestatus tablestatus;
 
