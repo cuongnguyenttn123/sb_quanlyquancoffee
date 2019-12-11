@@ -10,7 +10,7 @@
 		<c:forEach items="${productDTOs}" var="productDTO">
 			<div class="col-lg-2 col-md-6 " style="">
 				<div class="product">
-					<img class="d-block w-100 col-lg-12 img-<c:out value="${productDTO.getProductid()}"/> "
+					<img style="height: 200px; width: 100%" class="d-block w-100 col-lg-12 img-<c:out value="${productDTO.getProductid()}"/> "
 							src='../resources/images/my-images/<c:out value="${productDTO.getImage()}" />'
 							alt='<c:out value="${alt}" />'>
 					<div class="product-body">
