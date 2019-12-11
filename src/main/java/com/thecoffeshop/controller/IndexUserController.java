@@ -91,8 +91,8 @@ public class IndexUserController extends Common {
 		if (new_Price != null) {
 			modelMap.addAttribute("new_Price", new_Price);
 		}
-		Set<Image> images = new HashSet<>();
-		modelMap.addAttribute("images", images);
+
+		modelMap.addAttribute("images", product.getImage());
 
 		return "/user/content/infoProduct";
 	}

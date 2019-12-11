@@ -43,7 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/admin/**").authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()//
+        http.antMatcher("/admin/**").authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()//
                 .loginProcessingUrl("/admin/j_spring_security_login")//
                 .loginPage("/login1")//
                 .defaultSuccessUrl("/admin/index")//

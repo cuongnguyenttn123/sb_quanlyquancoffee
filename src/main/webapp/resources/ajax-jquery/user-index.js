@@ -118,7 +118,7 @@ function changeTolalPrice(PId){
 /* Toal price product [END] */
 $(function () {
 
-	$(".btn-View").click(function() {
+	$(document).on('click', '.btn-View', function() {
 		_viewProduct($(this).attr("data-PId"));
 	});
 	$(document).on('click', '.btn-add-to-cart', function(){

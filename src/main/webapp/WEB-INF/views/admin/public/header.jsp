@@ -290,7 +290,7 @@
 										class="menu-title">Đổi mật khẩu</span>
 								</a></li>
 								<li class="nav-item"><a class="nav-link"
-														href="/logout"> <span
+														href="/logout1"> <span
 										class="menu-title">Đăng Xuất</span>
 								</a></li>
 							</ul>

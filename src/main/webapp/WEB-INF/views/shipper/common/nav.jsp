@@ -111,7 +111,7 @@
 									</c:if>
 
 
-
+									<button><a href="/logout2"></a></button>
 								</div>
 							</div>
 						</div>

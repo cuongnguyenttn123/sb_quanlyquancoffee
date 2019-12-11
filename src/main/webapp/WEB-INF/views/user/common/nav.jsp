@@ -9,7 +9,7 @@
 	style="background: url(<c:out value="/resources/images/background2.jpg"/>); background-size: cover;"
 	class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row nav-bar-display-product">
 	<div class="text-center navbar-brand-wrapper ">
-		<a class="navbar-brand brand-logo logo" href="/index"><img
+		<a class="navbar-brand brand-logo logo" href="/"><img
 			src="<c:out value="/resources/images/logo-full.png"/>" alt="logo"></a> <a
 			class="navbar-brand brand-logo-mini logo" href="index.html"><img
 			src="<c:out value="/resources/images/logo.png"/>" alt="logo"></a>
@@ -19,6 +19,7 @@
 		<ul class="navbar-nav ml-lg-auto">
 			<li class="nav-item">
 				<div class="row">
+
 					<div class="header-search">
 						<div class='form-check form-check-flat nav-search checkBox-search'>
 							<label class='form-check-label'> <input
@@ -104,18 +105,21 @@
 											<button type="button" class="btn btn-outline-primary"><a href="/user/login">Đăng Nhập</a></button>
 										</div>
 									</c:if>
-									<c:if test="${soluonggiohang > 0}">
-										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-											<button class="btn btn-danger" id="btnPay"><a href="/user/order-product">Car Pay</a></button>
-										</div>
-									</c:if>
-
-
-
+									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+										<button class="btn btn-danger" id="btnPay"><a href="/user/order-product">Car Pay</a></button>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!-- /Cart -->
+					</div>
+					<div class="header-search">
+						<div class='form-check form-check-flat nav-search checkBox-search'>
+							<label class='form-check-label'>
+								<button type="button" class="btn btn-primary" style="width: 50px;background-color: white;">
+									<a href="/admin/index">Login</a></button>
+							</label>
+						</div>
 					</div>
 					<!--  -->
 				</div>

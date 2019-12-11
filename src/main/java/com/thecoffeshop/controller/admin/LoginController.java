@@ -57,7 +57,7 @@ public class LoginController {
 	@RequestMapping("/logout")
 	public String logout(final Model model) {
 		model.addAttribute("message", "Logged out!");
-		return "home";
+		return "redirect:/";
 	}
 	@RequestMapping("/403")
 	public String accessDenied403() {

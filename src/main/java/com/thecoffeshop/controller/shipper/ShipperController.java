@@ -83,8 +83,7 @@ public class ShipperController {
         Bill bill = billService.getInfoById(Integer.parseInt(id));
         bill.setBillstatus(new Billstatus("DTT"));
         billService.editBill(bill);
-        StringBuilder redirect = new StringBuilder("redirect:/shipper/bill/");
-        redirect.append(bill.getEmployee().getEmployeeid());
+        StringBuilder redirect = new StringBuilder("redirect:/shipper/bill");
         return redirect.toString();
 
     }
