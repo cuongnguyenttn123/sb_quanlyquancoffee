@@ -97,7 +97,7 @@ public class ManagementExportController extends Common {
 		/* check[END] */
 // thêm hóa đơn xuất
 		Exportbill exportbill = new Exportbill();
-		exportbill.setProduct(new Product(productid));
+		exportbill.setProduct(new Product(Integer.parseInt(productid)));
 //		exportbill.setEmployee(employee);
 		exportbill.setQuantity(Integer.valueOf(quantityProduct.trim()));
 		exportbill.setUpdateat(new Date());

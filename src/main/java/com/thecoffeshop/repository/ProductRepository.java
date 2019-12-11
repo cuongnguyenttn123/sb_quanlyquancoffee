@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, String>, JpaSpecificationExecutor<Product> {
-    Product findByIsdeleteAndProductid(Boolean aBoolean, String productid);
+public interface ProductRepository extends JpaRepository<Product, Integer>, JpaSpecificationExecutor<Product> {
+    Product findByIsdeleteAndProductid(Boolean aBoolean, Integer productid);
     List<Product> findAllByIsdelete(Boolean aBoolean);
 
     @Query(value = "select * from product c where c.isdelete = ?1 limit ?2,?3",

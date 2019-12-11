@@ -103,7 +103,7 @@ public class BillController extends Common {
 		List<Billdetail> billdetails = billdetailService.getInfoBilldetailByBillId(Integer.valueOf(billid.trim()));
 		List<BillDetailDTO> dtos = new ArrayList<BillDetailDTO>();
 		for (Billdetail billdetail : billdetails) {
-			String productId = billdetail.getProduct().getProductid();
+			Integer productId = billdetail.getProduct().getProductid();
 
 			BillDetailDTO dto = new BillDetailDTO();
 			dto.setBillid(Integer.valueOf(billid.trim()));
@@ -131,7 +131,7 @@ public class BillController extends Common {
 			@RequestParam String productid) {
 
 		Billdetail billdetail = billdetailService
-				.getInfoBilldetailByBilldetailId(new BilldetailId(productid.trim(), Integer.valueOf(billid.trim())));
+				.getInfoBilldetailByBilldetailId(new BilldetailId(Integer.valueOf(productid.trim()), Integer.valueOf(billid.trim())));
 
 		if (billdetail == null) {
 			modelMap.addAttribute("results", "Chi tiết hóa đơn không tồn tại!");
@@ -151,7 +151,7 @@ public class BillController extends Common {
 			@RequestParam String productid) {
 
 		Billdetail billdetail = billdetailService
-				.getInfoBilldetailByBilldetailId(new BilldetailId(productid.trim(), Integer.valueOf(billid.trim())));
+				.getInfoBilldetailByBilldetailId(new BilldetailId(Integer.valueOf(productid.trim()), Integer.valueOf(billid.trim())));
 
 		if (billdetail == null) {
 			modelMap.addAttribute("results", "Chi tiết hóa đơn không tồn tại!");
@@ -175,7 +175,7 @@ public class BillController extends Common {
 		/* check[END] */
 
 		Billdetail billdetail = billdetailService
-				.getInfoBilldetailByBilldetailId(new BilldetailId(productid.trim(), Integer.valueOf(billid.trim())));
+				.getInfoBilldetailByBilldetailId(new BilldetailId(Integer.valueOf(productid.trim()), Integer.valueOf(billid.trim())));
 
 		if (billdetail == null) {
 			modelMap.addAttribute("results", "Chi tiết hóa đơn không tồn tại!");

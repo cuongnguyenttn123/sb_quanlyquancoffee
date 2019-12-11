@@ -1,14 +1,12 @@
 package com.thecoffeshop.DTO;
 
-import com.thecoffeshop.entity.Image;
 import com.thecoffeshop.entity.Price;
 
 import java.util.Date;
-import java.util.List;
 
 public class ProductDTO {
 
-	private String productid;
+	private Integer productid;
 	private String categoryproductNAME;
 	private String name;
 	private Date updateat;
@@ -30,11 +28,11 @@ public class ProductDTO {
 		this.quantity = quantity;
 	}
 
-	public String getProductid() {
+	public Integer getProductid() {
 		return productid;
 	}
 
-	public void setProductid(String productid) {
+	public void setProductid(Integer productid) {
 		this.productid = productid;
 	}
 

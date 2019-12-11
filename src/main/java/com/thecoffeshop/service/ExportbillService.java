@@ -55,13 +55,13 @@ public class ExportbillService implements ExportbillDAOImp {
 	}
 
 	@Override
-	public int totalQuantityProduct(String productid) {
+	public int totalQuantityProduct(Integer productid) {
 		// TODO Auto-generated method stub
 		return exportbillDAO.totalQuantityProduct(productid);
 	}
 
 	@Override
-	public List<Exportbill> getListExportBillbyProduct(String productid) {
+	public List<Exportbill> getListExportBillbyProduct(Integer productid) {
 		// TODO Auto-generated method stub
 		return exportbillDAO.getListExportBillbyProduct(productid);
 	}

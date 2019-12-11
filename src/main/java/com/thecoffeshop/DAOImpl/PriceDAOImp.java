@@ -1,7 +1,6 @@
 package com.thecoffeshop.DAOImpl;
 
 import com.thecoffeshop.entity.Price;
-import com.thecoffeshop.entity.Product;
 
 import java.util.Date;
 
@@ -12,16 +11,16 @@ public interface PriceDAOImp extends CommonDAOImp {
 	
 	public Price getInfoById(Integer prId);
 	
-	public Price getInfoByProduct(String PId);
+	public Price getInfoByProduct(Integer PId);
 
-	public Price getSinglePriceOfBillDetail(String product, Boolean aBoolean, Date startdatetime);
+	public Price getSinglePriceOfBillDetail(Integer productid, Boolean aBoolean, Date startdatetime);
 	
 	public Boolean editPrice(Price price);
 	
 	/*get price will apply*/
-	public Price getNewPrice(String PId);
+	public Price getNewPrice(Integer PId);
 	
 	/*get price applied*/
-	public int getOldPrice(String PId);
+	public int getOldPrice(Integer PId);
 	
 }

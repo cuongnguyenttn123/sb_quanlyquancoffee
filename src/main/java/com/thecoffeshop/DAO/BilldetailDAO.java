@@ -113,7 +113,7 @@ public class BilldetailDAO implements BilldetailDAOImp {
     }
 
     @Override
-    public int getSinglePriceOfBillDetail(String ProductId, Date startdatetime) {
+    public int getSinglePriceOfBillDetail(Integer ProductId, Date startdatetime) {
         Price price;
         int pr;
         try {

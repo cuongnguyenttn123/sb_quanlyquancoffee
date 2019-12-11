@@ -65,8 +65,8 @@ public class EmployeeDAO implements EmployeeDAOImp {
     }
 
     @Override
-    public String logIn(String username, String password) {
-        String employeeId = "";
+    public Integer logIn(String username, String password) {
+        Integer employeeId = 0 ;
         Employee employee;
         try{
             employee = employeeRepository.logIn(username, password);
@@ -79,7 +79,7 @@ public class EmployeeDAO implements EmployeeDAOImp {
     }
 
     @Override
-    public Employee getInfoById(String employeeid) {
+    public Employee getInfoById(Integer employeeid) {
         return employeeRepository.findById(employeeid).get();
     }
 
@@ -104,7 +104,7 @@ public class EmployeeDAO implements EmployeeDAOImp {
 
     @Override
     @Transactional
-    public Boolean deleteEmployee(String employeeid) {
+    public Boolean deleteEmployee(Integer employeeid) {
         Boolean aBoolean = false;
         try {
             employeeRepository.deleteById(employeeid);

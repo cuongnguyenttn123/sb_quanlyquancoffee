@@ -16,13 +16,13 @@ public interface ProductDAOImp extends CommonDAOImp {
 
 	public Boolean checkExistCategoryProduct(String categoryproductid);
 
-	public Product getInfoById(String productid);
+	public Product getInfoById(Integer productid);
 
 	public Boolean checkExistNameProduct(String name);
 
-	public Boolean checkIsNewProduct(String productid);
+	public Boolean checkIsNewProduct(Integer productid);
 
-	public Boolean deleteProduct(String productid);
+	public Boolean deleteProduct(Integer productid);
 
 	public Boolean editProduct(Product product);
 

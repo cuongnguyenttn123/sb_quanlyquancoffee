@@ -14,129 +14,130 @@ import java.util.Set;
 @Entity
 @Table(name = "product", catalog = "theshopcoffee")
 public class Product implements java.io.Serializable {
-	@Id
-	@Column(name = "PRODUCTID", unique = true, nullable = false, length = 7)
-	private String productid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCTID", unique = true, nullable = false, length = 7)
+    private Integer productid;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CATEGORYPRODUCTID")
-	private Categoryproduct categoryproduct;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORYPRODUCTID")
+    private Categoryproduct categoryproduct;
 
-	@Column(name = "NAME")
-	private String name;
-	@Column(name = "IMAGE")
-	private String image;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "IMAGE")
+    private String image;
 
-	@Column(name = "DESCRIPTION")
-	private String description;
+    @Column(name = "DESCRIPTION")
+    private String description;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "UPDATEAT", length = 19)
-	private Date updateat;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "UPDATEAT", length = 19)
+    private Date updateat;
 
-	@Column(name = "ISDELETE")
-	private Boolean isdelete;
+    @Column(name = "ISDELETE")
+    private Boolean isdelete;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	private Set<Billdetail> billdetails = new HashSet<Billdetail>(0);
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    private Set<Billdetail> billdetails = new HashSet<Billdetail>(0);
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	private Set<Exportbill> exportbills = new HashSet<Exportbill>();
-
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-	private Set<Price> prices = new HashSet<Price>();
-
-	public Product() {
-	}
-
-	public Product(String productid) {
-		this.productid = productid;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    private Set<Exportbill> exportbills = new HashSet<Exportbill>();
 
 
-	public String getImage() {
-		return image;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    private Set<Price> prices = new HashSet<Price>();
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public Product() {
+    }
 
-	public String getProductid() {
-		return this.productid;
-	}
-
-	public void setProductid(String productid) {
-		this.productid = productid;
-	}
+    public Product(Integer productid) {
+        this.productid = productid;
+    }
 
 
-	public Categoryproduct getCategoryproduct() {
-		return this.categoryproduct;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public void setCategoryproduct(Categoryproduct categoryproduct) {
-		this.categoryproduct = categoryproduct;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
+    public Integer getProductid() {
+        return this.productid;
+    }
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getUpdateat() {
-		return this.updateat;
-	}
-
-	public void setUpdateat(Date updateat) {
-		this.updateat = updateat;
-	}
+    public void setProductid(Integer productid) {
+        this.productid = productid;
+    }
 
 
-	public Boolean getIsdelete() {
-		return this.isdelete;
-	}
+    public Categoryproduct getCategoryproduct() {
+        return this.categoryproduct;
+    }
 
-	public void setIsdelete(Boolean isdelete) {
-		this.isdelete = isdelete;
-	}
+    public void setCategoryproduct(Categoryproduct categoryproduct) {
+        this.categoryproduct = categoryproduct;
+    }
 
-	public Set<Billdetail> getBilldetails() {
-		return this.billdetails;
-	}
 
-	public void setBilldetails(Set<Billdetail> billdetails) {
-		this.billdetails = billdetails;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public Set<Exportbill> getExportbills() {
-		return this.exportbills;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setExportbills(Set<Exportbill> exportbills) {
-		this.exportbills = exportbills;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public Set<Price> getPrices() {
-		return this.prices;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setPrices(Set<Price> prices) {
-		this.prices = prices;
-	}
+    public Date getUpdateat() {
+        return this.updateat;
+    }
+
+    public void setUpdateat(Date updateat) {
+        this.updateat = updateat;
+    }
+
+
+    public Boolean getIsdelete() {
+        return this.isdelete;
+    }
+
+    public void setIsdelete(Boolean isdelete) {
+        this.isdelete = isdelete;
+    }
+
+    public Set<Billdetail> getBilldetails() {
+        return this.billdetails;
+    }
+
+    public void setBilldetails(Set<Billdetail> billdetails) {
+        this.billdetails = billdetails;
+    }
+
+    public Set<Exportbill> getExportbills() {
+        return this.exportbills;
+    }
+
+    public void setExportbills(Set<Exportbill> exportbills) {
+        this.exportbills = exportbills;
+    }
+
+    public Set<Price> getPrices() {
+        return this.prices;
+    }
+
+    public void setPrices(Set<Price> prices) {
+        this.prices = prices;
+    }
 
 
 }

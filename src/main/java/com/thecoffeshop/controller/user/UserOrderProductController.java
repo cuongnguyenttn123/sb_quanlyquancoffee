@@ -50,7 +50,7 @@ public class UserOrderProductController extends Common {
         String aBoolean = "false";
         ProductDTO productDTO = new ProductDTO();
         productDTO.setName(Name);
-        productDTO.setProductid(PId);
+        productDTO.setProductid(Integer.parseInt(PId));
         productDTO.setNumber(1);
         productDTO.setPrice(Integer.parseInt(price));
         try {
@@ -120,7 +120,7 @@ public class UserOrderProductController extends Common {
         int i = 0;
         for (String productid : listProductId) {
 
-            Product product = productService.getInfoById(productid);
+            Product product = productService.getInfoById(Integer.parseInt(productid));
             if (product != null) {
                 try {
                     ProductDTO dto = new ProductDTO();
@@ -349,7 +349,7 @@ public class UserOrderProductController extends Common {
     private static int kiemTraGioHang(HttpSession httpSession, ProductDTO productDTO) {
         List<ProductDTO> gioHangList = (List<ProductDTO>) httpSession.getAttribute("gio-hang");
         for (int x = 0; x<gioHangList.size(); x++){
-            if (gioHangList.get(x).getProductid().equalsIgnoreCase(productDTO.getProductid())){
+            if (gioHangList.get(x).getProductid()==(productDTO.getProductid())){
                 return x;
             }
         }

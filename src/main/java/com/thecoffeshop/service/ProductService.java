@@ -28,7 +28,7 @@ public class ProductService implements ProductDAOImp {
 	}
 
 	@Override
-	public Product getInfoById(String PId) {
+	public Product getInfoById(Integer PId) {
 
 		return productDAO.getInfoById(PId);
 	}
@@ -40,13 +40,13 @@ public class ProductService implements ProductDAOImp {
 	}
 
 	@Override
-	public Boolean checkIsNewProduct(String PId) {
+	public Boolean checkIsNewProduct(Integer PId) {
 
 		return productDAO.checkIsNewProduct(PId);
 	}
 
 	@Override
-	public Boolean deleteProduct(String productid) {
+	public Boolean deleteProduct(Integer productid) {
 		// TODO Auto-generated method stub
 		return productDAO.deleteProduct(productid);
 	}

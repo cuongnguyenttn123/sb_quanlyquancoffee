@@ -39,12 +39,12 @@ public class EmployeeService implements EmployeeDAOImp {
     }
 
     @Override
-    public String logIn(String username, String password) {
+    public Integer logIn(String username, String password) {
         return employeeDAO.logIn(username, password);
     }
 
     @Override
-    public Employee getInfoById(String employeeid) {
+    public Employee getInfoById(Integer employeeid) {
         return employeeDAO.getInfoById(employeeid);
     }
 
@@ -54,7 +54,7 @@ public class EmployeeService implements EmployeeDAOImp {
     }
 
     @Override
-    public Boolean deleteEmployee(String employeeid) {
+    public Boolean deleteEmployee(Integer employeeid) {
         return employeeDAO.deleteEmployee(employeeid);
     }
 

@@ -168,7 +168,7 @@ public class BillDAO implements BillDAOImpl {
 
             int totalPrice = 0;
             for (Billdetail billdetail : billdetails) {
-                String productId = billdetail.getProduct().getProductid();
+                Integer productId = billdetail.getProduct().getProductid();
                 int price = priceService.getOldPrice(productId);
                 totalPrice += price;
             }
@@ -186,7 +186,7 @@ public class BillDAO implements BillDAOImpl {
 
             int totalPrice = 0;
             for (Billdetail billdetail : billdetailList) {
-                String productId = billdetail.getProduct().getProductid();
+                Integer productId = billdetail.getProduct().getProductid();
                 int price = getPriceBySet(billdetail.getProduct().getPrices())*billdetail.getQuantity();
                 totalPrice += price;
             }
@@ -336,7 +336,7 @@ public class BillDAO implements BillDAOImpl {
         List<BillDetailDTO> billDetailDTOS = new ArrayList<BillDetailDTO>();
         for (Billdetail billdetail : billdetailSet) {
             BillDetailDTO dto = new BillDetailDTO();
-            String productid = billdetail.getProduct().getProductid();
+            Integer productid = billdetail.getProduct().getProductid();
             String name = billdetail.getProduct().getName();
             dto.setProductid(productid);
             dto.setName(name);

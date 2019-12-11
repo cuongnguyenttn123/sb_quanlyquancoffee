@@ -47,7 +47,7 @@ public class IndexAdminController extends Common {
 		String emId = "1";
 		httpSession.setAttribute("emId", emId);
 		httpSession.getAttribute("emId").toString();
-		Employee employee = employeeService.getInfoById(emId);
+		Employee employee = employeeService.getInfoById(Integer.parseInt(emId));
 		modelMap.addAttribute(employee);
 		// danh sách bàn
 
@@ -239,10 +239,10 @@ public class IndexAdminController extends Common {
 			JsonNode jsonObject = objectMapper.readTree(listProduct);
 			JsonNode jsonArray = jsonObject.get("listProduct");
 
-			String productid;
+			Integer productid;
 			int quantity;
 			for (JsonNode product : jsonArray) {
-				productid = product.get("productid").asText();
+				productid = product.get("productid").asInt();
 				quantity = product.get("quantity").asInt();
 				/* check */
 
@@ -292,7 +292,7 @@ public class IndexAdminController extends Common {
 		List<Billdetail> billdetails = billdetailService.getInfoBilldetailByBillId(Integer.parseInt(billid));
 		List<String> results = new ArrayList<String>();
 		for (Billdetail billdetail : billdetails) {
-			String productid = billdetail.getProduct().getProductid();
+			Integer productid = billdetail.getProduct().getProductid();
 			int totalProduct = exportbillService.totalQuantityProduct(productid);
 			if (billdetail.getQuantity() > totalProduct) {
 				results.add(billdetail.getProduct().getName() + " không đủ số lượng trong kho!");
@@ -303,7 +303,7 @@ public class IndexAdminController extends Common {
 			return "/admin/public/Danger";
 		} else {
 			for (Billdetail billdetail : billdetails) {
-				String productid = billdetail.getProduct().getProductid();
+				Integer productid = billdetail.getProduct().getProductid();
 				List<Exportbill> exportbills = exportbillService.getListExportBillbyProduct(productid);
 				for (Exportbill exportbill : exportbills) {
 					int quantity = billdetail.getQuantity();
@@ -350,6 +350,7 @@ public class IndexAdminController extends Common {
 		List<Billdetail> billdetails = billdetailService.getInfoBilldetailByBillId(Integer.valueOf(billid.trim()));
 		for (Billdetail billdetail : billdetails) {
 
+			int a = listProduct.indexOf(billdetail.getId().getProductid());
 			if (listProduct.indexOf(billdetail.getId().getProductid()) == -1) {// không có trong listProduct - > xóa
 				billdetail.setUpdateat(new Date());
 				billdetail.setIsdelete(IS_DELETE);

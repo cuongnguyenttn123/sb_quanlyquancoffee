@@ -35,7 +35,7 @@ public class SalaryDAO implements SalaryDAOImp {
 	}
 
 	@Override
-	public int getSalaryByEmployeeid(String employeeid) {
+	public int getSalaryByEmployeeid(int employeeid) {
 		Salary salary;
 		int slr;
 		try {

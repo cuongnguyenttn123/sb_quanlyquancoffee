@@ -14,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Price implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-
     @Column(name = "PRICEID", unique = true, nullable = false)
     private int priceid;
 

@@ -24,6 +24,6 @@ public interface BilldetailDAOImp extends CommonDAOImp {
 	public int getPriceOfBillDetail(BilldetailId billdetailId);
 	
 	// lấy đơn giá của sản phẩm trong billdetail
-	public int getSinglePriceOfBillDetail(String PId, Date startdatetime);
+	public int getSinglePriceOfBillDetail(Integer PId, Date startdatetime);
 	
 }

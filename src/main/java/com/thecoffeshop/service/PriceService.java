@@ -3,7 +3,6 @@ package com.thecoffeshop.service;
 import com.thecoffeshop.DAO.PriceDAO;
 import com.thecoffeshop.DAOImpl.PriceDAOImp;
 import com.thecoffeshop.entity.Price;
-import com.thecoffeshop.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -31,24 +30,24 @@ public class PriceService implements PriceDAOImp {
 	}
 
 	@Override
-	public Price getInfoByProduct(String PId) {
+	public Price getInfoByProduct(Integer PId) {
 
 		return priceDAO.getInfoByProduct(PId);
 	}
 
 	@Override
-	public Price getSinglePriceOfBillDetail(String product, Boolean aBoolean, Date startdatetime) {
-		return priceDAO.getSinglePriceOfBillDetail(product, aBoolean, startdatetime);
+	public Price getSinglePriceOfBillDetail(Integer productId, Boolean aBoolean, Date startdatetime) {
+		return priceDAO.getSinglePriceOfBillDetail(productId, aBoolean, startdatetime);
 	}
 
 	@Override
-	public Price getNewPrice(String PId) {
+	public Price getNewPrice(Integer PId) {
 
 		return priceDAO.getNewPrice(PId);
 	}
 
 	@Override
-	public int getOldPrice(String PId) {
+	public int getOldPrice(Integer PId) {
 		return priceDAO.getOldPrice(PId);
 	}
 

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
 import com.thecoffeshop.DTO.*;
 
 
@@ -82,7 +81,7 @@ public class ProductController extends Common {
 			@RequestParam String name,@RequestParam String image, @RequestParam String description, @RequestParam String categoryproductid,
 			@RequestParam String price) {
 
-		if (productService.getInfoById(productid.trim()) != null) {
+		if (productService.getInfoById(Integer.parseInt(productid.trim())) != null) {
 
 			modelMap.addAttribute("results", "Mã sản phẩm bị trùng!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -103,7 +102,6 @@ public class ProductController extends Common {
 		}
 
 		Product product = new Product();
-		product.setProductid(productid.trim());
 		product.setName(name);
 		product.setImage(image);
 		product.setDescription(description);
@@ -131,7 +129,7 @@ public class ProductController extends Common {
 	@PostMapping(value = "/admin/product/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String productid) {
 
-		Product product = productService.getInfoById(productid.trim());
+		Product product = productService.getInfoById(Integer.parseInt(productid.trim()));
 		if (product == null) {
 			modelMap.addAttribute("results", "Sản phẩm không tồn tại!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -157,7 +155,7 @@ public class ProductController extends Common {
 		List<Categoryproduct> categoryproducts = categoryProductService.findAll();
 		modelMap.addAttribute("categoryproducts", categoryproducts);
 
-		Product product = productService.getInfoById(productid.trim());
+		Product product = productService.getInfoById(Integer.parseInt(productid.trim()));
 		if (product == null) {
 			modelMap.addAttribute("results", "Sản phẩm không tồn tại!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -165,7 +163,7 @@ public class ProductController extends Common {
 
 		modelMap.addAttribute("product", product);
 		
-		int price = priceService.getOldPrice(productid.trim());
+		int price = priceService.getOldPrice(Integer.parseInt(productid.trim()));
 		modelMap.addAttribute("price", price);
 
 		return "/admin/management-system/content/product/form";
@@ -176,7 +174,7 @@ public class ProductController extends Common {
 			@RequestParam String name, @RequestParam String description, @RequestParam String categoryproductid,
 			@RequestParam String price) {
 
-		Product product = productService.getInfoById(productid.trim());
+		Product product = productService.getInfoById(Integer.parseInt(productid.trim()));
 		if (product == null) {
 			modelMap.addAttribute("results", "Sản phẩm không tồn tại!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -198,7 +196,7 @@ public class ProductController extends Common {
 //		product.setUpdateby(updateby);
 		product.setUpdateat(new Date());
 		if (productService.editProduct(product)) {
-			if (priceService.getOldPrice(productid.trim()) != Integer.valueOf(price.trim())) {
+			if (priceService.getOldPrice(Integer.parseInt(productid.trim())) != Integer.valueOf(price.trim())) {
 
 				Set<Price> prices = product.getPrices();
 				for (Price price2 : prices) {

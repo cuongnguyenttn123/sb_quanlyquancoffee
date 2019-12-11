@@ -76,7 +76,7 @@ public class ExportbillDAO implements ExportbillDAOImp {
 	}
 
 	@Override
-	public int totalQuantityProduct(String productid) {
+	public int totalQuantityProduct(Integer productid) {
 		List<Exportbill> exportbills;
 		Integer total = 0;
 		try {
@@ -95,7 +95,7 @@ public class ExportbillDAO implements ExportbillDAOImp {
 	}
 
 	@Override
-	public List<Exportbill> getListExportBillbyProduct(String productid) {
+	public List<Exportbill> getListExportBillbyProduct(Integer productid) {
 		return exportbillRepository.getListExportBillbyProduct(productid, 0, this.IS_NOT_DELETE);
 	}
 }

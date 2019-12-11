@@ -69,7 +69,7 @@ public class EmployeeController extends Common {
 						 @RequestParam String avt,
 			@RequestParam String name, @RequestParam String sex, @RequestParam String phone,
 			@RequestParam String address, @RequestParam String usename, @RequestParam String password,
-			@RequestParam String position, @RequestParam String salaryonhour, @RequestParam String startdate)
+			@RequestParam String position,@RequestParam String birthday, @RequestParam String salaryonhour, @RequestParam String startdate)
 			throws ParseException {
 
 		/* check */
@@ -81,7 +81,7 @@ public class EmployeeController extends Common {
 		}
 		/* check[END] */
 
-		if (employeeService.getInfoById(employeeid.trim()) != null) {
+		if (employeeService.getInfoById(Integer.parseInt(employeeid.trim())) != null) {
 
 			modelMap.addAttribute("results", "Mã đã tồn tại!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -93,7 +93,6 @@ public class EmployeeController extends Common {
 		}
 
 		Employee employee = new Employee();
-		employee.setEmployeeid(employeeid.trim());
 		employee.setName(name);
 		if (sex != "Male") {
 			employee.setSex(true);
@@ -102,6 +101,8 @@ public class EmployeeController extends Common {
 			employee.setSex(false);
 		}
 		employee.setPhone(phone);
+		employee.setBirthday(super.sdfDateField.parse(birthday));
+		employee.setAvt(avt);
 		employee.setAddress(address);
 		employee.setUsename(usename);
 		employee.setPassword(password);
@@ -127,7 +128,7 @@ public class EmployeeController extends Common {
 	@PostMapping(value = "/admin/employee/remove")
 	public String remove(ModelMap modelMap, HttpSession httpSession, @RequestParam String employeeid) {
 
-		Employee employee = employeeService.getInfoById(employeeid.trim());
+		Employee employee = employeeService.getInfoById(Integer.parseInt(employeeid.trim()));
 		if (employee == null) {
 			modelMap.addAttribute("results", "Nhân viên không tồn tại!");
 			return "/admin/public/Danger";// đã tồn tại
@@ -145,7 +146,7 @@ public class EmployeeController extends Common {
 		List<Position> positions = positionService.findAll();
 		modelMap.addAttribute("positions", positions);
 
-		Employee employee = employeeService.getInfoById(employeeid.trim());
+		Employee employee = employeeService.getInfoById(Integer.parseInt(employeeid.trim()));
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		employeeDTO.setEmployee(employee);
 
@@ -173,7 +174,7 @@ public class EmployeeController extends Common {
 		}
 		/* check[END] */
 
-		Employee employee = employeeService.getInfoById(employeeid.trim());
+		Employee employee = employeeService.getInfoById(Integer.parseInt(employeeid.trim()));
 		if (employee == null) {
 			results.add("Nhân viên không tồn tại!");
 			modelMap.addAttribute("results", results);

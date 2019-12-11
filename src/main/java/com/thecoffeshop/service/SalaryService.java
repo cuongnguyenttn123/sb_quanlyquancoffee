@@ -42,7 +42,7 @@ public class SalaryService implements SalaryDAOImp {
 	}
 
 	@Override
-	public int getSalaryByEmployeeid(String employeeid) {
+	public int getSalaryByEmployeeid(int employeeid) {
 		// TODO Auto-generated method stub
 		return salaryDAO.getSalaryByEmployeeid(employeeid);
 	}

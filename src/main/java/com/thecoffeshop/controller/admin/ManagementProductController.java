@@ -2,12 +2,10 @@ package com.thecoffeshop.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.thecoffeshop.DTO.ProductDTO;
 import com.thecoffeshop.entity.Categoryproduct;
 import com.thecoffeshop.entity.Exportbill;
-import com.thecoffeshop.entity.Image;
 import com.thecoffeshop.entity.Product;
 import com.thecoffeshop.service.CategoryProductService;
 import com.thecoffeshop.service.ExportbillService;
@@ -102,16 +100,16 @@ public class ManagementProductController {
 			return "{\"id\":\"0\",\"mes\":\"Số lượng để trống và nhỏ hơn không!\"}";
 		}
 
-		Product product = productService.getInfoById(productid.trim());
+		Product product = productService.getInfoById(Integer.parseInt(productid.trim()));
 		if (product == null) {
 			return "{\"id\":\"0\",\"mes\":\"Sản phẩm không tồn tại!\"}";
 		}
-		if (Integer.valueOf(quantity.trim()) > exportbillService.totalQuantityProduct(productid.trim())) {
+		if (Integer.valueOf(quantity.trim()) > exportbillService.totalQuantityProduct(Integer.parseInt(productid.trim()))) {
 			return "{\"id\":\"0\",\"mes\":\"Số lượng bỏ phải <= số lượng tồn!\"}";
 		}
 
 		int intQuality = Integer.valueOf(quantity.trim());
-		List<Exportbill> exportbills = exportbillService.getListExportBillbyProduct(productid);
+		List<Exportbill> exportbills = exportbillService.getListExportBillbyProduct(Integer.parseInt(productid));
 		for (Exportbill exportbill : exportbills) {
 
 			// số nhập nhỏ hơn số lượng đang có

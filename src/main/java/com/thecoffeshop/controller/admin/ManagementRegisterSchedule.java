@@ -11,6 +11,7 @@ import com.thecoffeshop.common.Common;
 import com.thecoffeshop.entity.Employee;
 import com.thecoffeshop.entity.Register;
 import com.thecoffeshop.entity.Schedule;
+import com.thecoffeshop.service.EmployeeService;
 import com.thecoffeshop.service.RegisterService;
 import com.thecoffeshop.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class ManagementRegisterSchedule extends Common {
 	ScheduleService scheduleService;
 	@Autowired
 	RegisterService registerService;
+
+	@Autowired
+	EmployeeService employeeService;
 
 	@GetMapping(value = "/admin/register-schedule")
 	public String index(ModelMap modelMap) {
@@ -60,6 +64,7 @@ public class ManagementRegisterSchedule extends Common {
 	@PostMapping(value = "/admin/register-schedule")
 	public @ResponseBody String register(HttpSession httpSession, @RequestParam String listRegister) {
 		String emId = httpSession.getAttribute("emId").toString();
+		Employee employee = employeeService.getInfoById(Integer.parseInt(emId));
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			JsonNode jsonObject = objectMapper.readTree(listRegister);
@@ -72,7 +77,7 @@ public class ManagementRegisterSchedule extends Common {
 				int day = register.get("day").asInt();
 				String scheduleid = register.get("scheduleid").asText();
 				Register register2 = new Register();
-				register2.setEmployee(new Employee(emId));
+				register2.setEmployee(employee);
 				register2.setSchedule(new Schedule(scheduleid));
 				register2.setDate(c.getTime());
 				register2.setIsdelete(IS_NOT_DELETE);

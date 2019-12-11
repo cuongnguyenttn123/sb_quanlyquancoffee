@@ -22,11 +22,11 @@ public interface ExportbillRepository extends JpaRepository<Exportbill, Integer>
             value = "select * from exportbill e where e.productid = ?1 and e.quantity >= ?2 and e.isdelete = ?3",
             nativeQuery = true
     )
-    List<Exportbill> totalQuantityProduct(String productid, int index, Boolean aBoolean);
+    List<Exportbill> totalQuantityProduct(Integer productid, int index, Boolean aBoolean);
 
     @Query(
             value = "select * from exportbill e where e.productid = ?1 and e.quantityinventory > ?2 and e.isdelete = ?3",
             nativeQuery = true
     )
-    List<Exportbill> getListExportBillbyProduct(String productid, int index, Boolean aBoolean);
+    List<Exportbill> getListExportBillbyProduct(Integer productid, int index, Boolean aBoolean);
 }

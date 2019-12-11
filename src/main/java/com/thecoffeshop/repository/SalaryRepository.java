@@ -15,7 +15,7 @@ public interface SalaryRepository extends JpaRepository<Salary, Integer>, JpaSpe
             value = "select * from salary s where s.employeeid = ?1 order by s.startdate desc limit 1;",
             nativeQuery = true
     )
-    Salary getSalaryByEmployeeId(String employeeid);
+    Salary getSalaryByEmployeeId(int employeeid);
 
     Salary findBySalaryidAndIsdelete(int id, Boolean aBoolean);
 }

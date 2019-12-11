@@ -102,7 +102,7 @@ public class BillUserOrderController {
     public String duyetDonHang(@RequestParam String billid, @RequestParam String employeeid){
         Bill bill = billService.getInfoById(Integer.parseInt(billid));
         bill.setBillstatus(new Billstatus("DS"));
-        bill.setEmployee(new Employee(employeeid));
+        bill.setEmployee(new Employee(Integer.parseInt(employeeid)));
         billService.editBill(bill);
         return "redirect:/admin/getlistuserorderall";
     }

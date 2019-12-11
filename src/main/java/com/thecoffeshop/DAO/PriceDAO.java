@@ -2,7 +2,6 @@ package com.thecoffeshop.DAO;
 
 import com.thecoffeshop.DAOImpl.PriceDAOImp;
 import com.thecoffeshop.entity.Price;
-import com.thecoffeshop.entity.Product;
 import com.thecoffeshop.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -39,7 +38,7 @@ public class PriceDAO implements PriceDAOImp {
 	}
 
 	@Override
-	public Price getInfoByProduct(String PId) {
+	public Price getInfoByProduct(Integer PId) {
 		Price price;
 		try {
 			price = priceRepository.getInfoByProduct(PId, this.IS_NOT_DELETE);
@@ -52,7 +51,7 @@ public class PriceDAO implements PriceDAOImp {
 	}
 
 	@Override
-	public Price getSinglePriceOfBillDetail(String product, Boolean aBoolean, Date startdatetime) {
+	public Price getSinglePriceOfBillDetail(Integer product, Boolean aBoolean, Date startdatetime) {
 		return priceRepository.getSinglePriceOfBillDetail(product, aBoolean, 1);
 	}
 
@@ -71,7 +70,7 @@ public class PriceDAO implements PriceDAOImp {
 	}
 
 	@Override
-	public Price getNewPrice(String PId) {
+	public Price getNewPrice(Integer PId) {
 		Date now = new Date();
 		try {
 			Price price = priceRepository.getNewPrice(PId, this.IS_NOT_DELETE, now);
@@ -82,7 +81,7 @@ public class PriceDAO implements PriceDAOImp {
 	}
 
 	@Override
-	public int getOldPrice(String PId) {
+	public int getOldPrice(Integer PId) {
 		Date now = new Date();
 		try {
 			List<Price> prices = priceRepository.getOldPrice(PId, this.IS_NOT_DELETE, now);

@@ -5,28 +5,8 @@
 
 <div class="col-lg-8">
 	<div id="product_details" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<i class="fa fa-caret-left" data-target="#product_details"
-				data-slide-to="0"></i>
-			<i class="fa fa-square" data-target="#product_details"
-				data-slide-to="1"></i>
-			<i class="fa fa-caret-right active" data-target="#product_details"
-				data-slide-to="2"></i>
-		</ol>
-		<div class="carousel-inner">
-			<c:forEach items="${images}" var="image">
-				<img class="d-block w-100 col-lg-12"
-					 src="../resources/images/my-images/<c:out value="${image.getName()}" />">
-			</c:forEach>
-		</div>
-		<a class="carousel-control-prev" href="#product_details" role="button"
-			data-slide="prev"> <span class="carousel-control-prev-icon"
-			aria-hidden="true"></span> <span class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next" href="#product_details"
-			role="button" data-slide="next"> <span
-			class="carousel-control-next-icon" aria-hidden="true"></span> <span
-			class="sr-only">Next</span>
-		</a>
+		<img class="d-block w-100 col-lg-12"
+			 src="../resources/images/my-images/<c:out value="${image}" />">
 	</div>
 </div>
 <div class="col-lg-4">

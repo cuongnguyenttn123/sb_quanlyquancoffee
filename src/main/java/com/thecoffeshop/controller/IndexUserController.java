@@ -1,6 +1,5 @@
 package com.thecoffeshop.controller;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import com.thecoffeshop.common.Common;
 import com.thecoffeshop.common.converter.ProductConverter;
 import com.thecoffeshop.entity.Categoryproduct;
-import com.thecoffeshop.entity.Image;
 import com.thecoffeshop.entity.Price;
 import com.thecoffeshop.entity.Product;
 import com.thecoffeshop.service.CategoryProductService;
@@ -79,7 +77,7 @@ public class IndexUserController extends Common {
 	public String infoProduct(@RequestParam String productid, ModelMap modelMap) {
 
 
-		Product product = productService.getInfoById(productid);
+		Product product = productService.getInfoById(Integer.parseInt(productid));
 
 		if (product == null) {
 			return "Sản phẩm không tồn tại";
@@ -91,8 +89,7 @@ public class IndexUserController extends Common {
 		if (new_Price != null) {
 			modelMap.addAttribute("new_Price", new_Price);
 		}
-		Set<Image> images = new HashSet<>();
-		modelMap.addAttribute("images", images);
+		modelMap.addAttribute("images", product.getImage());
 
 		return "/user/content/infoProduct";
 	}

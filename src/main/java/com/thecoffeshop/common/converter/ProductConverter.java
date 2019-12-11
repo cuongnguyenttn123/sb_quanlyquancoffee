@@ -1,13 +1,9 @@
 package com.thecoffeshop.common.converter;
 
 import com.thecoffeshop.DTO.ProductDTO;
-import com.thecoffeshop.entity.Image;
 import com.thecoffeshop.entity.Price;
 import com.thecoffeshop.entity.Product;
-import com.thecoffeshop.service.PriceService;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Converter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;

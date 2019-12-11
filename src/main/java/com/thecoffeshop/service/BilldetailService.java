@@ -60,7 +60,7 @@ public class BilldetailService implements BilldetailDAOImp {
 	}
 
 	@Override
-	public int getSinglePriceOfBillDetail(String productid, Date startdatetime) {
+	public int getSinglePriceOfBillDetail(Integer productid, Date startdatetime) {
 		// TODO Auto-generated method stub
 		return billdetailDAO.getSinglePriceOfBillDetail(productid, startdatetime);
 	}

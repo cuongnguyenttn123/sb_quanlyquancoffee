@@ -16,13 +16,13 @@ public interface EmployeeDAOImp extends CommonDAOImp{
 	
 	public Boolean addEmployee(Employee employee);
 
-	public String logIn(String username, String password);
+	public Integer logIn(String username, String password);
 	
-	public Employee getInfoById(String employeeid);
+	public Employee getInfoById(Integer employeeid);
 	
 	public Boolean checkExistUseName(String usename);
 	
-	public Boolean deleteEmployee(String employeeid);
+	public Boolean deleteEmployee(Integer employeeid);
 
 	public Boolean editEmployee(Employee employee);
 

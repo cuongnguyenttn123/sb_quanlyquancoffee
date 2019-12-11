@@ -1,7 +1,6 @@
 package com.thecoffeshop.DAO;
 
 import com.thecoffeshop.DAOImpl.ProductDAOImp;
-import com.thecoffeshop.entity.Categoryproduct;
 import com.thecoffeshop.entity.Product;
 import com.thecoffeshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,7 +120,7 @@ public class ProductDAO implements ProductDAOImp {
 	}
 
 	@Override
-	public Product getInfoById(String productid) {
+	public Product getInfoById(Integer productid) {
 		return productRepository.findByIsdeleteAndProductid(this.IS_NOT_DELETE,productid);
 	}
 
@@ -146,7 +145,7 @@ public class ProductDAO implements ProductDAOImp {
 	}
 
 	@Override
-	public Boolean checkIsNewProduct(String productid) {
+	public Boolean checkIsNewProduct(Integer productid) {
 
 		try {
 			Product product = productRepository.findByIsdeleteAndProductid(this.IS_NOT_DELETE, productid);
@@ -166,7 +165,7 @@ public class ProductDAO implements ProductDAOImp {
 	}
 
 	@Override
-	public Boolean deleteProduct(String productid) {
+	public Boolean deleteProduct(Integer productid) {
 		Boolean aBoolean;
 		try{
 			productRepository.deleteById(productid);

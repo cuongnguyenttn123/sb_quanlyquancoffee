@@ -10,32 +10,32 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class BilldetailId implements java.io.Serializable {
 
-	private String productid;
-	private int billid;
+	private Integer productid;
+	private Integer billid;
 
 	public BilldetailId() {
 	}
 
-	public BilldetailId(String productid, int billid) {
+	public BilldetailId(Integer productid, int billid) {
 		this.productid = productid;
 		this.billid = billid;
 	}
 
 	@Column(name = "PRODUCTID", nullable = false, length = 7)
-	public String getProductid() {
+	public Integer getProductid() {
 		return this.productid;
 	}
 
-	public void setProductid(String productid) {
+	public void setProductid(Integer productid) {
 		this.productid = productid;
 	}
 
 	@Column(name = "BILLID", nullable = false)
-	public int getBillid() {
+	public Integer getBillid() {
 		return this.billid;
 	}
 
-	public void setBillid(int billid) {
+	public void setBillid(Integer billid) {
 		this.billid = billid;
 	}
 
