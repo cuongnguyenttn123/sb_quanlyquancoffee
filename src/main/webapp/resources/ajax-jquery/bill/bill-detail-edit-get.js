@@ -15,7 +15,7 @@ $(function() {
 	$(".remove-billDetail").click(function() {
 		billid = $(this).attr("data-billId");
 		$.post("/admin/billDetail/remove", {
-			billid,
+			billid:billid,
 			productid : $(this).attr("data-productId")
 		}, function(data, status) {
 			$("#billDetail_form").html(data);
