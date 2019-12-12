@@ -176,19 +176,7 @@ function _effectTrangThaiBan(id, name, dinnertableid){
 	$('#'+dinnertableid + ' div:eq(0)').addClass(background);
 }
 
-function _modalContent(dinnertableid, startPosition, inputSearch) {
-	$.get("/admin/index-modal", {
-		dinnertableid:dinnertableid,
-		startPosition: startPosition,
-		inputSearch: inputSearch
-	}, function(data, status) {
-		$('.modal-body').html(data);
-	});
-}
 
-_loadPagination(1);// at loadTable.js
-hide_all_Pagination();
-_hide_show_Pagination(1, "right");// at loadTable.js
 
 $(".pa").click(function() {
 	$(".active").removeClass("active");
